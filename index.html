@@ -31,7 +31,7 @@
 
 html{scroll-behavior:smooth;}
 body{
-  font-family:'Plus Jakarta Sans',sans-serif;
+  font-family:\'Plus Jakarta Sans\',sans-serif;
   background:var(--cream);
   color:var(--text);
   line-height:1.6;
@@ -129,7 +129,7 @@ nav{
   50%{box-shadow:0 0 0 6px rgba(255,107,74,0);}
 }
 .hero h1{
-  font-family:'Fraunces',serif;
+  font-family:\'Fraunces\',serif;
   font-size:clamp(3.2rem,8vw,7.5rem);
   font-weight:600;line-height:1.0;
   color:var(--text);margin-bottom:0.5rem;
@@ -139,7 +139,7 @@ nav{
 .hero h1 .italic{font-style:italic;font-weight:300;color:var(--coral);}
 .hero h1 .violet{color:var(--violet);}
 .hero-hand{
-  font-family:'Caveat',cursive;font-size:clamp(2rem,5vw,4rem);
+  font-family:\'Caveat\',cursive;font-size:clamp(2rem,5vw,4rem);
   color:var(--violet);font-weight:600;
   animation:fadeUp 0.8s 0.55s ease both;
   margin-bottom:1.5rem;
@@ -180,7 +180,7 @@ nav{
 }
 .marquee{display:flex;gap:3rem;animation:marquee 18s linear infinite;white-space:nowrap;}
 .marquee-item{
-  font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;
+  font-family:\'Fraunces\',serif;font-style:italic;font-size:1.1rem;
   color:var(--text-muted);font-weight:300;display:flex;align-items:center;gap:1rem;
   flex-shrink:0;
 }
@@ -214,7 +214,7 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   margin-bottom:1.2rem;text-transform:uppercase;
 }
 .section-title{
-  font-family:'Fraunces',serif;
+  font-family:\'Fraunces\',serif;
   font-size:clamp(2rem,4.5vw,3.8rem);
   font-weight:600;color:var(--text);line-height:1.1;
   margin-bottom:1rem;
@@ -233,7 +233,7 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   border:1px solid var(--border);position:relative;overflow:hidden;
 }
 .about-photo-card::before{
-  content:'';position:absolute;top:-60px;right:-60px;
+  content:\'\';position:absolute;top:-60px;right:-60px;
   width:200px;height:200px;border-radius:50%;
   background:rgba(255,107,74,0.15);
 }
@@ -250,11 +250,11 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   object-fit:cover;
 }
 .about-name-card{
-  font-family:'Fraunces',serif;font-size:1.6rem;
+  font-family:\'Fraunces\',serif;font-size:1.6rem;
   font-weight:600;color:var(--text);margin-bottom:0.2rem;
 }
 .about-role-card{
-  font-family:'Caveat',cursive;font-size:1.2rem;
+  font-family:\'Caveat\',cursive;font-size:1.2rem;
   color:var(--coral);font-weight:500;
 }
 .about-float-1{
@@ -294,7 +294,7 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   padding:2rem;text-align:center;box-shadow:var(--shadow);
 }
 .stat-num{
-  font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;
+  font-family:\'Fraunces\',serif;font-size:2.5rem;font-weight:600;
   color:var(--violet);display:block;margin-bottom:0.5rem;
 }
 .stat-label{font-size:0.8rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
@@ -320,26 +320,100 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   height:100%;
   object-fit:contain;
 }
-.srv-card h3{font-family:'Fraunces',serif;font-size:1.4rem;margin-bottom:0.8rem;color:var(--text);}
+.srv-card h3{font-family:\'Fraunces\',serif;font-size:1.4rem;margin-bottom:0.8rem;color:var(--text);}
 .srv-card p{font-size:0.9rem;color:var(--text-soft);line-height:1.7;margin-bottom:1.5rem;}
 .srv-tag{font-size:0.8rem;font-weight:700;color:var(--coral);letter-spacing:0.02em;}
 
 /* WORK */
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
-.work-card{
-  border-radius:32px;overflow:hidden;position:relative;
-  background:white;border:1px solid var(--border);
-}
-.work-card.span2{grid-column:span 2;}
-.work-img{width:100%;height:400px;object-fit:cover;transition:transform 0.5s;}
-.work-card:hover .work-img{transform:scale(1.04);}
-.work-info{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:2rem;background:linear-gradient(to top,rgba(26,16,37,0.9),transparent);
-  color:white;
-}
-.work-info h3{font-family:'Fraunces',serif;font-size:1.5rem;margin-bottom:0.4rem;}
-.work-info p{font-size:0.85rem;opacity:0.8;}
+<section id="work">
+  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+    <div class="section-tag" style="justify-content:center;">✦ Portfolio</div>
+    <h2 class="section-title">Real <em>projects</em>, real results</h2>
+    <p class="section-desc" style="margin:0 auto;">Actual websites I\'ve designed and delivered — each one built with intention.</p>
+  </div>
+  <div class="work-grid">
+    <!-- Existing Project -->
+    <div class="work-card span2 reveal">
+      <!-- IMPORTANT: Replace 'path/to/your/screenshot1.png' with the actual path to your project screenshot -->
+      <img src="path/to/your/screenshot1.png" class="work-img" alt="Project 1">
+      <div class="work-info">
+        <h3>Modern Agency Site</h3>
+        <p>Clean, fast, and professional.</p>
+      </div>
+    </div>
+    <!-- Add more project cards here following the same structure -->
+    <div class="work-card reveal">
+      <!-- IMPORTANT: Replace 'path/to/your/screenshot2.png' with the actual path to your project screenshot -->
+      <img src="path/to/your/screenshot2.png" class="work-img" alt="Project 2">
+      <div class="work-info">
+        <h3>E-commerce Store Redesign</h3>
+        <p>Improved user experience and conversion rates.</p>
+      </div>
+    </div>
+    <div class="work-card reveal reveal-delay-1">
+      <!-- IMPORTANT: Replace 'path/to/your/screenshot3.png' with the actual path to your project screenshot -->
+      <img src="path/to/your/screenshot3.png" class="work-img" alt="Project 3">
+      <div class="work-info">
+        <h3>Landing Page for SaaS</h3>
+        <p>High-converting lead generation page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES (New Section) -->
+<section id="case-studies">
+  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+    <div class="section-tag" style="justify-content:center;">✦ Deep Dives</div>
+    <h2 class="section-title">My <em>Case Studies</em></h2>
+    <p class="section-desc" style="margin:0 auto;">Explore the detailed process and impact of my key projects.</p>
+  </div>
+  <div class="case-study-grid">
+    <!-- Example Case Study Card -->
+    <div class="case-study-card reveal">
+      <h3>Project X: Boosting E-commerce Sales by 30%</h3>
+      <p>Detailed analysis of how a strategic redesign and optimization led to significant growth for an online retailer.</p>
+      <a href="#" class="btn-secondary">Read Case Study</a>
+    </div>
+    <!-- Add more case study cards here -->
+  </div>
+</section>
+
+<!-- BLOG/ARTICLES (New Section) -->
+<section id="blog">
+  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+    <div class="section-tag" style="justify-content:center;">✦ Insights</div>
+    <h2 class="section-title">My <em>Blog & Articles</em></h2>
+    <p class="section-desc" style="margin:0 auto;">Sharing thoughts on web design, UX, and industry trends.</p>
+  </div>
+  <div class="blog-grid">
+    <!-- Example Blog Post Card -->
+    <div class="blog-post-card reveal">
+      <h3>The Future of Responsive Design in 2026</h3>
+      <p>An in-depth look at emerging trends and best practices for multi-device optimization.</p>
+      <a href="#" class="btn-secondary">Read Article</a>
+    </div>
+    <!-- Add more blog post cards here -->
+  </div>
+</section>
+
+<!-- TESTIMONIALS (New Section) -->
+<section id="testimonials">
+  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+    <div class="section-tag" style="justify-content:center;">✦ What Clients Say</div>
+    <h2 class="section-title">Client <em>Testimonials</em></h2>
+    <p class="section-desc" style="margin:0 auto;">Hear directly from businesses I\'ve helped succeed.</p>
+  </div>
+  <div class="testimonial-slider">
+    <!-- Example Testimonial Card -->
+    <div class="testimonial-card reveal">
+      <p>"Hitin transformed our online presence! His attention to detail and understanding of our brand was exceptional. Highly recommend!"</p>
+      <h4>— Client Name, Company</h4>
+    </div>
+    <!-- Add more testimonial cards here -->
+  </div>
+</section>
+
 
 /* CONTACT */
 .contact-box{
@@ -350,7 +424,7 @@ section{padding:6rem 5%;position:relative;z-index:1;}
 .form-input{
   width:100%;padding:0.9rem 1.2rem;
   border:1.5px solid var(--border);border-radius:12px;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:0.88rem;
+  font-family:\'Plus Jakarta Sans\',sans-serif;font-size:0.88rem;
   color:var(--text);background:var(--warm);outline:none;
   transition:border-color 0.2s;
 }
@@ -360,7 +434,7 @@ textarea.form-input{resize:vertical;min-height:110px;margin-bottom:1rem;}
 .form-submit{
   width:100%;padding:1rem;border:none;border-radius:100px;
   background:linear-gradient(135deg,var(--coral),var(--rose));
-  color:white;font-family:'Plus Jakarta Sans',sans-serif;
+  color:white;font-family:\'Plus Jakarta Sans\',sans-serif;
   font-size:0.9rem;font-weight:600;letter-spacing:0.04em;
   cursor:pointer;transition:all 0.25s;
   box-shadow:0 8px 24px rgba(255,107,74,0.3);
@@ -370,7 +444,7 @@ textarea.form-input{resize:vertical;min-height:110px;margin-bottom:1rem;}
   display:flex;align-items:center;gap:1rem;margin:1.5rem 0;
   font-size:0.8rem;color:var(--text-muted);
 }
-.contact-or::before,.contact-or::after{content:'';flex:1;height:1px;background:var(--border);}
+.contact-or::before,.contact-or::after{content:\'\';flex:1;height:1px;background:var(--border);}
 .contact-direct{display:flex;gap:0.8rem;justify-content:center;}
 .btn-wa{
   background:#25D366;color:white;
@@ -448,7 +522,9 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#case-studies">Case Studies</a></li> <!-- New Nav Link -->
+    <li><a href="#blog">Blog</a></li> <!-- New Nav Link -->
+    <li><a href="#testimonials">Testimonials</a></li> <!-- New Nav Link -->
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="https://wa.me/23058451482" class="nav-cta">
@@ -465,7 +541,7 @@ footer{
     <span class="italic">truly</span> <span class="violet">connect</span>
   </h1>
   <span class="hero-hand">— with your clients ✦</span>
-  <p class="hero-sub">I'm Hitu — a web designer from Ludhiana who builds beautiful, high-converting websites that make businesses look world-class.</p>
+  <p class="hero-sub">I\'m Hitu — a web designer from Ludhiana who builds beautiful, high-converting websites that make businesses look world-class.</p>
   <div class="hero-cta">
     <a href="#work" class="btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -506,7 +582,8 @@ footer{
   <div class="about-wrap">
     <div class="about-visual reveal">
       <div class="about-photo-card">
-        <div class="about-initials"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663590348567/JdxIxoJiJKTCtlNK.png" alt="Hitin Banga"></div>
+        <!-- IMPORTANT: Replace 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663590348567/JdxIxoJiJKTCtlNK.png' with a professional headshot -->
+        <div class="about-initials"><img src="path/to/your/professional_headshot.png" alt="Hitin Banga"></div>
         <div class="about-name-card">Hitin Banga</div>
         <div class="about-role-card">Web Designer & Developer</div>
       </div>
@@ -515,9 +592,12 @@ footer{
     </div>
     <div class="about-text reveal reveal-delay-1">
       <div class="section-tag">✦ Who I am</div>
-      <h2 class="section-title">Hey, I'm <em>Hitu</em> — your web guy</h2>
-      <p>I'm Hitin Banga, a freelance web designer based in Ludhiana, Punjab. I've been building websites that actually work — not just look pretty — for clients across industries.</p>
-      <p>I believe your website is your most powerful salesperson. It works 24/7, never takes a day off, and reaches clients you've never even met. My job is to make sure it's doing its job right.</p>
+      <h2 class="section-title">Hey, I\'m <em>Hitu</em> — your web guy</h2>
+      <p>I\'m Hitin Banga, a freelance web designer based in Ludhiana, Punjab. I\'ve been building websites that actually work — not just look pretty — for clients across industries.</p>
+      <!-- Personal Journey (New Content) -->
+      <p>My journey into web design began with a fascination for how digital experiences shape our world. I love transforming complex ideas into intuitive and visually appealing websites that drive real business results.</p>
+      <!-- Values & Philosophy (New Content) -->
+      <p>I believe in a client-centric approach, focusing on clear communication, transparent processes, and delivering solutions that are not only aesthetically pleasing but also highly functional and optimized for performance. Every project is an opportunity to create something impactful and lasting.</p>
       <p>From a restaurant in your city to a business on the other side of the world — every project gets my full creative energy and technical attention.</p>
       <div class="skills-grid">
         <span class="skill-pill">UI Design</span>
@@ -594,35 +674,19 @@ footer{
     <div class="srv-card reveal reveal-delay-2">
       <div class="srv-emoji">🔄</div>
       <h3>Website Redesigns</h3>
-      <p>Got an outdated site? I'll modernise it completely — faster, more beautiful, and built for 2025 and beyond.</p>
+      <p>Got an outdated site? I\'ll modernise it completely — faster, more beautiful, and built for 2025 and beyond.</p>
       <span class="srv-tag">From ₹5,000 →</span>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
-<section id="work">
-  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-    <div class="section-tag" style="justify-content:center;">✦ Portfolio</div>
-    <h2 class="section-title">Real <em>projects</em>, real results</h2>
-    <p class="section-desc" style="margin:0 auto;">Actual websites I've designed and delivered — each one built with intention.</p>
-  </div>
-  <div class="work-grid">
-    <div class="work-card span2 reveal">
-      <img src="data:image/png;base64,..." class="work-img" alt="Project 1">
-      <div class="work-info">
-        <h3>Modern Agency Site</h3>
-        <p>Clean, fast, and professional.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CONTACT -->
 <section id="contact">
   <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
     <div class="section-tag" style="justify-content:center;">✦ Get in Touch</div>
-    <h2 class="section-title">Let's <em>start</em> something</h2>
+    <h2 class="section-title">Let\'s <em>start</em> something</h2>
     <p class="section-desc" style="margin:0 auto;">Ready to take your business to the next level? Send me a message.</p>
   </div>
   <div class="contact-box reveal">
@@ -649,31 +713,34 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</div>
 </footer>
 
 <script>
-const cursor = document.getElementById('cursor');
-const cring = document.getElementById('cring');
-document.addEventListener('mousemove', (e) => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
-  cring.style.left = e.clientX + 'px';
-  cring.style.top = e.clientY + 'px';
+const cursor = document.getElementById(\'cursor\');
+const cring = document.getElementById(\'cring\');
+document.addEventListener(\'mousemove\', (e) => {
+  cursor.style.left = e.clientX + \'px\';
+  cursor.style.top = e.clientY + \'px\';
+  cring.style.left = e.clientX + \'px\';
+  cring.style.top = e.clientY + \'px\';
 });
 
 const observerOptions = { threshold: 0.1 };
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      entry.target.classList.add(\'visible\');
     }
   });
 }, observerOptions);
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll(\'.reveal\').forEach(el => observer.observe(el));
 </script>
 
 </body>
