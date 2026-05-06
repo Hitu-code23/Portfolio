@@ -289,14 +289,16 @@ section{padding:6rem 5%;position:relative;z-index:1;}
   font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;
   color:var(--violet);display:block;margin-bottom:0.5rem;
 }
-.stat-label{font-size:0.8rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+.stat-label{font-size:0.82rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.04em;}
 
 /* SERVICES */
-.services-bg{background:var(--warm);}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.services-bg{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
 .srv-card{
-  background:white;border:1px solid var(--border);border-radius:24px;
-  padding:2.5rem;transition:all 0.3s;
+  background:white;border:1px solid var(--border);border-radius:32px;
+  padding:3rem 2.5rem;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
 }
 .srv-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:var(--coral);}
 .srv-emoji{
@@ -320,7 +322,7 @@ section{padding:6rem 5%;position:relative;z-index:1;}
 .work-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);}
 .work-card.span2{grid-column:span 2;}
 .work-img{
-  width:100%;height:240px;object-fit:cover;display:block;
+  width:100%;height:320px;object-fit:cover;display:block;
   background:linear-gradient(135deg,var(--peach),#E8D5F5);
 }
 .work-info{padding:1.5rem;}
@@ -498,7 +500,6 @@ footer{
     <div class="mini-card"><div class="mini-card-icon">⚡</div><div><div class="mini-card-text">Fast Delivery</div><div class="mini-card-sub">3–7 days avg</div></div></div>
     <div class="mini-card"><div class="mini-card-icon">📱</div><div><div class="mini-card-text">Mobile Perfect</div><div class="mini-card-sub">Every device</div></div></div>
     <div class="mini-card"><div class="mini-card-icon">🌍</div><div><div class="mini-card-text">Remote Friendly</div><div class="mini-card-sub">Work anywhere</div></div></div>
-    <div class="mini-card"><div class="mini-card-icon">🔒</div><div><div class="mini-card-text">Secure & Fast</div><div class="mini-card-sub">SSL + optimised</div></div></div>
   </div>
   <div class="marquee-wrap" style="margin-top:3rem;">
     <div class="marquee">
@@ -527,7 +528,7 @@ footer{
   <div class="about-wrap">
     <div class="about-visual reveal">
       <div class="about-photo-card">
-        <div class="about-initials"><img src="path/to/your/professional_headshot.png" alt="Hitin Banga"></div>
+        <div class="about-initials"><img src="https://ui-avatars.com/api/?name=Hitin+Banga&background=random" alt="Hitin Banga"></div>
         <div class="about-name-card">Hitin Banga</div>
         <div class="about-role-card">Web Designer & Developer</div>
       </div>
@@ -601,24 +602,6 @@ footer{
       <p>High-converting single pages built for product launches, promotions, ads, and lead generation campaigns.</p>
       <span class="srv-tag">From ₹4,000 →</span>
     </div>
-    <div class="srv-card reveal">
-      <div class="srv-emoji"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.47 122.88" fill="var(--violet)"><title>doctor</title><path d="M84.58,103.47a4.09,4.09,0,1,1-4.08,4.09,4.08,4.08,0,0,1,4.08-4.09Zm3.61-60.62a3.89,3.89,0,0,1,2.2,1.48c1.08,1.39,1.38,3.64,1.08,6a15.16,15.16,0,0,1-2.21,6.2c-1.31,2-3,3.29-5,3.16-.14,6.51-3.33,9.5-7.49,13.41l-1.59,1.51-.54.51.13.09a14.67,14.67,0,0,1-1.58,1.1,17.71,17.71,0,0,1-4.61,2.47,20.48,20.48,0,0,1-6.84,1.12,21.4,21.4,0,0,1-7.11-1.1l-1-.36a16.18,16.18,0,0,1-3.74-1.66l-.5-.31a21.59,21.59,0,0,1-2.26,4.77L62.65,92.05,77.23,79.9A22.93,22.93,0,0,1,75,75.38c6.43,4.57,7.82,14.11,7.61,21.81,0,1-.06,1.26-.08,1.59a8.91,8.91,0,0,0-4.36,15,8.49,8.49,0,0,0,11.77.7,8.9,8.9,0,0,0,3.42-7,7.94,7.94,0,0,0-1.08-4c-1.5-2.6-3.13-3.36-5.62-4.6-.17-.09,0-.47,0-1.53a47.43,47.43,0,0,0-1.46-14.08,21,21,0,0,0,3.4,1.41c8.9,2.1,19.84,3,23.76,5.2a16,16,0,0,1,5,4.26c3.47,4.58,3.76,17.76,5,23.36-.31,3.28-2.16,5.16-5.82,5.44H5.82C2.17,122.6.31,120.71,0,117.44c1.26-5.6,1.56-11.2,3.34-16.71,2.54-7.89,6.54-13,12.56-17.13a35,35,0,0,1,11.16-5.13,20.42,20.42,0,0,0,3,1.3,44.75,44.75,0,0,0,14.1,4.74,47.16,47.16,0,0,0,14.65.17c2.51-.31,5.32-1,8.31-2a14.73,14.73,0,0,0,2.18-.84c-1.4-2.83-2.31-5.79-2.73-8.82-3.41,2.83-6.14,4.58-9.45,4.71-3.12.12-5.78-1.54-7.87-4.83a15.22,15.22,0,0,1-2.22-6.2c-.31-2.36,0-4.61,1.08-6a3.89,3.89,0,0,1,2.2-1.48c2-.46,3.67.6,5.16,3.31,1.15,2.11,2,4.64,2.58,7.39l.11.49.49.1a12.31,12.31,0,0,0,3.53,1.3,2.46,2.46,0,0,0,2.48-1.46c2.47-5.46,5.46-10.43,8.91-14.82L79.4,32.25c-4.32-3.83-11.85-6.64-18.17-6.64s-13.85,2.81-18.17,6.64l-.16.14a43.51,43.51,0,0,1,3,11.36l0,.41.41,0a2.43,2.43,0,0,0,2.37-1.39,12.28,12.28,0,0,0,1.35-3.52l.1-.49.49-.11c2.75-.6,5.28-1.43,7.39-2.58,2.71-1.49,3.77-3.16,3.31-5.16a3.89,3.89,0,0,1,1.48-2.2c1.39-1.08,3.64-1.39,6-1.08a15.16,15.16,0,0,1,6.2,2.21c3.29,2.09,5,4.75,4.83,7.87-.13,3.31-1.88,6-4.71,9.45,3,4.2,6,1.33,8.82,2.73a14.73,14.73,0,0,0,.84-2.18c1-3,1.69-5.8,2-8.31a47.16,47.16,0,0,0-.17-14.65,44.75,44.75,0,0,0-4.74-14.1,20.42,20.42,0,0,0-1.3-3,35,35,0,0,1,5.13-11.16C80.3,15,85.41,11,93.3,8.46c5.51-1.78,11.11-2.08,16.71-3.34,3.27.31,5.16,2.16,5.44,5.82v51.13c-.28,3.66-2.16,5.51-5.82,5.82-5.6-1.24-18.78-1.53-23.36-5a16,16,0,0,1-4.26-5,23.76,23.76,0,0,1-5.2-23.76c-1.41-3.4-1.41-3.4-1.41-3.4a47.43,47.43,0,0,0,14.08,1.46c1.06,0,1.44-.17,1.53,0,1.24,2.49,2,4.12,4.6,5.62a7.94,7.94,0,0,0,4,1.08,8.9,8.9,0,0,0,7-3.42,8.49,8.49,0,0,0-.7-11.77,8.91,8.91,0,0,0-15,4.36c-.33,0-.59.08-1.59.08,7.7-2.1,17.24-1.18,21.81-7.61a22.93,22.93,0,0,1,4.52,2.23l12.15-14.58L93,62.65a21.59,21.59,0,0,1-4.77,2.26l.31.5a16.18,16.18,0,0,1,1.66,3.74l.36,1a21.4,21.4,0,0,1,1.1,7.11,20.48,20.48,0,0,1-1.12,6.84,17.71,17.71,0,0,1-2.47,4.61,14.67,14.67,0,0,1-1.1,1.58l-.09-.13-.51.54-1.51,1.59c-3.91,4.16-6.9,7.35-13.41,7.49.13,2,1.16,3.69,3.16,5,2.15.89,4.28,1.59,6.2,2.21,2.36.3,4.61,0,6-1.08a3.89,3.89,0,0,1,1.48-2.2,4,4,0,0,1,4.09,4.08,4.09,4.09,0,0,1-4.09,4.08ZM61.24,94.29a2.53,2.53,0,0,0,2.38,1.69h0a2.53,2.53,0,0,0,2.38-1.69L78.63,60.16a18.27,18.27,0,0,0,1.31-3.17c.56-1.92,1.31-3.83,1.69-5.77a2.53,2.53,0,0,0-2.38-3.07H43.22a2.53,2.53,0,0,0-2.38,3.07c.38,1.94,1.13,3.85,1.69,5.77a18.27,18.27,0,0,0,1.31,3.17ZM37.89,103.47a4.09,4.09,0,1,0,4.08,4.09,4.08,4.08,0,0,0-4.08-4.09Zm-3.61-60.62a3.89,3.89,0,0,0-2.2,1.48c-1.08,1.39-1.39,3.64-1.08,6a15.16,15.16,0,0,0,2.21,6.2c1.31,2,3,3.29,5,3.16.14,6.51,3.33,9.5,7.49,13.41l1.59,1.51.54.51-.13.09a14.67,14.67,0,0,0,1.58,1.1,17.71,17.71,0,0,0,4.61,2.47,20.48,20.48,0,0,0,6.84,1.12,21.4,21.4,0,0,0,7.11-1.1l1-.36a16.18,16.18,0,0,0,3.74-1.66l.5-.31a21.59,21.59,0,0,0,2.26,4.77l14.58,12.15L70.24,79.9a22.93,22.93,0,0,0,2.23-4.52c-6.43,4.57-7.82,14.11-7.61,21.81,0,1,.06,1.26.08,1.59a8.91,8.91,0,0,1,4.36,15,8.49,8.49,0,0,1-11.77.7,8.9,8.9,0,0,1-3.42-7,7.94,7.94,0,0,1,1.08-4c1.5-2.6,3.13-3.36,5.62-4.6.17-.09,0-.47,0-1.53a47.43,47.43,0,0,1,1.46-14.08,21,21,0,0,1-3.4,1.41c-8.9,2.1-19.84,3-23.76,5.2a16,16,0,0,0-5,4.26c-3.47,4.58-3.76,17.76-5,23.36.31,3.28,2.16,5.16,5.82,5.44H116.65c3.65,0,5.51-1.89,5.82-5.16-1.26-5.6-1.56-11.2-3.34-16.71-2.54-7.89-6.54-13-12.56-17.13a35,35,0,0,0-11.16-5.13,20.42,20.42,0,0,1-3,1.3,44.75,44.75,0,0,1-14.1,4.74,47.16,47.16,0,0,1-14.65.17c-2.51-.31-5.32-1-8.31-2a14.73,14.73,0,0,1-2.18-.84c1.4-2.83,2.31-5.79,2.73-8.82,3.41,2.83,6.14,4.58,9.45,4.71,3.12.12,5.78-1.54,7.87-4.83a15.22,15.22,0,0,0,2.22-6.2c.31-2.36,0-4.61-1.08-6a3.89,3.89,0,0,0-2.2-1.48c-2-.46-3.67.6-5.16,3.31-1.15,2.11-2,4.64-2.58,7.39l-.11.49-.49.1a12.31,12.31,0,0,1-3.53,1.3,2.46,2.46,0,0,1-2.48-1.46c-2.47-5.46-5.46-10.43-8.91-14.82l10.13-12.15c4.32-3.83,11.85-6.64,18.17-6.64s13.85,2.81,18.17,6.64l.16.14a43.51,43.51,0,0,0-3,11.36l0,.41-.41,0a2.43,2.43,0,0,1-2.37-1.39,12.28,12.28,0,0,1-1.35-3.52l-.1-.49-.49-.11c-2.75-.6-5.28-1.43-7.39-2.58-2.71-1.49-3.77-3.16-3.31-5.16a3.89,3.89,0,0,0-1.48-2.2c-1.39-1.08-3.64-1.39-6-1.08a15.16,15.16,0,0,0-6.2,2.21c-3.29,2.09-5,4.75-4.83,7.87.13,3.31,1.88,6,4.71,9.45-3,4.2-6,1.33-8.82,2.73a14.73,14.73,0,0,1-.84-2.18c-1-3-1.69-5.8-2-8.31a47.16,47.16,0,0,1,.17-14.65,44.75,44.75,0,0,1,4.74-14.1,20.42,20.42,0,0,1,1.3-3,35,35,0,0,0-5.13-11.16C42.17,15,37.06,11,29.17,8.46c-5.51-1.78-11.11-2.08-16.71-3.34-3.27.31-5.16,2.16-5.44,5.82V62.07c.28,3.66,2.16,5.51,5.82,5.82,5.6-1.24,18.78-1.53,23.36-5a16,16,0,0,0,4.26-5,23.76,23.76,0,0,0,5.2-23.76c1.41-3.4,1.41-3.4,1.41-3.4a47.43,47.43,0,0,1-14.08,1.46c-1.06,0-1.44-.17-1.53,0-1.24,2.49-2,4.12-4.6,5.62a7.94,7.94,0,0,1-4,1.08,8.9,8.9,0,0,1-7-3.42,8.49,8.49,0,0,1,.7-11.77,8.91,8.91,0,0,1,15,4.36c.33,0,.59.08,1.59.08-7.7-2.1-17.24-1.18-21.81-7.61a22.93,22.93,0,0,0-4.52,2.23L0,32.25,29.47,62.65a21.59,21.59,0,0,0,4.77,2.26l-.31.5a16.18,16.18,0,0,0-1.66,3.74l-.36,1a21.4,21.4,0,0,0-1.1,7.11,20.48,20.48,0,0,0,1.12,6.84,17.71,17.71,0,0,0,2.47,4.61,14.67,14.67,0,0,0,1.1,1.58l.09-.13.51.54,1.51,1.59c3.91,4.16,6.9,7.35,13.41,7.49-.13,2-1.16,3.69-3.16,5-2.15.89-4.28,1.59-6.2,2.21-2.36.3-4.61,0-6-1.08a3.89,3.89,0,0,0-1.48-2.2,4,4,0,0,0-4.09,4.08,4.09,4.09,0,0,0,4.09,4.08Z"/></svg></div>
-      <h3>Clinic & Doctor Sites</h3>
-      <p>Trust-first healthcare websites with appointment info, doctor profiles, specialties, and WhatsApp booking.</p>
-      <span class="srv-tag">From ₹7,000 →</span>
-    </div>
-    <div class="srv-card reveal reveal-delay-1">
-      <div class="srv-emoji"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 122.88 115.21" style="enable-background:new 0 0 122.88 115.21" xml:space="preserve" fill="var(--violet)"><g><path d="M29.03,100.46l20.79-25.21l9.51,12.13L41,110.69C33.98,119.61,20.99,110.21,29.03,100.46L29.03,100.46z M53.31,43.05 c1.98-6.46,1.07-11.98-6.37-20.18L28.76,1c-2.58-3.03-8.66,1.42-6.12,5.09L37.18,24c2.75,3.34-2.36,7.76-5.2,4.32L16.94,9.8 c-2.8-3.21-8.59,1.03-5.66,4.7c4.24,5.1,10.8,13.43,15.04,18.53c2.94,2.99-1.53,7.42-4.43,3.69L6.96,18.32 c-2.19-2.38-5.77-0.9-6.72,1.88c-1.02,2.97,1.49,5.14,3.2,7.34L20.1,49.06c5.17,5.99,10.95,9.54,17.67,7.53 c1.03-0.31,2.29-0.94,3.64-1.77l44.76,57.78c2.41,3.11,7.06,3.44,10.08,0.93l0.69-0.57c3.4-2.83,3.95-8,1.04-11.34L50.58,47.16 C51.96,45.62,52.97,44.16,53.31,43.05L53.31,43.05z M65.98,55.65l7.37-8.94C63.87,23.21,99-8.11,116.03,6.29 C136.72,23.8,105.97,66,84.36,55.57L65.98,55.65L65.98,55.65z"/></g></svg></div>
-      <h3>Restaurant & Food</h3>
-      <p>Mouth-watering restaurant sites with menu, gallery, location map, and reservation or delivery links.</p>
-      <span class="srv-tag">From ₹6,000 →</span>
-    </div>
-    <div class="srv-card reveal reveal-delay-2">
-      <div class="srv-emoji"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118.04 122.88" fill="var(--violet)"><path d="M16.08,59.26A8,8,0,0,1,0,59.26a59,59,0,0,1,97.13-45V8a8,8,0,1,1,16.08,0V33.35a8,8,0,0,1-8,8L80.82,43.62a8,8,0,1,1-1.44-15.95l8-.73A43,43,0,0,0,16.08,59.26Zm22.77,19.6a8,8,0,0,1,1.44,16l-10.08.91A42.95,42.95,0,0,0,102,63.86a8,8,0,0,1,16.08,0A59,59,0,0,1,22.3,110v4.18a8,8,0,0,1-16.08,0V89.14h0a8,8,0,0,1,7.29-8l25.31-2.3Z"/></svg></div>
-      <h3>Website Redesigns</h3>
-      <p>Got an outdated site? I'll modernise it completely — faster, more beautiful, and built for 2025 and beyond.</p>
-      <span class="srv-tag">From ₹5,000 →</span>
-    </div>
   </div>
 </section>
 
@@ -631,83 +614,26 @@ footer{
   </div>
   <div class="work-grid">
     <div class="work-card span2 reveal">
-      <img src="velorien.png" class="work-img" alt="Velorien Creative Studio">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" class="work-img" alt="Velorien Creative Studio">
       <div class="work-info">
         <h3>Velorien — Creative Studio</h3>
         <p>A premium digital experience for a creative studio where ideas take form through precision and intention.</p>
       </div>
     </div>
     <div class="work-card reveal">
-      <img src="gearmycycle.png" class="work-img" alt="GearMyCycle — Premium Cycling Culture">
+      <img src="https://images.unsplash.com/photo-1532298229144-0ee051189ff2?auto=format&fit=crop&w=800&q=80" class="work-img" alt="GearMyCycle — Premium Cycling Culture">
       <div class="work-info">
         <h3>GearMyCycle — Premium Cycling Culture</h3>
         <p>A bold and modern e-commerce platform for those who refuse to move like everyone else. Ride beyond ordinary.</p>
       </div>
     </div>
     <a href="https://hitu-code23.github.io/hb-visualss/" target="_blank" class="work-card reveal reveal-delay-1" style="text-decoration:none;">
-      <img src="hb-visuals.png" class="work-img" alt="HB Visuals — Creative Agency">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" class="work-img" alt="HB Visuals — Creative Agency">
       <div class="work-info">
         <h3>HB Visuals — Creative Agency</h3>
         <p>A cinematic digital experience for a Punjab-based creative agency. Where visuals meet storytelling.</p>
       </div>
     </a>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section id="case-studies" style="background:var(--warm);">
-  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-    <div class="section-tag" style="justify-content:center;">✦ Deep Dives</div>
-    <h2 class="section-title">My <em>Case Studies</em></h2>
-    <p class="section-desc" style="margin:0 auto;">Explore the detailed process and impact of my key projects.</p>
-  </div>
-  <div class="case-study-grid">
-    <div class="case-study-card reveal">
-      <h3>Project X: Boosting E-commerce Sales by 30%</h3>
-      <p>Detailed analysis of how a strategic redesign and optimization led to significant growth for an online retailer.</p>
-    </div>
-    <div class="case-study-card reveal reveal-delay-1">
-      <h3>Restaurant Website: From Zero to 200 Reservations/Month</h3>
-      <p>How a beautiful, mobile-first redesign transformed a local restaurant's digital presence and bookings.</p>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog">
-  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-    <div class="section-tag" style="justify-content:center;">✦ Insights</div>
-    <h2 class="section-title">My <em>Blog & Articles</em></h2>
-    <p class="section-desc" style="margin:0 auto;">Sharing thoughts on web design, UX, and industry trends.</p>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-post-card reveal">
-      <h3>The Future of Responsive Design in 2026</h3>
-      <p>An in-depth look at emerging trends and best practices for multi-device optimization.</p>
-    </div>
-    <div class="blog-post-card reveal reveal-delay-1">
-      <h3>Why Your Business Needs a Website in 2026</h3>
-      <p>Exploring the undeniable impact of a strong online presence for businesses of all sizes in today's digital landscape.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" style="background:var(--warm);">
-  <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-    <div class="section-tag" style="justify-content:center;">✦ What Clients Say</div>
-    <h2 class="section-title">Client <em>Testimonials</em></h2>
-    <p class="section-desc" style="margin:0 auto;">Hear directly from businesses I've helped succeed.</p>
-  </div>
-  <div class="testimonial-slider">
-    <div class="testimonial-card reveal">
-      <p>"Hitin transformed our online presence! His attention to detail and understanding of our brand was exceptional. Highly recommend!"</p>
-      <h4>— Client Name, Company</h4>
-    </div>
-    <div class="testimonial-card reveal reveal-delay-1">
-      <p>"Fast, professional, and delivered exactly what we needed. Our new website has already brought in several new clients."</p>
-      <h4>— Another Client, Business Name</h4>
-    </div>
   </div>
 </section>
 
@@ -742,9 +668,6 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#case-studies">Case Studies</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</div>
