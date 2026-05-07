@@ -435,14 +435,41 @@ footer{
 .reveal-delay-2{transition-delay:0.2s;}
 .reveal-delay-3{transition-delay:0.3s;}
 
-/* MOBILE */
-@media(max-width:768px){
-  .nav-links{display:none;}
-  .about-wrap{grid-template-columns:1fr;}
-  .services-grid,.stats-row,.work-grid,.case-study-grid,.blog-grid,.testimonial-slider{grid-template-columns:1fr;}
-  .work-card.span2{grid-column:span 1;}
-  .contact-form-row{grid-template-columns:1fr;}
-  .hero h1{font-size:3rem;}
+/* RESPONSIVE OPTIMIZATIONS */
+@media (max-width: 1024px) {
+  .about-wrap { gap: 3rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .hero h1 { font-size: 4.5rem; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 1rem 5%; }
+  .nav-links { display: none; }
+  .hero { padding: 7rem 5% 4rem; }
+  .hero h1 { font-size: 3.5rem; }
+  .hero-sub { font-size: 1rem; }
+  .about-wrap { grid-template-columns: 1fr; gap: 4rem; }
+  .about-visual { max-width: 400px; margin: 0 auto; }
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card.span2 { grid-column: span 1; }
+  .stat-card { padding: 1.5rem; }
+  .stat-num { font-size: 2rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .cursor, .cursor-ring { display: none; } /* Disable custom cursor on touch devices */
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.8rem; }
+  .hero-cta { flex-direction: column; width: 100%; max-width: 280px; margin-left: auto; margin-right: auto; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .hero-cards { gap: 0.8rem; }
+  .mini-card { width: 100%; }
+  .stats-row { grid-template-columns: 1fr; }
+  .section-title { font-size: 2.2rem; }
 }
 </style>
 </head>
@@ -484,7 +511,7 @@ footer{
     <span class="italic">truly</span> <span class="violet">connect</span>
   </h1>
   <span class="hero-hand">— with your clients ✦</span>
-  <p class="hero-sub">I'm Hitu — a web designer from Ludhiana who builds beautiful, high-converting websites that make businesses look world-class.</p>
+  <p class="hero-sub">I'm Hitu — a web designer from INDIA who builds beautiful, high-converting websites that make businesses look world-class.</p>
   <div class="hero-cta">
     <a href="#work" class="btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -493,10 +520,10 @@ footer{
     <a href="#contact" class="btn-secondary">Start a Project</a>
   </div>
   <div class="hero-cards">
-    <div class="mini-card"><div class="mini-card-icon">⚡</div><div><div class="mini-card-text">Fast Delivery</div><div class="mini-card-sub">3–7 days avg</div></div></div>
-    <div class="mini-card"><div class="mini-card-icon">🎨</div><div><div class="mini-card-text">Custom Design</div><div class="mini-card-sub">Tailored to you</div></div></div>
-    <div class="mini-card"><div class="mini-card-icon">📱</div><div><div class="mini-card-text">Fully Responsive</div><div class="mini-card-sub">Mobile-first</div></div></div>
-    <div class="mini-card"><div class="mini-card-icon">🚀</div><div><div class="mini-card-text">High Converting</div><div class="mini-card-sub">Results-driven</div></div></div>
+    <div class="mini-card"><div class="mini-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><div class="mini-card-text">Fast Delivery</div><div class="mini-card-sub">3–7 days avg</div></div></div>
+    <div class="mini-card"><div class="mini-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l5 5"/><path d="M9.5 14.5L16 18"/></svg></div><div><div class="mini-card-text">Custom Design</div><div class="mini-card-sub">Tailored to you</div></div></div>
+    <div class="mini-card"><div class="mini-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div><div class="mini-card-text">Fully Responsive</div><div class="mini-card-sub">Mobile-first</div></div></div>
+    <div class="mini-card"><div class="mini-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5"/></svg></div><div><div class="mini-card-text">High Converting</div><div class="mini-card-sub">Results-driven</div></div></div>
   </div>
 </section>
 
@@ -524,14 +551,14 @@ footer{
         <div class="about-initials">HB</div>
         <div class="about-name-card">Hitin Banga</div>
         <div class="about-role-card">Web Designer & Developer</div>
-        <div class="about-float-1">📍 Ludhiana, Punjab</div>
+        <div class="about-float-1">📍 INDIA</div>
         <div class="about-float-2">✨ 3+ Years Experience</div>
       </div>
     </div>
     <div class="about-text reveal">
       <div class="section-tag">✦ Who I am</div>
       <h2 class="section-title">Hey, I'm <em>Hitu</em></h2>
-      <p>I'm Hitin Banga, a freelance web designer based in Ludhiana, Punjab. I've been building websites that actually work — not just look pretty — for clients across industries.</p>
+      <p>I'm Hitin Banga, a freelance web designer based in INDIA. I've been building websites that actually work — not just look pretty — for clients across industries.</p>
       <p>My focus is on creating beautiful, high-converting digital experiences that help businesses stand out and grow. From concept to launch, I handle every detail with precision.</p>
       <div class="section-tag" style="margin-top:2rem;">✦ What I Do</div>
       <div class="skills-grid">
