@@ -1165,7 +1165,7 @@ footer {
     <!-- ══ CURRENCY SELECTOR ══ -->
     <div class="currency-selector" id="currencySel">
       <button class="currency-btn" id="currencyBtn" aria-label="Change currency" aria-expanded="false">
-        <span id="currencyLabel">₹ INR</span>
+        <span id="currencyLabel">$ USD</span>
         <span class="rate-badge" id="rateBadge">Live</span>
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
@@ -1177,12 +1177,12 @@ footer {
         </div>
         <div class="currency-divider"></div>
 
-        <div class="currency-option active" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
+        <div class="currency-option" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
           <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
           <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
 
-        <div class="currency-option" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
+        <div class="currency-option active" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
           <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
           <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
@@ -1368,7 +1368,7 @@ footer {
   <!-- Currency hint banner -->
   <div class="currency-note fade-up">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
-    Prices shown in <strong id="noteLabel">INR</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
+    Prices shown in <strong id="noteLabel">USD</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
   </div>
 
   <div class="srv-list">
@@ -1378,7 +1378,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Business Websites</div>
         <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
-        <span class="srv-price" data-inr="8000">From ₹8,000</span>
+        <span class="srv-price" data-usd="800">From $800</span>
       </div>
     </div>
 
@@ -1387,7 +1387,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">E-Commerce Stores</div>
         <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
-        <span class="srv-price" data-inr="15000">From ₹15,000</span>
+        <span class="srv-price" data-usd="850">From $850</span>
       </div>
     </div>
 
@@ -1396,7 +1396,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Landing Pages</div>
         <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
-        <span class="srv-price" data-inr="4000">From ₹4,000</span>
+        <span class="srv-price" data-usd="400">From $400</span>
       </div>
     </div>
 
@@ -1405,7 +1405,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">UI/UX Design</div>
         <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
-        <span class="srv-price" data-inr="6000">From ₹6,000</span>
+        <span class="srv-price" data-usd="72">From $72</span>
       </div>
     </div>
 
@@ -1414,7 +1414,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Branding &amp; Identity</div>
         <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
-        <span class="srv-price" data-inr="5000">From ₹5,000</span>
+        <span class="srv-price" data-usd="60">From $60</span>
       </div>
     </div>
 
@@ -1694,73 +1694,80 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => navObserver.observe(s));
 
 /* ════════════════════════════════════════════════════════════
-   CURRENCY SWITCHER
+   CURRENCY SWITCHER  (USD base)
    ════════════════════════════════════════════════════════════ */
 
-// Fallback rates (INR base) — used if API call fails
+// Fallback rates from 1 USD — used if live API call fails
 const FALLBACK = {
-  INR: 1,
-  USD: 0.01195,
-  EUR: 0.01097,
-  GBP: 0.00939,
-  AED: 0.04388,
-  SGD: 0.01604,
-  AUD: 0.01842,
-  CAD: 0.01648,
-  JPY: 1.8620,
+  USD: 1,
+  INR: 83.50,
+  EUR: 0.917,
+  GBP: 0.786,
+  AED: 3.673,
+  SGD: 1.342,
+  AUD: 1.541,
+  CAD: 1.380,
+  JPY: 155.80,
 };
 
 let rates = { ...FALLBACK };
-let ratesLive = false;
 
-// Attempt live rate fetch (open.er-api.com — free, no key required)
-fetch('https://open.er-api.com/v6/latest/INR')
+// Attempt live rate fetch from USD base (free, no key required)
+fetch('https://open.er-api.com/v6/latest/USD')
   .then(r => r.json())
   .then(data => {
     if (data && data.result === 'success' && data.rates) {
-      rates = { INR: 1, ...data.rates };
-      ratesLive = true;
+      rates = { USD: 1, ...data.rates };
       document.getElementById('rateBadge').textContent = 'Live';
+      // Refresh displayed prices with live rates
+      applyPrices(activeCurrency.code, activeCurrency.symbol);
     }
   })
   .catch(() => {
     document.getElementById('rateBadge').textContent = 'Est.';
   });
 
-// State
-let activeCurrency = { code: 'INR', symbol: '₹' };
+// Default: show USD
+let activeCurrency = { code: 'USD', symbol: '$' };
 
-// Format converted price
-function formatConverted(inrAmount, code, symbol) {
-  const raw = inrAmount * rates[code];
+// Format a converted price neatly
+function formatConverted(usdAmount, code, symbol) {
+  const raw = usdAmount * rates[code];
 
-  if (code === 'INR') {
-    return `From ₹${Math.round(inrAmount).toLocaleString('en-IN')}`;
-  }
-  if (code === 'JPY') {
-    return `From ${symbol}${Math.round(raw).toLocaleString('ja-JP')}`;
+  if (code === 'JPY' || code === 'INR') {
+    const locale = code === 'JPY' ? 'ja-JP' : 'en-IN';
+    return `From ${symbol}${Math.round(raw).toLocaleString(locale)}`;
   }
 
-  // Round to nearest sensible unit
-  const rounded = raw >= 100 ? Math.round(raw) : raw >= 10 ? Math.round(raw * 10) / 10 : Math.round(raw * 100) / 100;
+  // 2 decimal places for amounts under $10, otherwise round
+  const rounded = raw >= 100
+    ? Math.round(raw)
+    : raw >= 10
+      ? Math.round(raw * 10) / 10
+      : Math.round(raw * 100) / 100;
+
   return `From ${symbol}${rounded.toLocaleString('en-US')}`;
 }
 
-// Apply prices to all .srv-price elements
+// Update all .srv-price elements
 function applyPrices(code, symbol) {
   document.querySelectorAll('.srv-price').forEach(el => {
     el.classList.add('loading');
-    const inr = parseInt(el.dataset.inr, 10);
+    const usd = parseFloat(el.dataset.usd);
     setTimeout(() => {
-      el.textContent = formatConverted(inr, code, symbol);
+      el.textContent = formatConverted(usd, code, symbol);
       el.classList.remove('loading');
     }, 260);
   });
-
-  // Update the note banner
   const noteEl = document.getElementById('noteLabel');
   if (noteEl) noteEl.textContent = code;
 }
+
+// Set USD as the initially active option in the dropdown
+document.querySelectorAll('.currency-option').forEach(o => {
+  o.classList.toggle('active', o.dataset.code === 'USD');
+});
+document.getElementById('currencyLabel').textContent = '$ USD';
 
 // Dropdown toggle
 const currencySel      = document.getElementById('currencySel');
@@ -1787,18 +1794,13 @@ document.querySelectorAll('.currency-option').forEach(opt => {
     const code   = opt.dataset.code;
     const symbol = opt.dataset.symbol;
 
-    // Update active state
     document.querySelectorAll('.currency-option').forEach(o => o.classList.remove('active'));
     opt.classList.add('active');
 
-    // Update button label
     currencyLabel.textContent = `${symbol.trim()} ${code}`;
-
-    // Close dropdown
     currencySel.classList.remove('open');
     currencyBtn.setAttribute('aria-expanded', 'false');
 
-    // Store state and update prices
     activeCurrency = { code, symbol };
     applyPrices(code, symbol);
   });
