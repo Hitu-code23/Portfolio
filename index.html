@@ -84,6 +84,7 @@ nav {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(215, 226, 234, 0.07);
+  gap: 1rem;
 }
 
 .nav-logo {
@@ -116,6 +117,200 @@ nav {
   opacity: 1;
 }
 
+/* ============================================================
+   CURRENCY SELECTOR
+   ============================================================ */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.currency-selector {
+  position: relative;
+}
+
+.currency-btn {
+  background: rgba(215, 226, 234, 0.06);
+  border: 1px solid rgba(215, 226, 234, 0.14);
+  border-radius: 100px;
+  padding: 0.52rem 1rem 0.52rem 0.9rem;
+  color: #D7E2EA;
+  font-family: 'Kanit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.currency-btn:hover {
+  background: rgba(215, 226, 234, 0.1);
+  border-color: rgba(215, 226, 234, 0.25);
+}
+
+.currency-btn svg {
+  transition: transform 0.2s;
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.currency-selector.open .currency-btn svg {
+  transform: rotate(180deg);
+}
+
+/* Live rate badge inside button */
+.rate-badge {
+  background: rgba(182, 0, 168, 0.18);
+  border: 1px solid rgba(182, 0, 168, 0.3);
+  border-radius: 100px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #D478CF;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: 0.2rem;
+}
+
+.currency-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: #161616;
+  border: 1px solid rgba(215, 226, 234, 0.1);
+  border-radius: 18px;
+  padding: 0.6rem;
+  min-width: 210px;
+  z-index: 1000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.currency-selector.open .currency-dropdown {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.currency-dropdown-header {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(215, 226, 234, 0.3);
+  padding: 0.2rem 0.8rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+  50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+}
+
+.currency-divider {
+  height: 1px;
+  background: rgba(215, 226, 234, 0.07);
+  margin: 0.3rem 0;
+}
+
+.currency-option {
+  padding: 0.62rem 0.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: 'Kanit', sans-serif;
+  color: rgba(215, 226, 234, 0.6);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.currency-option:hover {
+  background: rgba(182, 0, 168, 0.1);
+  color: #D7E2EA;
+}
+
+.currency-option.active {
+  color: #CF66CA;
+  background: rgba(182, 0, 168, 0.12);
+}
+
+.currency-option .cur-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.currency-flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.cur-name {
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.cur-full {
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: rgba(215, 226, 234, 0.35);
+  letter-spacing: 0.03em;
+}
+
+.currency-option.active .cur-full {
+  color: rgba(207, 102, 202, 0.6);
+}
+
+.check-icon {
+  color: #B600A8;
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.currency-option.active .check-icon {
+  opacity: 1;
+}
+
+/* Loading shimmer for prices */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.srv-price.loading {
+  background: linear-gradient(90deg, rgba(118,33,176,0.06) 25%, rgba(118,33,176,0.14) 50%, rgba(118,33,176,0.06) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  color: transparent;
+  border-color: rgba(118,33,176,0.1);
+}
+
+/* ============================================================
+   CONTACT BUTTON
+   ============================================================ */
 .contact-btn {
   background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
   color: white;
@@ -135,6 +330,7 @@ nav {
   cursor: pointer;
   outline: none;
   box-shadow: inset 4px 4px 12px #7721B1;
+  white-space: nowrap;
 }
 
 .contact-btn:hover {
@@ -438,6 +634,36 @@ nav {
   margin-bottom: 4rem;
 }
 
+/* Currency note banner in services */
+.currency-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(118, 33, 176, 0.06);
+  border: 1px solid rgba(118, 33, 176, 0.15);
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(12, 12, 12, 0.5);
+  letter-spacing: 0.04em;
+  max-width: 480px;
+  margin: -2rem auto 3rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.currency-note strong {
+  color: #7621B0;
+  font-weight: 600;
+}
+
+.currency-note svg {
+  flex-shrink: 0;
+  color: #7621B0;
+}
+
 .srv-list {
   max-width: 920px;
   margin: 0 auto;
@@ -498,6 +724,9 @@ nav {
   font-weight: 600;
   color: #7621B0;
   letter-spacing: 0.04em;
+  transition: background 0.25s, color 0.25s;
+  min-width: 100px;
+  text-align: center;
 }
 
 /* ============================================================
@@ -903,6 +1132,7 @@ footer {
   .footer-links { justify-content: center; }
   .cursor, .cursor-ring { display: none; }
   .hero-mini-cards { display: none; }
+  .rate-badge { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -930,10 +1160,77 @@ footer {
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/23058451482" class="contact-btn">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Hire Me
-  </a>
+
+  <div class="nav-right">
+    <!-- ══ CURRENCY SELECTOR ══ -->
+    <div class="currency-selector" id="currencySel">
+      <button class="currency-btn" id="currencyBtn" aria-label="Change currency" aria-expanded="false">
+        <span id="currencyLabel">₹ INR</span>
+        <span class="rate-badge" id="rateBadge">Live</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+
+      <div class="currency-dropdown" id="currencyDropdown" role="listbox">
+        <div class="currency-dropdown-header">
+          Select Currency
+          <span><span class="live-dot"></span></span>
+        </div>
+        <div class="currency-divider"></div>
+
+        <div class="currency-option active" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
+          <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
+          <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="EUR" data-symbol="€" data-fmt="de-DE">
+          <div class="cur-left"><span class="currency-flag">🇪🇺</span><div><div class="cur-name">EUR</div><div class="cur-full">Euro</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="GBP" data-symbol="£" data-fmt="en-GB">
+          <div class="cur-left"><span class="currency-flag">🇬🇧</span><div><div class="cur-name">GBP</div><div class="cur-full">British Pound</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="AED" data-symbol="AED " data-fmt="ar-AE">
+          <div class="cur-left"><span class="currency-flag">🇦🇪</span><div><div class="cur-name">AED</div><div class="cur-full">UAE Dirham</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="SGD" data-symbol="S$" data-fmt="en-SG">
+          <div class="cur-left"><span class="currency-flag">🇸🇬</span><div><div class="cur-name">SGD</div><div class="cur-full">Singapore Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="AUD" data-symbol="A$" data-fmt="en-AU">
+          <div class="cur-left"><span class="currency-flag">🇦🇺</span><div><div class="cur-name">AUD</div><div class="cur-full">Australian Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="CAD" data-symbol="C$" data-fmt="en-CA">
+          <div class="cur-left"><span class="currency-flag">🇨🇦</span><div><div class="cur-name">CAD</div><div class="cur-full">Canadian Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+        <div class="currency-option" role="option" data-code="JPY" data-symbol="¥" data-fmt="ja-JP">
+          <div class="cur-left"><span class="currency-flag">🇯🇵</span><div><div class="cur-name">JPY</div><div class="cur-full">Japanese Yen</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+
+      </div>
+    </div>
+    <!-- ══ END CURRENCY SELECTOR ══ -->
+
+    <a href="https://wa.me/23058451482" class="contact-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Hire Me
+    </a>
+  </div>
 </nav>
 
 <!-- ============================================================
@@ -984,7 +1281,6 @@ footer {
     </div>
   </div>
 
-  <!-- Centered portrait -->
   <div class="hero-portrait fade-up d4" id="hero-portrait">
     <img
       src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
@@ -999,7 +1295,7 @@ footer {
 </section>
 
 <!-- ============================================================
-     MARQUEE SECTION (scroll-driven)
+     MARQUEE SECTION
      ============================================================ -->
 <div class="marquee-section" id="marquee-section">
   <div class="marquee-row" id="row1"></div>
@@ -1010,8 +1306,6 @@ footer {
      ABOUT SECTION
      ============================================================ -->
 <section class="about-section" id="about">
-
-  <!-- Decorative 3D corner images -->
   <div class="about-dec" style="top:5%;left:2%;width:clamp(90px,12vw,190px);">
     <img class="fade-left d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt=""/>
   </div>
@@ -1026,7 +1320,6 @@ footer {
   </div>
 
   <h2 class="about-h2 hero-heading fade-up d0">About Me</h2>
-
   <p class="about-text fade-up d1">
     I'm Hitin Banga, a freelance web designer based in India with 3+ years of experience. I focus on branding, web design, and user experience — building beautiful, high-converting digital experiences that help businesses stand out and grow. From concept to launch, I handle every detail with precision.
   </p>
@@ -1071,6 +1364,13 @@ footer {
      ============================================================ -->
 <section class="services-section" id="services">
   <h2 class="services-h2 fade-up">Services</h2>
+
+  <!-- Currency hint banner -->
+  <div class="currency-note fade-up">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    Prices shown in <strong id="noteLabel">INR</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
+  </div>
+
   <div class="srv-list">
 
     <div class="srv-item fade-up d0">
@@ -1078,7 +1378,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Business Websites</div>
         <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
-        <span class="srv-price">From ₹8,000</span>
+        <span class="srv-price" data-inr="8000">From ₹8,000</span>
       </div>
     </div>
 
@@ -1087,7 +1387,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">E-Commerce Stores</div>
         <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
-        <span class="srv-price">From ₹15,000</span>
+        <span class="srv-price" data-inr="15000">From ₹15,000</span>
       </div>
     </div>
 
@@ -1096,7 +1396,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Landing Pages</div>
         <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
-        <span class="srv-price">From ₹4,000</span>
+        <span class="srv-price" data-inr="4000">From ₹4,000</span>
       </div>
     </div>
 
@@ -1105,7 +1405,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">UI/UX Design</div>
         <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
-        <span class="srv-price">From ₹6,000</span>
+        <span class="srv-price" data-inr="6000">From ₹6,000</span>
       </div>
     </div>
 
@@ -1114,7 +1414,7 @@ footer {
       <div class="srv-content">
         <div class="srv-name">Branding &amp; Identity</div>
         <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
-        <span class="srv-price">From ₹5,000</span>
+        <span class="srv-price" data-inr="5000">From ₹5,000</span>
       </div>
     </div>
 
@@ -1128,7 +1428,6 @@ footer {
   <h2 class="work-h2 hero-heading fade-up">Projects</h2>
   <div class="work-grid">
 
-    <!-- Featured card spanning both columns -->
     <a href="https://hitu-code23.github.io/Velorien/" target="_blank" rel="noopener" class="work-card fade-up d0" style="grid-column: span 2;">
       <img src="https://files.catbox.moe/vc08hy.PNG" class="work-card-img" alt="Velorien Creative Studio" loading="lazy"/>
       <div class="work-card-body">
@@ -1261,7 +1560,7 @@ footer {
      JAVASCRIPT
      ============================================================ -->
 <script>
-/* ---- Custom Cursor ---- */
+/* ─── Custom Cursor ─────────────────────────────────────────── */
 const cursor = document.getElementById('cursor');
 const cring  = document.getElementById('cring');
 
@@ -1287,7 +1586,7 @@ document.querySelectorAll('a, button, .skill-tag').forEach(el => {
   });
 });
 
-/* ---- Marquee (Scroll-driven) ---- */
+/* ─── Marquee ────────────────────────────────────────────────── */
 const GIFS = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
   'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
@@ -1332,20 +1631,17 @@ buildRow(row1, GIFS.slice(0, 11));
 buildRow(row2, GIFS.slice(11));
 
 const marqueeSect = document.getElementById('marquee-section');
-
 function updateMarquee() {
   const sectionTop = marqueeSect.getBoundingClientRect().top + window.scrollY;
   const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
   row1.style.transform = `translateX(${offset - 200}px)`;
   row2.style.transform = `translateX(${-(offset - 200)}px)`;
 }
-
 window.addEventListener('scroll', updateMarquee, { passive: true });
 updateMarquee();
 
-/* ---- Hero Portrait Magnetic Effect ---- */
+/* ─── Hero Portrait Magnetic ─────────────────────────────────── */
 const portrait = document.getElementById('hero-portrait');
-
 document.addEventListener('mousemove', (e) => {
   if (!portrait) return;
   const rect = portrait.getBoundingClientRect();
@@ -1363,7 +1659,7 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 
-/* ---- Scroll Reveal ---- */
+/* ─── Scroll Reveal ─────────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1377,12 +1673,11 @@ document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
   revealObserver.observe(el);
 });
 
-/* Hero elements reveal immediately */
 setTimeout(() => {
   document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
 }, 80);
 
-/* ---- Active Nav Link on Scroll ---- */
+/* ─── Active Nav ─────────────────────────────────────────────── */
 const sections = document.querySelectorAll('section[id], div[id="marquee-section"]');
 const navLinks  = document.querySelectorAll('.nav-links a');
 
@@ -1397,6 +1692,117 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => navObserver.observe(s));
+
+/* ════════════════════════════════════════════════════════════
+   CURRENCY SWITCHER
+   ════════════════════════════════════════════════════════════ */
+
+// Fallback rates (INR base) — used if API call fails
+const FALLBACK = {
+  INR: 1,
+  USD: 0.01195,
+  EUR: 0.01097,
+  GBP: 0.00939,
+  AED: 0.04388,
+  SGD: 0.01604,
+  AUD: 0.01842,
+  CAD: 0.01648,
+  JPY: 1.8620,
+};
+
+let rates = { ...FALLBACK };
+let ratesLive = false;
+
+// Attempt live rate fetch (open.er-api.com — free, no key required)
+fetch('https://open.er-api.com/v6/latest/INR')
+  .then(r => r.json())
+  .then(data => {
+    if (data && data.result === 'success' && data.rates) {
+      rates = { INR: 1, ...data.rates };
+      ratesLive = true;
+      document.getElementById('rateBadge').textContent = 'Live';
+    }
+  })
+  .catch(() => {
+    document.getElementById('rateBadge').textContent = 'Est.';
+  });
+
+// State
+let activeCurrency = { code: 'INR', symbol: '₹' };
+
+// Format converted price
+function formatConverted(inrAmount, code, symbol) {
+  const raw = inrAmount * rates[code];
+
+  if (code === 'INR') {
+    return `From ₹${Math.round(inrAmount).toLocaleString('en-IN')}`;
+  }
+  if (code === 'JPY') {
+    return `From ${symbol}${Math.round(raw).toLocaleString('ja-JP')}`;
+  }
+
+  // Round to nearest sensible unit
+  const rounded = raw >= 100 ? Math.round(raw) : raw >= 10 ? Math.round(raw * 10) / 10 : Math.round(raw * 100) / 100;
+  return `From ${symbol}${rounded.toLocaleString('en-US')}`;
+}
+
+// Apply prices to all .srv-price elements
+function applyPrices(code, symbol) {
+  document.querySelectorAll('.srv-price').forEach(el => {
+    el.classList.add('loading');
+    const inr = parseInt(el.dataset.inr, 10);
+    setTimeout(() => {
+      el.textContent = formatConverted(inr, code, symbol);
+      el.classList.remove('loading');
+    }, 260);
+  });
+
+  // Update the note banner
+  const noteEl = document.getElementById('noteLabel');
+  if (noteEl) noteEl.textContent = code;
+}
+
+// Dropdown toggle
+const currencySel      = document.getElementById('currencySel');
+const currencyBtn      = document.getElementById('currencyBtn');
+const currencyLabel    = document.getElementById('currencyLabel');
+const currencyDropdown = document.getElementById('currencyDropdown');
+
+currencyBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = currencySel.classList.toggle('open');
+  currencyBtn.setAttribute('aria-expanded', isOpen);
+});
+
+document.addEventListener('click', () => {
+  currencySel.classList.remove('open');
+  currencyBtn.setAttribute('aria-expanded', 'false');
+});
+
+currencyDropdown.addEventListener('click', e => e.stopPropagation());
+
+// Option selection
+document.querySelectorAll('.currency-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const code   = opt.dataset.code;
+    const symbol = opt.dataset.symbol;
+
+    // Update active state
+    document.querySelectorAll('.currency-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+
+    // Update button label
+    currencyLabel.textContent = `${symbol.trim()} ${code}`;
+
+    // Close dropdown
+    currencySel.classList.remove('open');
+    currencyBtn.setAttribute('aria-expanded', 'false');
+
+    // Store state and update prices
+    activeCurrency = { code, symbol };
+    applyPrices(code, symbol);
+  });
+});
 </script>
 </body>
 </html>
