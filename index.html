@@ -849,23 +849,40 @@ nav {
 .work-live-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  border: 1.5px solid rgba(215, 226, 234, 0.22);
+  gap: 0.6rem;
+  background: rgba(215, 226, 234, 0.03);
+  border: 1px solid rgba(215, 226, 234, 0.12);
   border-radius: 100px;
-  padding: 0.42rem 1.1rem;
+  padding: 0.6rem 1.4rem;
   font-family: 'Kanit', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #D7E2EA;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.work-live-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
 }
 
 .work-live-btn:hover {
+  background: #D7E2EA;
+  color: #0C0C0C;
   border-color: #D7E2EA;
-  background: rgba(215, 226, 234, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(215, 226, 234, 0.1);
+}
+
+.work-live-btn:hover svg {
+  transform: translate(2px, -2px);
+  color: #0C0C0C;
 }
 
 /* ============================================================
@@ -1471,7 +1488,10 @@ footer {
         <div class="work-card-meta">Project 01 &mdash; Creative Studio</div>
         <div class="work-card-name">Velorien</div>
         <div class="work-card-desc">A premium digital experience for a creative studio where ideas take form through precision and intention. Immersive, bold, and unforgettable.</div>
-        <span class="work-live-btn">↗ Live Project</span>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
       </div>
     </a>
 
@@ -1483,7 +1503,10 @@ footer {
         <div class="work-card-meta">Project 02 &mdash; E-Commerce</div>
         <div class="work-card-name">GearMyCycle</div>
         <div class="work-card-desc">A bold and modern e-commerce platform for premium cycling culture. Ride beyond ordinary.</div>
-        <span class="work-live-btn">↗ Live Project</span>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
       </div>
     </a>
 
@@ -1495,7 +1518,10 @@ footer {
         <div class="work-card-meta">Project 03 &mdash; Creative Agency</div>
         <div class="work-card-name">HB Visuals</div>
         <div class="work-card-desc">A cinematic digital experience for a Punjab-based creative agency. Where visuals meet storytelling.</div>
-        <span class="work-live-btn">↗ Live Project</span>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
       </div>
     </a>
 
