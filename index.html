@@ -31,41 +31,6 @@ body {
 }
 
 /* ============================================================
-   PARTICLE BURST INTRO ANIMATION
-   ============================================================ */
-#particle-intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0C0C0C;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-#particle-intro-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Hide main content during intro */
-body.intro-active {
-  overflow: hidden;
-}
-
-body.intro-active nav {
-  opacity: 0;
-  pointer-events: none;
-}
-
-body.intro-active .hero {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ============================================================
    GRADIENT HEADING CLASS (Jack theme)
    ============================================================ */
 .hero-heading {
@@ -120,7 +85,6 @@ nav {
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(215, 226, 234, 0.07);
   gap: 1rem;
-  transition: opacity 0.3s ease;
 }
 
 .nav-logo {
@@ -384,7 +348,6 @@ nav {
   padding: 0 5%;
   position: relative;
   overflow: hidden;
-  transition: opacity 0.3s ease;
 }
 
 .hero-top {
@@ -535,7 +498,7 @@ nav {
 .marquee-tile {
   flex-shrink: 0;
   width: clamp(220px, 28vw, 420px);
-  aspect-ratio: 1;
+  height: clamp(140px, 18vw, 270px);
   border-radius: 18px;
   overflow: hidden;
 }
@@ -738,8 +701,8 @@ nav {
   font-weight: 600;
   color: #0C0C0C;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.8rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
 }
 
 .srv-desc {
@@ -832,21 +795,23 @@ nav {
   width: 1280px;
   height: 720px;
   border: none;
-  transform: scale(calc(100 / 1280 * 100 / 100));
+  transform: scale(calc(100 / 1280 * 100 / 100)); /* Initial scale placeholder */
   transform-origin: 0 0;
-  pointer-events: none;
+  pointer-events: none; /* Keep card clickable */
 }
 
+/* Responsive scaling for iframes */
 @media (min-width: 1px) {
   .work-card-iframe {
     width: 1280px;
     height: 720px;
-    transform: scale(0.25);
+    transform: scale(0.25); /* Default small scale */
   }
 }
 
+/* Adjusting the iframe to fit the container width */
 .work-card-iframe-container iframe {
-  width: 400%;
+  width: 400%; /* 100% / 0.25 scale */
   height: 400%;
   transform: scale(0.25);
   transform-origin: 0 0;
@@ -984,64 +949,168 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: white;
-  font-weight: bold;
-  font-size: 0.9rem;
   flex-shrink: 0;
 }
 
-.testi-author-info {
-  flex: 1;
-}
-
-.testi-author-name {
+.testi-name {
   font-size: 0.88rem;
   font-weight: 600;
   color: #D7E2EA;
-  display: block;
+  letter-spacing: 0.04em;
 }
 
-.testi-author-role {
+.testi-role {
   font-size: 0.72rem;
-  color: rgba(215, 226, 234, 0.45);
+  color: rgba(215, 226, 234, 0.4);
   font-weight: 300;
-  display: block;
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+.contact-section {
+  background: #0C0C0C;
+  padding: 5rem 5% 7rem;
+  text-align: center;
+}
+
+.contact-h2 {
+  font-size: clamp(3.5rem, 12vw, 11rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.contact-sub {
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  color: rgba(215, 226, 234, 0.55);
+  font-weight: 300;
+  max-width: 440px;
+  margin: 0 auto 3rem;
+  line-height: 1.8;
+}
+
+.contact-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.btn-wa {
+  background: #25D366;
+  color: white;
+  padding: 0.9rem 2.2rem;
+  border-radius: 100px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+}
+
+.btn-wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+}
+
+.btn-email {
+  background: transparent;
+  color: #D7E2EA;
+  border: 1.5px solid rgba(215, 226, 234, 0.22);
+  padding: 0.9rem 2.2rem;
+  border-radius: 100px;
+  font-family: 'Kanit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s;
+}
+
+.btn-email:hover {
+  border-color: #D7E2EA;
+  transform: translateY(-3px);
+}
+
+.contact-info-row {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.contact-info-item {
+  text-align: center;
+}
+
+.contact-info-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 0.3rem;
+}
+
+.contact-info-val {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(215, 226, 234, 0.7);
 }
 
 /* ============================================================
    FOOTER
    ============================================================ */
 footer {
-  background: #0C0C0C;
-  border-top: 1px solid rgba(215, 226, 234, 0.05);
-  padding: 4rem 5% 2rem;
-  text-align: center;
+  background: #080808;
+  border-top: 1px solid rgba(215, 226, 234, 0.06);
+  padding: 2rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.footer-content {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.footer-text {
-  font-size: 0.85rem;
-  color: rgba(215, 226, 234, 0.5);
-  font-weight: 300;
-  margin-bottom: 1.5rem;
+.footer-logo {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #D7E2EA;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .footer-links {
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  gap: 2rem;
+  list-style: none;
 }
 
 .footer-links a {
-  font-size: 0.78rem;
-  color: rgba(215, 226, 234, 0.6);
+  font-size: 0.72rem;
+  color: rgba(215, 226, 234, 0.3);
   text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: color 0.2s;
 }
 
@@ -1049,563 +1118,586 @@ footer {
   color: #D7E2EA;
 }
 
-.footer-bottom {
-  font-size: 0.72rem;
-  color: rgba(215, 226, 234, 0.3);
-  font-weight: 300;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(215, 226, 234, 0.05);
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(215, 226, 234, 0.2);
+  letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   FADE IN ANIMATIONS
+   SCROLL REVEAL ANIMATIONS
    ============================================================ */
 .fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-left {
   opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-left.visible {
-  opacity: 1;
-  transform: translateX(0);
+  transform: translateX(-70px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 .fade-right {
   opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateX(70px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
+.fade-up.visible,
+.fade-left.visible,
 .fade-right.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate(0);
 }
+
+.d0  { transition-delay: 0s; }
+.d1  { transition-delay: 0.1s; }
+.d2  { transition-delay: 0.2s; }
+.d3  { transition-delay: 0.3s; }
+.d4  { transition-delay: 0.4s; }
+.d5  { transition-delay: 0.5s; }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 768px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .testi-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-links {
-    gap: 1.5rem;
-  }
-
-  .hero-bottom {
-    flex-direction: column;
-    gap: 2rem;
-  }
+@media (max-width: 1024px) {
+  .testi-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-h1 { font-size: clamp(3rem, 14vw, 9rem); }
 }
 
+@media (max-width: 768px) {
+  nav { padding: 1rem 5%; }
+  .nav-links { display: none; }
+  .hero-h1 { font-size: clamp(2.8rem, 18vw, 7rem); white-space: normal; }
+  .hero-portrait { width: 65vw; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .about-dec { display: none; }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card { grid-column: span 1 !important; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .services-section { border-radius: 32px 32px 0 0; }
+  .work-section { border-radius: 32px 32px 0 0; }
+  .stats-row { gap: 1.5rem; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+  .cursor, .cursor-ring { display: none; }
+  .hero-mini-cards { display: none; }
+  .rate-badge { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-h1 { font-size: clamp(2.4rem, 20vw, 5rem); }
+  .contact-btns { flex-direction: column; align-items: center; }
+  .btn-wa, .btn-email { width: 100%; max-width: 280px; justify-content: center; }
+  .services-section { padding: 4rem 5% 5rem; }
+}
 </style>
 </head>
 <body>
 
-<!-- Particle Burst Intro Overlay -->
-<div id="particle-intro-overlay">
-  <canvas id="particle-intro-canvas"></canvas>
-</div>
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring"></div>
 
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
-<!-- NAVBAR -->
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
 <nav>
-  <a href="#" class="nav-logo">Hitin Banga</a>
+  <a class="nav-logo" href="#home">HB</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+
   <div class="nav-right">
+    <!-- ══ CURRENCY SELECTOR ══ -->
     <div class="currency-selector" id="currencySel">
-      <button class="currency-btn" id="currencyBtn" aria-expanded="false">
+      <button class="currency-btn" id="currencyBtn" aria-label="Change currency" aria-expanded="false">
         <span id="currencyLabel">$ USD</span>
-        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span class="rate-badge" id="rateBadge">Est.</span>
+        <span class="rate-badge" id="rateBadge">Live</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
-      <div class="currency-dropdown" id="currencyDropdown">
+
+      <div class="currency-dropdown" id="currencyDropdown" role="listbox">
         <div class="currency-dropdown-header">
-          <span>Live Rates</span>
-          <span class="live-dot"></span>
+          Select Currency
+          <span><span class="live-dot"></span></span>
         </div>
         <div class="currency-divider"></div>
-        <div class="currency-option active" data-code="USD" data-symbol="$">
-          <div class="cur-left">
-            <span class="currency-flag">🇺🇸</span>
-            <div>
-              <div class="cur-name">USD</div>
-              <div class="cur-full">United States</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
+          <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="INR" data-symbol="₹">
-          <div class="cur-left">
-            <span class="currency-flag">🇮🇳</span>
-            <div>
-              <div class="cur-name">INR</div>
-              <div class="cur-full">India</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option active" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
+          <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="EUR" data-symbol="€">
-          <div class="cur-left">
-            <span class="currency-flag">🇪🇺</span>
-            <div>
-              <div class="cur-name">EUR</div>
-              <div class="cur-full">Europe</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="EUR" data-symbol="€" data-fmt="de-DE">
+          <div class="cur-left"><span class="currency-flag">🇪🇺</span><div><div class="cur-name">EUR</div><div class="cur-full">Euro</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="GBP" data-symbol="£">
-          <div class="cur-left">
-            <span class="currency-flag">🇬🇧</span>
-            <div>
-              <div class="cur-name">GBP</div>
-              <div class="cur-full">United Kingdom</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="GBP" data-symbol="£" data-fmt="en-GB">
+          <div class="cur-left"><span class="currency-flag">🇬🇧</span><div><div class="cur-name">GBP</div><div class="cur-full">British Pound</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="AED" data-symbol="د.إ">
-          <div class="cur-left">
-            <span class="currency-flag">🇦🇪</span>
-            <div>
-              <div class="cur-name">AED</div>
-              <div class="cur-full">UAE</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="AED" data-symbol="AED " data-fmt="ar-AE">
+          <div class="cur-left"><span class="currency-flag">🇦🇪</span><div><div class="cur-name">AED</div><div class="cur-full">UAE Dirham</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="SGD" data-symbol="S$">
-          <div class="cur-left">
-            <span class="currency-flag">🇸🇬</span>
-            <div>
-              <div class="cur-name">SGD</div>
-              <div class="cur-full">Singapore</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="SGD" data-symbol="S$" data-fmt="en-SG">
+          <div class="cur-left"><span class="currency-flag">🇸🇬</span><div><div class="cur-name">SGD</div><div class="cur-full">Singapore Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="AUD" data-symbol="A$">
-          <div class="cur-left">
-            <span class="currency-flag">🇦🇺</span>
-            <div>
-              <div class="cur-name">AUD</div>
-              <div class="cur-full">Australia</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="AUD" data-symbol="A$" data-fmt="en-AU">
+          <div class="cur-left"><span class="currency-flag">🇦🇺</span><div><div class="cur-name">AUD</div><div class="cur-full">Australian Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="CAD" data-symbol="C$">
-          <div class="cur-left">
-            <span class="currency-flag">🇨🇦</span>
-            <div>
-              <div class="cur-name">CAD</div>
-              <div class="cur-full">Canada</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="CAD" data-symbol="C$" data-fmt="en-CA">
+          <div class="cur-left"><span class="currency-flag">🇨🇦</span><div><div class="cur-name">CAD</div><div class="cur-full">Canadian Dollar</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div class="currency-option" data-code="JPY" data-symbol="¥">
-          <div class="cur-left">
-            <span class="currency-flag">🇯🇵</span>
-            <div>
-              <div class="cur-name">JPY</div>
-              <div class="cur-full">Japan</div>
-            </div>
-          </div>
-          <span class="check-icon">✓</span>
+
+        <div class="currency-option" role="option" data-code="JPY" data-symbol="¥" data-fmt="ja-JP">
+          <div class="cur-left"><span class="currency-flag">🇯🇵</span><div><div class="cur-name">JPY</div><div class="cur-full">Japanese Yen</div></div></div>
+          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
+
       </div>
     </div>
-    <a href="#contact" class="contact-btn">Get in Touch</a>
+    <!-- ══ END CURRENCY SELECTOR ══ -->
+
+    <a href="https://wa.me/23058451482" class="contact-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Hire Me
+    </a>
   </div>
 </nav>
 
-<!-- HERO SECTION -->
-<section class="hero" id="hero">
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero" id="home">
   <div class="hero-top">
-    <div class="hero-badge fade-up">
-      <span class="pulse-dot"></span>
-      Open for Projects
+    <div class="hero-badge fade-up d0"><span class="pulse-dot"></span> Available for new projects</div>
+    <h1 class="hero-h1 hero-heading fade-up d1">Hitin Banga</h1>
+    <p class="hero-sub-line fade-up d2">Web Designer &amp; Developer — India</p>
+    <div class="hero-mini-cards fade-up d3">
+      <div class="mini-card">
+        <span class="mini-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </span>
+        <div>
+          <div class="mini-card-title">Fast Delivery</div>
+          <div class="mini-card-sub">3–7 days avg</div>
+        </div>
+      </div>
+      <div class="mini-card">
+        <span class="mini-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l5 5"/></svg>
+        </span>
+        <div>
+          <div class="mini-card-title">Custom Design</div>
+          <div class="mini-card-sub">Tailored to you</div>
+        </div>
+      </div>
+      <div class="mini-card">
+        <span class="mini-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </span>
+        <div>
+          <div class="mini-card-title">Mobile-First</div>
+          <div class="mini-card-sub">Fully responsive</div>
+        </div>
+      </div>
+      <div class="mini-card">
+        <span class="mini-card-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </span>
+        <div>
+          <div class="mini-card-title">High Converting</div>
+          <div class="mini-card-sub">Results-driven</div>
+        </div>
+      </div>
     </div>
-    <h1 class="hero-h1 fade-up">Hitin Banga — Web Designer</h1>
-    <p class="hero-sub-line fade-up">Crafting Digital Experiences</p>
+  </div>
+
+  <div class="hero-portrait fade-up d4" id="hero-portrait">
+    <img
+      src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+      alt="Hitin Banga — Web Designer"
+    />
   </div>
 
   <div class="hero-bottom">
-    <p class="hero-desc fade-up">
-      I create stunning digital experiences that blend creativity with functionality. Let's build something amazing together.
-    </p>
-    <div class="hero-mini-cards fade-up">
-      <div class="mini-card">
-        <div class="mini-card-icon">🎨</div>
-        <div>
-          <div class="mini-card-title">UI/UX Design</div>
-          <div class="mini-card-sub">Beautiful interfaces</div>
-        </div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-card-icon">💻</div>
-        <div>
-          <div class="mini-card-title">Web Development</div>
-          <div class="mini-card-sub">Full-stack solutions</div>
-        </div>
-      </div>
-      <div class="mini-card">
-        <div class="mini-card-icon">✨</div>
-        <div>
-          <div class="mini-card-title">Creative Direction</div>
-          <div class="mini-card-sub">Strategic vision</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-portrait" id="hero-portrait">
-    <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 30px rgba(182, 0, 168, 0.3));">
-      <defs>
-        <linearGradient id="portraitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#B600A8;stop-opacity:0.2" />
-          <stop offset="100%" style="stop-color:#7621B0;stop-opacity:0.1" />
-        </linearGradient>
-      </defs>
-      <circle cx="100" cy="80" r="50" fill="url(#portraitGrad)" stroke="#B600A8" stroke-width="2" opacity="0.8"/>
-      <rect x="60" y="140" width="80" height="120" rx="10" fill="url(#portraitGrad)" stroke="#B600A8" stroke-width="2" opacity="0.8"/>
-    </svg>
+    <p class="hero-desc fade-up d3">A web designer from India crafting beautiful, high-converting websites that make businesses look world-class</p>
+    <a href="#contact" class="contact-btn fade-up d5">Start a Project</a>
   </div>
 </section>
 
-<!-- MARQUEE SECTION -->
-<section class="marquee-section" id="marquee-section">
-  <div class="marquee-row" id="marquee-row-1">
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23B600A8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 1%3C/text%3E%3C/svg%3E" alt="Project 1"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%237621B0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 2%3C/text%3E%3C/svg%3E" alt="Project 2"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23B600A8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 3%3C/text%3E%3C/svg%3E" alt="Project 3"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%237621B0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 4%3C/text%3E%3C/svg%3E" alt="Project 4"/></div>
-  </div>
-  <div class="marquee-row" id="marquee-row-2">
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%237621B0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 5%3C/text%3E%3C/svg%3E" alt="Project 5"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23B600A8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 6%3C/text%3E%3C/svg%3E" alt="Project 6"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%237621B0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 7%3C/text%3E%3C/svg%3E" alt="Project 7"/></div>
-    <div class="marquee-tile fade-up"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect fill='%23B600A8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='48' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EProject 8%3C/text%3E%3C/svg%3E" alt="Project 8"/></div>
-  </div>
-</section>
+<!-- ============================================================
+     MARQUEE SECTION
+     ============================================================ -->
+<div class="marquee-section" id="marquee-section">
+  <div class="marquee-row" id="row1"></div>
+  <div class="marquee-row" id="row2"></div>
+</div>
 
-<!-- ABOUT SECTION -->
+<!-- ============================================================
+     ABOUT SECTION
+     ============================================================ -->
 <section class="about-section" id="about">
-  <h2 class="about-h2 fade-up">About Me</h2>
-  <p class="about-text fade-up">
-    With 5+ years of experience in web design and development, I help brands create memorable digital experiences. My passion is turning complex ideas into elegant, user-friendly solutions.
+  <div class="about-dec" style="top:5%;left:2%;width:clamp(90px,12vw,190px);">
+    <img class="fade-left d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt=""/>
+  </div>
+  <div class="about-dec" style="bottom:8%;left:4%;width:clamp(70px,10vw,160px);">
+    <img class="fade-left d2" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt=""/>
+  </div>
+  <div class="about-dec" style="top:5%;right:2%;width:clamp(90px,12vw,190px);">
+    <img class="fade-right d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt=""/>
+  </div>
+  <div class="about-dec" style="bottom:8%;right:4%;width:clamp(80px,11vw,200px);">
+    <img class="fade-right d3" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt=""/>
+  </div>
+
+  <h2 class="about-h2 hero-heading fade-up d0">About Me</h2>
+  <p class="about-text fade-up d1">
+    I'm Hitin Banga, a freelance web designer based in India with 3+ years of experience. I focus on branding, web design, and user experience — building beautiful, high-converting digital experiences that help businesses stand out and grow. From concept to launch, I handle every detail with precision.
   </p>
 
-  <div class="stats-row fade-up">
+  <div class="stats-row fade-up d2">
     <div class="stat-item">
-      <span class="stat-num">50+</span>
-      <span class="stat-label">Projects Completed</span>
+      <span class="stat-num hero-heading">20+</span>
+      <span class="stat-label">Projects Delivered</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">30+</span>
-      <span class="stat-label">Happy Clients</span>
+      <span class="stat-num hero-heading">100%</span>
+      <span class="stat-label">Client Satisfaction</span>
     </div>
     <div class="stat-item">
-      <span class="stat-num">5+</span>
-      <span class="stat-label">Years Experience</span>
+      <span class="stat-num hero-heading">5★</span>
+      <span class="stat-label">Average Rating</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num hero-heading">3–7</span>
+      <span class="stat-label">Days Avg Delivery</span>
     </div>
   </div>
 
-  <div class="skills-wrap fade-up">
-    <span class="skill-tag">UI Design</span>
-    <span class="skill-tag">UX Research</span>
-    <span class="skill-tag">Web Development</span>
-    <span class="skill-tag">React</span>
+  <div class="skills-wrap fade-up d3">
+    <span class="skill-tag">UI/UX Design</span>
+    <span class="skill-tag">Web Design</span>
     <span class="skill-tag">Figma</span>
-    <span class="skill-tag">JavaScript</span>
     <span class="skill-tag">Responsive Design</span>
-    <span class="skill-tag">Animation</span>
+    <span class="skill-tag">Landing Pages</span>
+    <span class="skill-tag">E-Commerce</span>
+    <span class="skill-tag">SEO Basics</span>
+    <span class="skill-tag">Shopify</span>
+    <span class="skill-tag">WordPress</span>
+    <span class="skill-tag">Wix / Squarespace</span>
   </div>
+
+  <a href="#contact" class="contact-btn fade-up d4">Contact Me</a>
 </section>
 
-<!-- SERVICES SECTION -->
+<!-- ============================================================
+     SERVICES SECTION
+     ============================================================ -->
 <section class="services-section" id="services">
   <h2 class="services-h2 fade-up">Services</h2>
 
+  <!-- Currency hint banner -->
   <div class="currency-note fade-up">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
-    <span>Prices shown in <strong id="noteLabel">USD</strong> • Rates update live</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+    Prices shown in <strong id="noteLabel">USD</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
   </div>
 
-  <div class="srv-list fade-up">
-    <div class="srv-item">
+  <div class="srv-list">
+
+    <div class="srv-item fade-up d0">
       <div class="srv-num">01</div>
       <div class="srv-content">
-        <h3 class="srv-name">UI/UX Design</h3>
-        <p class="srv-desc">Beautiful, intuitive interfaces designed with user experience at the core. I create designs that not only look stunning but also solve real problems.</p>
-        <span class="srv-price" data-usd="2500">From $2,500</span>
+        <div class="srv-name">Business Websites</div>
+        <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
+        <span class="srv-price" data-usd="800">From $800</span>
       </div>
     </div>
 
-    <div class="srv-item">
+    <div class="srv-item fade-up d1">
       <div class="srv-num">02</div>
       <div class="srv-content">
-        <h3 class="srv-name">Web Development</h3>
-        <p class="srv-desc">Full-stack web development using modern technologies. From responsive websites to complex web applications, I build fast, scalable solutions.</p>
-        <span class="srv-price" data-usd="3500">From $3,500</span>
+        <div class="srv-name">E-Commerce Stores</div>
+        <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
+        <span class="srv-price" data-usd="850">From $850</span>
       </div>
     </div>
 
-    <div class="srv-item">
+    <div class="srv-item fade-up d2">
       <div class="srv-num">03</div>
       <div class="srv-content">
-        <h3 class="srv-name">Brand Strategy</h3>
-        <p class="srv-desc">Strategic brand direction and digital presence planning. I help you define your brand identity and create cohesive experiences across all touchpoints.</p>
-        <span class="srv-price" data-usd="4000">From $4,000</span>
+        <div class="srv-name">Landing Pages</div>
+        <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
+        <span class="srv-price" data-usd="400">From $400</span>
       </div>
     </div>
+
+    <div class="srv-item fade-up d3">
+      <div class="srv-num">04</div>
+      <div class="srv-content">
+        <div class="srv-name">UI/UX Design</div>
+        <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
+        <span class="srv-price" data-usd="72">From $72</span>
+      </div>
+    </div>
+
+    <div class="srv-item fade-up d4">
+      <div class="srv-num">05</div>
+      <div class="srv-content">
+        <div class="srv-name">Branding &amp; Identity</div>
+        <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
+        <span class="srv-price" data-usd="60">From $60</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- WORK SECTION -->
+<!-- ============================================================
+     PROJECTS / WORK SECTION
+     ============================================================ -->
 <section class="work-section" id="work">
-  <h2 class="work-h2 fade-up">Recent Work</h2>
+  <h2 class="work-h2 hero-heading fade-up">Projects</h2>
+  <div class="work-grid">
 
-  <div class="work-grid fade-up">
-    <a href="#" class="work-card">
-      <img class="work-card-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect fill='%23B600A8' width='800' height='450'/%3E%3Ctext x='50%25' y='50%25' font-size='64' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='bold'%3EProject A%3C/text%3E%3C/svg%3E" alt="Project A"/>
+    <a href="https://hitu-code23.github.io/Velorien/" target="_blank" rel="noopener" class="work-card fade-up d0" style="grid-column: span 2;">
+      <div class="work-card-iframe-container">
+        <iframe src="https://hitu-code23.github.io/Velorien/" class="work-card-iframe" scrolling="no"></iframe>
+      </div>
       <div class="work-card-body">
-        <div class="work-card-meta">Web Design</div>
-        <h3 class="work-card-name">E-Commerce Platform</h3>
-        <p class="work-card-desc">A modern e-commerce platform with seamless checkout and product discovery features.</p>
-        <a href="#" class="work-live-btn">
-          View Project
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
+        <div class="work-card-meta">Project 01 &mdash; Creative Studio</div>
+        <div class="work-card-name">Velorien</div>
+        <div class="work-card-desc">A premium digital experience for a creative studio where ideas take form through precision and intention. Immersive, bold, and unforgettable.</div>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
       </div>
     </a>
 
-    <a href="#" class="work-card">
-      <img class="work-card-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect fill='%237621B0' width='800' height='450'/%3E%3Ctext x='50%25' y='50%25' font-size='64' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='bold'%3EProject B%3C/text%3E%3C/svg%3E" alt="Project B"/>
+    <a href="https://hitu-code23.github.io/GearMyCycle/" target="_blank" rel="noopener" class="work-card fade-up d1">
+      <div class="work-card-iframe-container">
+        <iframe src="https://hitu-code23.github.io/GearMyCycle/" class="work-card-iframe" scrolling="no"></iframe>
+      </div>
       <div class="work-card-body">
-        <div class="work-card-meta">Brand Identity</div>
-        <h3 class="work-card-name">SaaS Dashboard</h3>
-        <p class="work-card-desc">A comprehensive analytics dashboard for data-driven decision making.</p>
-        <a href="#" class="work-live-btn">
-          View Project
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-          </svg>
-        </a>
+        <div class="work-card-meta">Project 02 &mdash; E-Commerce</div>
+        <div class="work-card-name">GearMyCycle</div>
+        <div class="work-card-desc">A bold and modern e-commerce platform for premium cycling culture. Ride beyond ordinary.</div>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
       </div>
     </a>
+
+    <a href="https://hitu-code23.github.io/hb-visualss/" target="_blank" rel="noopener" class="work-card fade-up d2">
+      <div class="work-card-iframe-container">
+        <iframe src="https://hitu-code23.github.io/hb-visualss/" class="work-card-iframe" scrolling="no"></iframe>
+      </div>
+      <div class="work-card-body">
+        <div class="work-card-meta">Project 03 &mdash; Creative Agency</div>
+        <div class="work-card-name">HB Visuals</div>
+        <div class="work-card-desc">A cinematic digital experience for a Punjab-based creative agency. Where visuals meet storytelling.</div>
+        <span class="work-live-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          Live Project
+        </span>
+      </div>
+    </a>
+
   </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
 <section class="testi-section" id="testimonials">
-  <h2 class="testi-h2 fade-up">What Clients Say</h2>
+  <h2 class="testi-h2 hero-heading fade-up">Kind Words</h2>
+  <div class="testi-grid">
 
-  <div class="testi-grid fade-up">
-    <div class="testi-card">
+    <div class="testi-card fade-up d0">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Hitin transformed our brand vision into reality. His attention to detail and creative approach exceeded our expectations."</p>
+      <p class="testi-text">"Hitin delivered an absolutely stunning website for our agency in under a week. The attention to detail and quality of design exceeded our expectations completely."</p>
       <div class="testi-author">
-        <div class="testi-avatar">JD</div>
-        <div class="testi-author-info">
-          <span class="testi-author-name">John Doe</span>
-          <span class="testi-author-role">CEO, Tech Startup</span>
+        <div class="testi-avatar">AK</div>
+        <div>
+          <div class="testi-name">Arjun Kapoor</div>
+          <div class="testi-role">Founder, KapoorCreatives</div>
         </div>
       </div>
     </div>
 
-    <div class="testi-card">
+    <div class="testi-card fade-up d1">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Working with Hitin was a game-changer. He delivered a stunning website that perfectly captures our brand essence."</p>
+      <p class="testi-text">"Our Shopify store conversion rate jumped significantly after the redesign. Hitu truly understands how to blend aesthetics with performance and business goals."</p>
       <div class="testi-author">
-        <div class="testi-avatar">SM</div>
-        <div class="testi-author-info">
-          <span class="testi-author-name">Sarah Miller</span>
-          <span class="testi-author-role">Founder, Creative Agency</span>
+        <div class="testi-avatar">PS</div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-role">CEO, StyleHub India</div>
         </div>
       </div>
     </div>
 
-    <div class="testi-card">
+    <div class="testi-card fade-up d2">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Exceptional design skills and professional approach. Hitin is a true partner in bringing ideas to life."</p>
+      <p class="testi-text">"Working with Hitin was seamless from start to finish. He got our brand vision immediately and delivered a landing page that converts like crazy. Highly recommended."</p>
       <div class="testi-author">
-        <div class="testi-avatar">MK</div>
-        <div class="testi-author-info">
-          <span class="testi-author-name">Mike Kumar</span>
-          <span class="testi-author-role">Product Manager</span>
+        <div class="testi-avatar">RV</div>
+        <div>
+          <div class="testi-name">Rohit Verma</div>
+          <div class="testi-role">Marketing Head, NexaCorp</div>
         </div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT SECTION
+     ============================================================ -->
+<section class="contact-section" id="contact">
+  <h2 class="contact-h2 hero-heading fade-up">Let's Talk</h2>
+  <p class="contact-sub fade-up d1">Ready to take your business to the next level? Reach out and let's build something incredible together.</p>
+
+  <div class="contact-btns fade-up d2">
+    <a href="https://wa.me/23058451482" class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Me
+    </a>
+    <a href="mailto:hitin.banga23@gmail.com" class="btn-email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Send Email
+    </a>
+  </div>
+
+  <div class="contact-info-row fade-up d3">
+    <div class="contact-info-item">
+      <div class="contact-info-label">Email</div>
+      <div class="contact-info-val">hitin.banga23@gmail.com</div>
+    </div>
+    <div class="contact-info-item">
+      <div class="contact-info-label">Location</div>
+      <div class="contact-info-val">India</div>
+    </div>
+    <div class="contact-info-item">
+      <div class="contact-info-label">Availability</div>
+      <div class="contact-info-val">Open to projects</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
-  <div class="footer-content">
-    <p class="footer-text">Let's create something amazing together</p>
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="mailto:hello@hitinbanga.com">Email</a>
-      <a href="#">Twitter</a>
-      <a href="#">LinkedIn</a>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Hitin Banga. All rights reserved.</p>
-    </div>
-  </div>
+  <div class="footer-logo">Hitin Banga</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</p>
 </footer>
 
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
 <script>
-/* ════════════════════════════════════════════════════════════
-   PARTICLE BURST INTRO ANIMATION
-   ════════════════════════════════════════════════════════════ */
+/* ─── Custom Cursor ─────────────────────────────────────────── */
+const cursor = document.getElementById('cursor');
+const cring  = document.getElementById('cring');
 
-function initParticleBurstIntro() {
-  const canvas = document.getElementById('particle-intro-canvas');
-  const ctx = canvas.getContext('2d');
-  const overlay = document.getElementById('particle-intro-overlay');
-  
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+  cring.style.left  = e.clientX + 'px';
+  cring.style.top   = e.clientY + 'px';
+});
 
-  const particles = [];
-  const text = 'Hitin Banga — Web Designer';
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
+document.querySelectorAll('a, button, .skill-tag').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width  = '18px';
+    cursor.style.height = '18px';
+    cring.style.width   = '54px';
+    cring.style.height  = '54px';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width  = '10px';
+    cursor.style.height = '10px';
+    cring.style.width   = '36px';
+    cring.style.height  = '36px';
+  });
+});
 
-  // Create particles
-  for (let i = 0; i < text.length; i++) {
-    const angle = (i / text.length) * Math.PI * 2;
-    const distance = 200;
-    const startX = centerX + Math.cos(angle) * distance;
-    const startY = centerY + Math.sin(angle) * distance;
+/* ─── Marquee ────────────────────────────────────────────────── */
+const GIFS = [
+  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
+  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
+  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
+  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
+  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
+  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
+  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
+  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
+  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
+  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
+  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
+  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
+  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
+  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
+  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
+  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
+  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
+  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
+  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
+  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
+  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif'
+];
 
-    particles.push({
-      x: startX,
-      y: startY,
-      vx: (centerX - startX) * 0.015,
-      vy: (centerY - startY) * 0.015,
-      life: 0,
-      maxLife: 1.8 + Math.random() * 0.4,
-      char: text[i],
-      size: 56,
-    });
-  }
-
-  let animationFrameId;
-  let startTime = Date.now();
-  let introComplete = false;
-
-  const animate = () => {
-    const elapsed = (Date.now() - startTime) / 1000;
-
-    ctx.fillStyle = '#0C0C0C';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.font = 'bold 56px Kanit, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    let allDone = true;
-
-    particles.forEach((p) => {
-      p.life = Math.min(p.life + 0.016, p.maxLife);
-      const progress = p.life / p.maxLife;
-
-      if (progress < 1) {
-        allDone = false;
-
-        p.x += p.vx * (1 - progress);
-        p.y += p.vy * (1 - progress);
-
-        const opacity = progress < 0.7 ? 1 : (1 - progress) / 0.3;
-        ctx.fillStyle = `rgba(215, 226, 234, ${opacity})`;
-        ctx.fillText(p.char, p.x, p.y);
-      } else {
-        ctx.fillStyle = 'rgba(215, 226, 234, 1)';
-        ctx.fillText(p.char, p.x, p.y);
-      }
-    });
-
-    // Draw subtitle after particles settle
-    if (elapsed > 1.2) {
-      ctx.font = 'italic 28px Kanit, sans-serif';
-      ctx.fillStyle = `rgba(215, 226, 234, ${Math.min((elapsed - 1.2) * 1.5, 0.6)})`;
-      ctx.fillText('Crafting Digital Experiences', centerX, centerY + 120);
-    }
-
-    if (!allDone || elapsed < 2.8) {
-      animationFrameId = requestAnimationFrame(animate);
-    } else {
-      // Animation complete
-      if (!introComplete) {
-        introComplete = true;
-        setTimeout(() => {
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-          document.body.classList.remove('intro-active');
-          document.querySelector('nav').style.opacity = '1';
-          document.querySelector('.hero').style.opacity = '1';
-        }, 300);
-      }
-    }
-  };
-
-  animate();
-
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function buildRow(el, imgs) {
+  const tripled = [...imgs, ...imgs, ...imgs];
+  tripled.forEach(src => {
+    const tile = document.createElement('div');
+    tile.className = 'marquee-tile';
+    const img = document.createElement('img');
+    img.src = src;
+    img.loading = 'lazy';
+    img.alt = '';
+    tile.appendChild(img);
+    el.appendChild(tile);
   });
 }
 
-// Start intro animation on page load
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('intro-active');
-  initParticleBurstIntro();
-});
+const row1 = document.getElementById('row1');
+const row2 = document.getElementById('row2');
+buildRow(row1, GIFS.slice(0, 11));
+buildRow(row2, GIFS.slice(11));
 
-/* ─── Marquee Animation ─────────────────────────────────────── */
 const marqueeSect = document.getElementById('marquee-section');
-const row1 = document.getElementById('marquee-row-1');
-const row2 = document.getElementById('marquee-row-2');
-
 function updateMarquee() {
   const sectionTop = marqueeSect.getBoundingClientRect().top + window.scrollY;
   const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
@@ -1614,6 +1706,26 @@ function updateMarquee() {
 }
 window.addEventListener('scroll', updateMarquee, { passive: true });
 updateMarquee();
+
+/* ─── Iframe Scaling ─────────────────────────────────────────── */
+function scaleIframes() {
+  const containers = document.querySelectorAll('.work-card-iframe-container');
+  containers.forEach(container => {
+    const iframe = container.querySelector('iframe');
+    const containerWidth = container.offsetWidth;
+    const baseWidth = 1280; // The width we designed the iframe for
+    const scale = containerWidth / baseWidth;
+    
+    iframe.style.width = baseWidth + 'px';
+    iframe.style.height = (container.offsetHeight / scale) + 'px';
+    iframe.style.transform = `scale(${scale})`;
+  });
+}
+
+window.addEventListener('resize', scaleIframes);
+window.addEventListener('load', scaleIframes);
+// Run once immediately
+setTimeout(scaleIframes, 100);
 
 /* ─── Hero Portrait Magnetic ─────────────────────────────────── */
 const portrait = document.getElementById('hero-portrait');
@@ -1634,7 +1746,7 @@ document.addEventListener('mousemove', (e) => {
   }
 });
 
-/* ─── Scroll Reveal ─────────────────────────────────────── */
+/* ─── Scroll Reveal ─────────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
