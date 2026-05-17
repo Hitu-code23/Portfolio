@@ -296,7 +296,7 @@ nav {
 
 .currency-option {
   padding: 0.62rem 0.8rem;
-  border-radius: 10px;
+  border-radius: 100px;
   cursor: pointer;
   font-size: 0.8rem;
   font-family: 'Kanit', sans-serif;
@@ -528,7 +528,7 @@ nav {
 }
 
 /* ============================================================
-   MARQUEE SECTION
+   MARQUEE SECTION (ORIGINAL STYLE)
    ============================================================ */
 .marquee-section {
   background: #0C0C0C;
@@ -558,7 +558,7 @@ nav {
 }
 
 /* ============================================================
-   TOOLS LOGO STRIP
+   TOOLS LOGO STRIP (FIXED HIGHLIGHT)
    ============================================================ */
 .tools-strip {
   padding: 4rem 5%;
@@ -582,14 +582,13 @@ nav {
 }
 .tool-logo {
   height: 28px;
-  opacity: 0.8;
-  filter: brightness(1.2);
-  transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+  opacity: 0.9;
+  filter: brightness(0) invert(1); /* Force all logos to be white */
+  transition: opacity 0.3s, transform 0.3s;
 }
 .tool-logo:hover {
   opacity: 1;
-  transform: scale(1.1);
-  filter: brightness(1.5);
+  transform: scale(1.15);
 }
 
 /* ============================================================
@@ -1229,808 +1228,6 @@ nav {
 /* ============================================================
    CONTACT SECTION
    ============================================================ */
-.contact-section {
-  background: #0C0C0C;
-  padding: 5rem 5% 7rem;
-  text-align: center;
-}
-
-.contact-h2 {
-  font-size: clamp(3.5rem, 12vw, 11rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-}
-
-.contact-sub {
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-  color: rgba(215, 226, 234, 0.55);
-  font-weight: 300;
-  max-width: 440px;
-  margin: 0 auto 3rem;
-  line-height: 1.8;
-}
-
-/* CONTACT FORM */
-.contact-form-container {
-  max-width: 600px;
-  margin: 0 auto 4rem;
-  text-align: left;
-  background: #111111;
-  padding: 3rem;
-  border-radius: 32px;
-  border: 1px solid rgba(215, 226, 234, 0.08);
-}
-.form-group {
-  margin-bottom: 1.5rem;
-}
-.form-label {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(215, 226, 234, 0.4);
-  margin-bottom: 0.5rem;
-}
-.form-input {
-  width: 100%;
-  background: rgba(215, 226, 234, 0.03);
-  border: 1px solid rgba(215, 226, 234, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  color: #D7E2EA;
-  font-family: 'Kanit', sans-serif;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-}
-.form-input:focus {
-  outline: none;
-  border-color: #B600A8;
-}
-.form-submit {
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.contact-btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-}
-
-.btn-wa {
-  background: #25D366;
-  color: white;
-  padding: 0.9rem 2.2rem;
-  border-radius: 100px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.25s;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
-}
-
-.btn-wa:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
-}
-
-.btn-email {
-  background: transparent;
-  color: #D7E2EA;
-  border: 1.5px solid rgba(215, 226, 234, 0.22);
-  padding: 0.9rem 2.2rem;
-  border-radius: 100px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.25s;
-}
-
-.btn-email:hover {
-  border-color: #D7E2EA;
-  transform: translateY(-3px);
-}
-
-.contact-info-row {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.contact-info-item {
-  text-align: center;
-}
-
-.contact-info-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.35;
-  margin-bottom: 0.3rem;
-}
-
-.contact-info-val {
-  font-size: 0.88rem;
-  font-weight: 400;
-  color: rgba(215, 226, 234, 0.7);
-}
-
-/* ============================================================
-   STICKY CTA BANNER (FIXED POSITIONING)
-   ============================================================ */
-#sticky-cta {
-  position: fixed;
-  bottom: -150px; /* Initially hidden */
-  left: 0;
-  width: 100%;
-  background: rgba(12, 12, 12, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(215, 226, 234, 0.1);
-  padding: 1.2rem 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 9999; /* Highest z-index to stay on top */
-  transition: bottom 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  pointer-events: all;
-}
-#sticky-cta.visible {
-  bottom: 0;
-}
-.cta-text {
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #D7E2EA;
-}
-.visitor-badge {
-  background: rgba(34, 197, 94, 0.1);
-  color: #22c55e;
-  padding: 0.4rem 1rem;
-  border-radius: 100px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  background: #080808;
-  border-top: 1px solid rgba(215, 226, 234, 0.06);
-  padding: 2rem 5% 8rem; /* Extra bottom padding for sticky cta */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-logo {
-  font-size: 1rem;
-  font-weight: 900;
-  color: #D7E2EA;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.72rem;
-  color: rgba(215, 226, 234, 0.3);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-
-.footer-links a:hover {
-  color: #D7E2EA;
-}
-
-.footer-copy {
-  font-size: 0.7rem;
-  color: rgba(215, 226, 234, 0.2);
-  letter-spacing: 0.04em;
-}
-
-/* ============================================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================================ */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-left {
-  opacity: 0;
-  transform: translateX(-70px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.fade-right {
-  opacity: 0;
-  transform: translateX(70px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.fade-up.visible,
-.fade-left.visible,
-.fade-right.visible {
-  opacity: 1;
-  transform: translate(0);
-}
-
-.d0  { transition-delay: 0s; }
-.d1  { transition-delay: 0.1s; }
-.d2  { transition-delay: 0.2s; }
-.d3  { transition-delay: 0.3s; }
-.d4  { transition-delay: 0.4s; }
-.d5  { transition-delay: 0.5s; }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 1024px) {
-  .testi-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-h1 { font-size: clamp(3rem, 14vw, 9rem); }
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  nav { padding: 1rem 5%; }
-  .nav-links { display: none; }
-  .hero-h1 { font-size: clamp(2.8rem, 18vw, 7rem); white-space: normal; }
-  .hero-portrait { width: 65vw; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .about-dec { display: none; }
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card { grid-column: span 1 !important; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .services-section { border-radius: 32px 32px 0 0; }
-  .work-section { border-radius: 32px 32px 0 0; }
-  .stats-row { gap: 1.5rem; }
-  footer { flex-direction: column; text-align: center; padding-bottom: 12rem; }
-  .footer-links { justify-content: center; }
-  .cursor, .cursor-ring { display: none; }
-  .hero-mini-cards { display: none; }
-  .rate-badge { display: none; }
-  .process-grid { grid-template-columns: 1fr; }
-  .modal-grid { grid-template-columns: 1fr; }
-  #sticky-cta { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
-  .tools-grid { gap: 2rem; }
-}
-
-@media (max-width: 480px) {
-  .hero-h1 { font-size: clamp(2.4rem, 20vw, 5rem); }
-  .contact-btns { flex-direction: column; align-items: center; }
-  .btn-wa, .btn-email { width: 100%; max-width: 280px; justify-content: center; }
-  .services-section { padding: 4rem 5% 5rem; }
-  .contact-form-container { padding: 2rem 1.5rem; }
-}
-</style>
-
-</head>
-<body>
-
-<!-- PRELOADER -->
-<div id="preloader">
-  <div class="loader-content">
-    <div class="loader-logo">HB</div>
-    <div class="loader-bar"><div class="loader-progress"></div></div>
-  </div>
-</div>
-
-<!-- SCROLL PROGRESS BAR -->
-<div id="scroll-progress"></div>
-
-<!-- CUSTOM CURSOR -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cring"></div>
-
-<!-- ============================================================
-     NAVBAR
-     ============================================================ -->
-
-<nav>
-  <a class="nav-logo" href="#home">HB</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-
-  <div class="nav-right">
-    <!-- ══ CURRENCY SELECTOR ══ -->
-    <div class="currency-selector" id="currencySel">
-      <button class="currency-btn" id="currencyBtn" aria-label="Change currency" aria-expanded="false">
-        <span id="currencyLabel">$ USD</span>
-        <span class="rate-badge" id="rateBadge">Live</span>
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-
-      <div class="currency-dropdown" id="currencyDropdown" role="listbox">
-        <div class="currency-dropdown-header">
-          Select Currency
-          <span><span class="live-dot"></span></span>
-        </div>
-        <div class="currency-divider"></div>
-
-        <div class="currency-option active" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
-          <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="CAD" data-symbol="C$" data-fmt="en-CA">
-          <div class="cur-left"><span class="currency-flag">🇨🇦</span><div><div class="cur-name">CAD</div><div class="cur-full">Canadian Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
-          <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-      </div>
-    </div>
-    <!-- ══ END CURRENCY SELECTOR ══ -->
-
-    <a href="https://wa.me/23058451482" class="contact-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Hire Me
-    </a>
-  </div>
-</nav>
-
-<!-- ============================================================
-     HERO SECTION
-     ============================================================ -->
-
-<section class="hero" id="home">
-  <div class="hero-top">
-    <div class="hero-badge fade-up d0"><span class="pulse-dot"></span> Available for new projects</div>
-    <h1 class="hero-h1 hero-heading fade-up d1">Hitin Banga</h1>
-    <p class="hero-sub-line fade-up d2">Web Designer &amp; Developer — India</p>
-    <div class="hero-mini-cards fade-up d3">
-      <div class="mini-card">
-        <span class="mini-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        </span>
-        <div>
-          <div class="mini-card-title">Fast Delivery</div>
-          <div class="mini-card-sub">3–7 days avg</div>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l5 5"/></svg>
-        </span>
-        <div>
-          <div class="mini-card-title">Custom Design</div>
-          <div class="mini-card-sub">Tailored to you</div>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        </span>
-        <div>
-          <div class="mini-card-title">Mobile-First</div>
-          <div class="mini-card-sub">Fully responsive</div>
-        </div>
-      </div>
-      <div class="mini-card">
-        <span class="mini-card-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </span>
-        <div>
-          <div class="mini-card-title">High Converting</div>
-          <div class="mini-card-sub">Results-driven</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-portrait fade-up d4" id="hero-portrait">
-    <img
-      src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-      alt="Hitin Banga — Web Designer"
-    />
-  </div>
-
-  <div class="hero-bottom">
-    <p class="hero-desc fade-up d3">A web designer from India crafting beautiful, high-converting websites that make businesses look world-class</p>
-    <a href="#contact" class="contact-btn fade-up d5">Start a Project</a>
-  </div>
-</section>
-
-<!-- ============================================================
-     MARQUEE SECTION
-     ============================================================ -->
-
-<div class="marquee-section" id="marquee-section">
-  <div class="marquee-row" id="row1"></div>
-  <div class="marquee-row" id="row2"></div>
-</div>
-
-<!-- ============================================================
-     TOOLS LOGO STRIP
-     ============================================================ -->
-<div class="tools-strip fade-up">
-  <h3 class="tools-h3">Crafting with industry leading tools</h3>
-  <div class="tools-grid">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma" class="tool-logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Shopify_Logo.png" alt="Shopify" class="tool-logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg" alt="WordPress" class="tool-logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg" alt="Slack" class="tool-logo">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop" class="tool-logo">
-  </div>
-</div>
-
-<!-- ============================================================
-     ABOUT SECTION
-     ============================================================ -->
-
-<section class="about-section" id="about">
-  <div class="about-dec" style="top:5%;left:2%;width:clamp(90px,12vw,190px);">
-    <img class="fade-left d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt=""/>
-  </div>
-  <div class="about-dec" style="bottom:8%;left:4%;width:clamp(70px,10vw,160px);">
-    <img class="fade-left d2" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" alt=""/>
-  </div>
-  <div class="about-dec" style="top:5%;right:2%;width:clamp(90px,12vw,190px);">
-    <img class="fade-right d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" alt=""/>
-  </div>
-  <div class="about-dec" style="bottom:8%;right:4%;width:clamp(80px,11vw,200px);">
-    <img class="fade-right d3" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" alt=""/>
-  </div>
-
-  <h2 class="about-h2 hero-heading fade-up d0">About Me</h2>
-  
-  <!-- AVAILABILITY CALENDAR -->
-  <div class="availability-card fade-up d1">
-    <div class="cal-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    </div>
-    <div>
-      <div class="cal-text-top">Booking Status</div>
-      <div class="cal-text-main">Next available slot: June 2026</div>
-    </div>
-  </div>
-
-  <p class="about-text fade-up d2">
-    I'm Hitin Banga, a freelance web designer based in India with 3+ years of experience. I focus on branding, web design, and user experience — building beautiful, high-converting digital experiences that help businesses stand out and grow. From concept to launch, I handle every detail with precision.
-  </p>
-
-  <div class="stats-row fade-up d3">
-    <div class="stat-item">
-      <span class="stat-num hero-heading">20+</span>
-      <span class="stat-label">Projects Delivered</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num hero-heading">100%</span>
-      <span class="stat-label">Client Satisfaction</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num hero-heading">5★</span>
-      <span class="stat-label">Average Rating</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num hero-heading">3–7</span>
-      <span class="stat-label">Days Avg Delivery</span>
-    </div>
-  </div>
-
-  <div class="skills-wrap fade-up d4">
-    <span class="skill-tag">UI/UX Design</span>
-    <span class="skill-tag">Web Design</span>
-    <span class="skill-tag">Figma</span>
-    <span class="skill-tag">Responsive Design</span>
-    <span class="skill-tag">Landing Pages</span>
-    <span class="skill-tag">E-Commerce</span>
-    <span class="skill-tag">SEO Basics</span>
-    <span class="skill-tag">Shopify</span>
-    <span class="skill-tag">WordPress</span>
-    <span class="skill-tag">Wix / Squarespace</span>
-  </div>
-
-  <a href="#contact" class="contact-btn fade-up d5">Contact Me</a>
-</section>
-
-<!-- ============================================================
-     PROCESS SECTION
-     ============================================================ -->
-<section class="process-section" id="process">
-  <h2 class="testi-h2 hero-heading fade-up">How I Work</h2>
-  <div class="process-grid">
-    <div class="process-step fade-up d0">
-      <div class="step-num">01</div>
-      <div class="step-title">Discovery</div>
-      <div class="step-desc">We dive deep into your goals, audience, and brand vision to create a strategic roadmap.</div>
-    </div>
-    <div class="process-step fade-up d1">
-      <div class="step-num">02</div>
-      <div class="step-title">Design</div>
-      <div class="step-desc">I craft a custom visual identity and high-fidelity prototypes in Figma for your review.</div>
-    </div>
-    <div class="process-step fade-up d2">
-      <div class="step-num">03</div>
-      <div class="step-title">Build</div>
-      <div class="step-desc">The approved design is brought to life with clean code and responsive development.</div>
-    </div>
-    <div class="process-step fade-up d3">
-      <div class="step-num">04</div>
-      <div class="step-title">Launch</div>
-      <div class="step-desc">After rigorous testing, we launch your site to the world and monitor performance.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SERVICES SECTION
-     ============================================================ -->
-
-<section class="services-section" id="services">
-  <h2 class="services-h2 fade-up">Services</h2>
-
-  <div class="currency-note fade-up">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
-    Prices shown in <strong id="noteLabel">USD</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
-  </div>
-
-  <div class="srv-list">
-    <div class="srv-item fade-up d0">
-      <div class="srv-num">01</div>
-      <div class="srv-content">
-        <div class="srv-name">Business Websites</div>
-        <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
-        <span class="srv-price" data-usd="800">From $800</span>
-      </div>
-    </div>
-
-    <div class="srv-item fade-up d1">
-      <div class="srv-num">02</div>
-      <div class="srv-content">
-        <div class="srv-name">E-Commerce Stores</div>
-        <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
-        <span class="srv-price" data-usd="850">From $850</span>
-      </div>
-    </div>
-
-    <div class="srv-item fade-up d2">
-      <div class="srv-num">03</div>
-      <div class="srv-content">
-        <div class="srv-name">Landing Pages</div>
-        <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
-        <span class="srv-price" data-usd="400">From $400</span>
-      </div>
-    </div>
-
-    <div class="srv-item fade-up d3">
-      <div class="srv-num">04</div>
-      <div class="srv-content">
-        <div class="srv-name">UI/UX Design</div>
-        <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
-        <span class="srv-price" data-usd="72">From $72</span>
-      </div>
-    </div>
-
-    <div class="srv-item fade-up d4">
-      <div class="srv-num">05</div>
-      <div class="srv-content">
-        <div class="srv-name">Branding &amp; Identity</div>
-        <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
-        <span class="srv-price" data-usd="60">From $60</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PROJECTS / WORK SECTION
-     ============================================================ -->
-
-<section class="work-section" id="work">
-  <h2 class="work-h2 hero-heading fade-up">Projects</h2>
-  <div class="work-grid">
-
-    <div class="work-card fade-up d0" style="grid-column: span 2;" data-project="velorien">
-      <div class="work-card-iframe-container">
-        <iframe data-src="https://hitu-code23.github.io/Velorien/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 01 &mdash; Creative Studio</div>
-        <div class="work-card-name">Velorien</div>
-        <div class="work-card-desc">A premium digital experience for a creative studio where ideas take form through precision and intention.</div>
-        <span class="work-live-btn">
-          View Case Study
-        </span>
-      </div>
-    </div>
-
-    <div class="work-card fade-up d1" data-project="gearmycycle">
-      <div class="work-card-iframe-container">
-        <iframe data-src="https://hitu-code23.github.io/GearMyCycle/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 02 &mdash; E-Commerce</div>
-        <div class="work-card-name">GearMyCycle</div>
-        <div class="work-card-desc">A bold and modern e-commerce platform for premium cycling gear.</div>
-        <span class="work-live-btn">
-          View Case Study
-        </span>
-      </div>
-    </div>
-
-    <div class="work-card fade-up d2" data-project="hbvisuals">
-      <div class="work-card-iframe-container">
-        <iframe data-src="https://hitu-code23.github.io/hb-visualss/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 03 &mdash; Creative Agency</div>
-        <div class="work-card-name">HB Visuals</div>
-        <div class="work-card-desc">A cinematic digital experience for a Punjab-based creative agency.</div>
-        <span class="work-live-btn">
-          View Case Study
-        </span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CASE STUDY MODAL -->
-<div class="modal" id="project-modal">
-  <div class="modal-content">
-    <div class="modal-close" id="modal-close">&times;</div>
-    <div class="modal-hero">
-      <iframe id="modal-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
-    </div>
-    <div class="modal-body">
-      <h2 class="modal-title hero-heading" id="modal-title">Project Name</h2>
-      <div class="modal-grid">
-        <div>
-          <div class="modal-section-title">The Problem</div>
-          <p class="modal-text" id="modal-problem">The client needed a modern, fast, and high-converting website to showcase their services and attract premium clients.</p>
-          <div class="modal-section-title">The Solution</div>
-          <p class="modal-text" id="modal-solution">I designed a custom UI focused on typography and white space, integrated smooth animations, and optimized for mobile performance.</p>
-        </div>
-        <div>
-          <div class="modal-section-title">Results</div>
-          <p class="modal-text" id="modal-results">45% increase in lead generation and a 2x faster load time compared to the previous site.</p>
-          <a href="#" id="modal-live-link" target="_blank" class="contact-btn" style="width: 100%; justify-content: center;">Visit Live Site</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================
-     FAQ SECTION
-     ============================================================ -->
-<section class="faq-section">
-  <h2 class="testi-h2 hero-heading fade-up">Common Questions</h2>
-  <div class="faq-container">
-    <div class="faq-item fade-up d0">
-      <div class="faq-question">
-        How long does a typical project take?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        A standard landing page takes 3-7 days. More complex business sites or e-commerce stores typically take 2-3 weeks depending on the scope.
-      </div>
-    </div>
-    <div class="faq-item fade-up d1">
-      <div class="faq-question">
-        How many revisions do I get?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        I offer unlimited revisions during the design phase to ensure you are 100% happy with the look and feel before we move to development.
-      </div>
-    </div>
-    <div class="faq-item fade-up d2">
-      <div class="faq-question">
-        What are your payment terms?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        I usually require a 50% upfront deposit to secure your slot in my calendar, with the remaining 50% due upon project completion and your final approval.
-      </div>
-    </div>
-    <div class="faq-item fade-up d3">
-      <div class="faq-question">
-        Do you offer maintenance after launch?
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        Yes, I provide 30 days of free support after launch. I also offer monthly maintenance packages for updates, security, and performance monitoring.
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     TESTIMONIALS
-     ============================================================ -->
-
-<section class="testi-section" id="testimonials">
-  <h2 class="testi-h2 hero-heading fade-up">Kind Words</h2>
-  <div class="testi-grid">
-    <div class="testi-card fade-up d0">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Hitin delivered an absolutely stunning website for our agency in under a week. The attention to detail and quality of design exceeded our expectations completely."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">AK</div>
-        <div>
-          <div class="testi-name">Arjun Kapoor</div>
-          <div class="testi-role">Founder, KapoorCreatives</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card fade-up d1">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Our Shopify store conversion rate jumped significantly after the redesign. Hitu truly understands how to blend aesthetics with performance and business goals."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">PS</div>
-        <div>
-          <div class="testi-name">Priya Sharma</div>
-          <div class="testi-role">CEO, StyleHub India</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card fade-up d2">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Working with Hitin was seamless from start to finish. He got our brand vision immediately and delivered a landing page that converts like crazy. Highly recommended."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">RV</div>
-        <div>
-          <div class="testi-name">Rohit Verma</div>
-          <div class="testi-role">Marketing Head, NexaCorp</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     CONTACT SECTION
-     ============================================================ -->
 
 <section class="contact-section" id="contact">
   <h2 class="contact-h2 hero-heading fade-up">Let's Talk</h2>
@@ -2092,8 +1289,8 @@ footer {
 </section>
 
 <!-- ============================================================
-     FOOTER
-     ============================================================ -->
+   FOOTER
+   ============================================================ -->
 
 <footer>
   <div class="footer-logo">Hitin Banga</div>
@@ -2107,7 +1304,7 @@ footer {
   <p class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</p>
 </footer>
 
-<!-- STICKY CTA (MOVED TO END OF BODY) -->
+<!-- STICKY CTA -->
 <div id="sticky-cta">
   <div class="cta-text">Ready to transform your brand?</div>
   <div style="display: flex; align-items: center; gap: 1.5rem;">
@@ -2177,7 +1374,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* ─── Visitor Count (Static/Fake) ───────────────────────────── */
+/* ─── Visitor Count ─────────────────────────────────────────── */
 const visitorCountEl = document.getElementById('visitor-count');
 let count = 21;
 setInterval(() => {
@@ -2249,7 +1446,7 @@ modalClose.addEventListener('click', () => {
   document.body.style.overflow = 'auto';
 });
 
-/* ─── Marquee ────────────────────────────────────────────────── */
+/* ─── Marquee (EXACT ORIGINAL LOGIC) ─────────────────────────── */
 const GIFS = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
   'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
@@ -2306,7 +1503,7 @@ function updateMarquee() {
 window.addEventListener('scroll', updateMarquee, { passive: true });
 updateMarquee();
 
-/* ─── Iframe Scaling & Lazy Load ────────────────────────────── */
+/* ─── Iframe Scaling ─────────────────────────────────────────── */
 function scaleIframes() {
   const containers = document.querySelectorAll('.work-card-iframe-container');
   containers.forEach(container => {
@@ -2394,9 +1591,8 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => navObserver.observe(s));
 
 /* ════════════════════════════════════════════════════════════
-   CURRENCY SWITCHER  (USD base — only USD, CAD, INR)
+   CURRENCY SWITCHER
    ════════════════════════════════════════════════════════════ */
-
 const FALLBACK = { USD: 1, CAD: 1.380, INR: 83.50 };
 let rates = { ...FALLBACK };
 
