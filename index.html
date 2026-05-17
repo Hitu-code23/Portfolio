@@ -104,6 +104,41 @@ HERO SECTION
 .hero-desc { font-size: clamp(0.72rem,1.2vw,1rem); color: #D7E2EA; font-weight: 300; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1.65; max-width: 230px; opacity: 0.7; }
 .hero-portrait { position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: clamp(200px,30vw,460px); z-index: 10; pointer-events: none; transition: transform 0.3s ease-out; }
 .hero-portrait img { width: 100%; display: block; filter: drop-shadow(0 0 60px rgba(182,0,168,0.2)); }
+
+/* Portrait placeholder — shown when no photo is set */
+.hero-portrait-placeholder {
+width: clamp(200px,30vw,420px);
+height: clamp(280px,40vw,580px);
+position: relative;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+padding-bottom: 2rem;
+}
+.portrait-initials {
+font-size: clamp(5rem, 18vw, 14rem);
+font-weight: 900;
+letter-spacing: -0.04em;
+line-height: 1;
+background: linear-gradient(180deg, rgba(182,0,168,0.15) 0%, rgba(182,0,168,0.5) 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+user-select: none;
+position: relative;
+z-index: 2;
+}
+.portrait-glow {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 200px;
+height: 200px;
+background: radial-gradient(circle, rgba(182,0,168,0.25) 0%, transparent 70%);
+border-radius: 50%;
+pointer-events: none;
+}
 .hero-mini-cards { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.5rem; }
 .mini-card { display: flex; align-items: center; gap: 0.6rem; background: rgba(215,226,234,0.04); border: 1px solid rgba(215,226,234,0.1); border-radius: 14px; padding: 0.7rem 1.1rem; }
 .mini-card-icon { color: #B600A8; display: flex; }
@@ -294,6 +329,11 @@ STICKY CTA
 .visitor-badge { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: rgba(215,226,234,0.4); letter-spacing: 0.04em; }
 
 /* ============================================================
+STICKY CTA — REMOVED
+============================================================ */
+#sticky-cta { display: none !important; }
+
+/* ============================================================
 RESPONSIVE
 ============================================================ */
 @media (max-width: 900px) {
@@ -303,10 +343,65 @@ RESPONSIVE
 .work-grid { grid-template-columns: 1fr; }
 .modal-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+/* Hero: stack vertically, portrait goes between top and bottom */
+.hero { min-height: 100svh; padding: 0 5%; display: flex; flex-direction: column; }
+.hero-top { padding-top: 6rem; position: relative; z-index: 20; }
+.hero-h1 { font-size: clamp(3rem, 20vw, 6rem); white-space: normal; line-height: 0.88; }
+.hero-sub-line { font-size: clamp(0.9rem, 4vw, 1.4rem); }
+
+/* On mobile, portrait sits between cards and bottom — not absolute */
+.hero-portrait {
+position: relative;
+left: auto;
+transform: none;
+bottom: auto;
+width: clamp(160px, 55vw, 280px);
+margin: 1.5rem auto 0;
+pointer-events: none;
+}
+.hero-portrait-placeholder {
+width: 100%;
+height: clamp(160px, 55vw, 280px);
+padding-bottom: 1rem;
+}
+.portrait-initials { font-size: clamp(4rem, 20vw, 8rem); }
+
+.hero-bottom {
+padding-bottom: 2rem;
+margin-top: 1rem;
+flex-direction: column;
+align-items: flex-start;
+gap: 1rem;
+}
+.hero-desc { max-width: 100%; }
+
+.hero-mini-cards { gap: 0.6rem; }
+.mini-card { padding: 0.6rem 0.9rem; }
+.mini-card-title { font-size: 0.72rem; }
+.mini-card-sub { font-size: 0.62rem; }
+
+/* Nav: keep currency + hire me, hide logo text on tiny screens */
+.nav-right { gap: 0.5rem; }
+.contact-btn { padding: 0.6rem 1.2rem; font-size: 0.72rem; }
+}
+
+@media (max-width: 480px) {
+.hero-h1 { font-size: clamp(2.6rem, 18vw, 5rem); }
 .process-grid { grid-template-columns: 1fr; }
-.hero-h1 { white-space: normal; }
-#sticky-cta { width: 90%; flex-direction: column; border-radius: 24px; text-align: center; }
+.testi-grid { grid-template-columns: 1fr; }
+.stats-row { gap: 1.5rem; }
+.srv-num { font-size: clamp(2.5rem, 10vw, 4rem); min-width: clamp(60px, 15vw, 100px); }
+.services-h2 { font-size: clamp(2.8rem, 15vw, 6rem); }
+.work-h2 { font-size: clamp(2.8rem, 15vw, 6rem); }
+.testi-h2 { font-size: clamp(2.5rem, 14vw, 5rem); }
+.about-h2 { font-size: clamp(2.8rem, 15vw, 6rem); }
+.contact-h2 { font-size: clamp(2.8rem, 15vw, 6rem); }
+.contact-btns { flex-direction: column; align-items: stretch; }
+.btn-wa, .btn-email { justify-content: center; }
+.contact-info-row { flex-direction: column; gap: 1.2rem; }
+.modal-title { font-size: 2rem; }
 }
 </style>
 
@@ -424,8 +519,10 @@ RESPONSIVE
   </div>
 
   <div class="hero-portrait" id="hero-portrait">
-    <!-- Replace src with your actual portrait image -->
-    <img src="https://placehold.co/460x600/0C0C0C/B600A8?text=HB" alt="Hitin Banga"/>
+    <div class="hero-portrait-placeholder">
+      <span class="portrait-initials">HB</span>
+      <div class="portrait-glow"></div>
+    </div>
   </div>
 
   <div class="hero-bottom">
@@ -831,18 +928,7 @@ RESPONSIVE
   <p class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</p>
 </footer>
 
-<!-- STICKY CTA -->
-
-<div id="sticky-cta">
-  <div class="cta-text">Ready to transform your brand?</div>
-  <div style="display:flex;align-items:center;gap:1.5rem;">
-    <div class="visitor-badge">
-      <span class="live-dot" style="width:5px;height:5px;animation-duration:1s;background:#22c55e;"></span>
-      <span id="visitor-count">21</span> people viewed this week
-    </div>
-    <a href="#contact" class="contact-btn" style="padding:0.6rem 1.4rem;font-size:0.8rem;">Let's Work Together</a>
-  </div>
-</div>
+<!-- Sticky CTA removed -->
 
 <!-- ============================================================
      JAVASCRIPT
@@ -872,24 +958,16 @@ document.querySelectorAll('a, button, .skill-tag, .work-card, .faq-question').fo
   el.addEventListener('mouseleave', () => { cursor.style.width='10px'; cursor.style.height='10px'; cring.style.width='36px'; cring.style.height='36px'; });
 });
 
-/* ─── Scroll Progress & Sticky CTA ──────────────────────────── */
+/* ─── Scroll Progress ────────────────────────────────────────── */
 const scrollProgress = document.getElementById('scroll-progress');
-const stickyCta = document.getElementById('sticky-cta');
 const heroEl = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
   const winScroll = document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   scrollProgress.style.width = ((winScroll / height) * 100) + '%';
-  if (winScroll > heroEl.offsetHeight - 100) stickyCta.classList.add('visible');
-  else stickyCta.classList.remove('visible');
 });
 
-/* ─── Visitor Count ─────────────────────────────────────────── */
-const visitorCountEl = document.getElementById('visitor-count');
-let count = 21;
-setInterval(() => {
-  if (Math.random() > 0.8) { count += Math.floor(Math.random() * 3); visitorCountEl.textContent = count; }
-}, 5000);
+
 
 /* ─── FAQ Accordion ─────────────────────────────────────────── */
 document.querySelectorAll('.faq-question').forEach(q => {
