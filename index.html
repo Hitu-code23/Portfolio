@@ -1086,10 +1086,10 @@ document.querySelectorAll('.work-card-iframe').forEach(iframe => iframeObserver.
 window.addEventListener('resize', scaleIframes);
 window.addEventListener('load', scaleIframes);
 
-/* ─── Hero Portrait Magnetic ─────────────────────────────────── */
+/* ─── Hero Portrait Magnetic (desktop only) ──────────────────── */
 const portrait = document.getElementById('hero-portrait');
 document.addEventListener('mousemove', (e) => {
-  if (!portrait) return;
+  if (!portrait || window.innerWidth < 768) return;
   const rect = portrait.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
