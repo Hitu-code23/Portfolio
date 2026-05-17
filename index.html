@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -18,1138 +19,1136 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  background: #0C0C0C;
+scroll-behavior: smooth;
+background: #0C0C0C;
 }
 
 body {
-  font-family: 'Kanit', sans-serif;
-  background: #0C0C0C;
-  color: #D7E2EA;
-  overflow-x: hidden;
-  line-height: 1.6;
+font-family: ‘Kanit’, sans-serif;
+background: #0C0C0C;
+color: #D7E2EA;
+overflow-x: hidden;
+line-height: 1.6;
 }
 
 /* ============================================================
-   GRADIENT HEADING CLASS (Jack theme)
-   ============================================================ */
+GRADIENT HEADING CLASS (Jack theme)
+============================================================ */
 .hero-heading {
-  background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
 }
 
 /* ============================================================
-   CURSOR
-   ============================================================ */
+CURSOR
+============================================================ */
 .cursor {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: #B600A8;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
-  mix-blend-mode: screen;
+position: fixed;
+width: 10px;
+height: 10px;
+background: #B600A8;
+border-radius: 50%;
+pointer-events: none;
+z-index: 9999;
+transform: translate(-50%, -50%);
+transition: width 0.2s, height 0.2s;
+mix-blend-mode: screen;
 }
 .cursor-ring {
-  position: fixed;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(182, 0, 168, 0.35);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s;
+position: fixed;
+width: 36px;
+height: 36px;
+border: 1.5px solid rgba(182, 0, 168, 0.35);
+border-radius: 50%;
+pointer-events: none;
+z-index: 9998;
+transform: translate(-50%, -50%);
+transition: width 0.3s, height 0.3s;
 }
 
 /* ============================================================
-   NAVBAR
-   ============================================================ */
+NAVBAR
+============================================================ */
 nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 500;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.3rem 5%;
-  background: rgba(12, 12, 12, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(215, 226, 234, 0.07);
-  gap: 1rem;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 500;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.3rem 5%;
+background: rgba(12, 12, 12, 0.88);
+backdrop-filter: blur(24px);
+-webkit-backdrop-filter: blur(24px);
+border-bottom: 1px solid rgba(215, 226, 234, 0.07);
+gap: 1rem;
 }
 
 .nav-logo {
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: #D7E2EA;
-  text-decoration: none;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+font-size: 1.25rem;
+font-weight: 900;
+color: #D7E2EA;
+text-decoration: none;
+letter-spacing: 0.08em;
+text-transform: uppercase;
 }
 
 .nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
+display: flex;
+gap: 2.5rem;
+list-style: none;
 }
 
 .nav-links a {
-  font-size: 0.82rem;
-  color: #D7E2EA;
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  opacity: 0.65;
-  transition: opacity 0.2s;
+font-size: 0.82rem;
+color: #D7E2EA;
+text-decoration: none;
+font-weight: 500;
+letter-spacing: 0.13em;
+text-transform: uppercase;
+opacity: 0.65;
+transition: opacity 0.2s;
 }
 
 .nav-links a:hover {
-  opacity: 1;
+opacity: 1;
 }
 
 /* ============================================================
-   CURRENCY SELECTOR
-   ============================================================ */
+CURRENCY SELECTOR
+============================================================ */
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+display: flex;
+align-items: center;
+gap: 0.75rem;
 }
 
 .currency-selector {
-  position: relative;
+position: relative;
 }
 
 .currency-btn {
-  background: rgba(215, 226, 234, 0.06);
-  border: 1px solid rgba(215, 226, 234, 0.14);
-  border-radius: 100px;
-  padding: 0.52rem 1rem 0.52rem 0.9rem;
-  color: #D7E2EA;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.38rem;
-  transition: background 0.2s, border-color 0.2s;
-  white-space: nowrap;
+background: rgba(215, 226, 234, 0.06);
+border: 1px solid rgba(215, 226, 234, 0.14);
+border-radius: 100px;
+padding: 0.52rem 1rem 0.52rem 0.9rem;
+color: #D7E2EA;
+font-family: ‘Kanit’, sans-serif;
+font-size: 0.78rem;
+font-weight: 500;
+letter-spacing: 0.06em;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 0.38rem;
+transition: background 0.2s, border-color 0.2s;
+white-space: nowrap;
 }
 
 .currency-btn:hover {
-  background: rgba(215, 226, 234, 0.1);
-  border-color: rgba(215, 226, 234, 0.25);
+background: rgba(215, 226, 234, 0.1);
+border-color: rgba(215, 226, 234, 0.25);
 }
 
 .currency-btn svg {
-  transition: transform 0.2s;
-  opacity: 0.55;
-  flex-shrink: 0;
+transition: transform 0.2s;
+opacity: 0.55;
+flex-shrink: 0;
 }
 
 .currency-selector.open .currency-btn svg {
-  transform: rotate(180deg);
+transform: rotate(180deg);
 }
 
 /* Live rate badge inside button */
 .rate-badge {
-  background: rgba(182, 0, 168, 0.18);
-  border: 1px solid rgba(182, 0, 168, 0.3);
-  border-radius: 100px;
-  padding: 0.1rem 0.45rem;
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: #D478CF;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-left: 0.2rem;
+background: rgba(182, 0, 168, 0.18);
+border: 1px solid rgba(182, 0, 168, 0.3);
+border-radius: 100px;
+padding: 0.1rem 0.45rem;
+font-size: 0.6rem;
+font-weight: 600;
+color: #D478CF;
+letter-spacing: 0.06em;
+text-transform: uppercase;
+margin-left: 0.2rem;
 }
 
 .currency-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: #161616;
-  border: 1px solid rgba(215, 226, 234, 0.1);
-  border-radius: 18px;
-  padding: 0.6rem;
-  min-width: 210px;
-  z-index: 1000;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  opacity: 0;
-  transform: translateY(-8px) scale(0.97);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+position: absolute;
+top: calc(100% + 10px);
+right: 0;
+background: #161616;
+border: 1px solid rgba(215, 226, 234, 0.1);
+border-radius: 18px;
+padding: 0.6rem;
+min-width: 210px;
+z-index: 1000;
+box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+opacity: 0;
+transform: translateY(-8px) scale(0.97);
+pointer-events: none;
+transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .currency-selector.open .currency-dropdown {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: all;
+opacity: 1;
+transform: translateY(0) scale(1);
+pointer-events: all;
 }
 
 .currency-dropdown-header {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(215, 226, 234, 0.3);
-  padding: 0.2rem 0.8rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+font-size: 0.62rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: rgba(215, 226, 234, 0.3);
+padding: 0.2rem 0.8rem 0.5rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
 .live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #22c55e;
-  display: inline-block;
-  animation: pulse-green 2s infinite;
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: #22c55e;
+display: inline-block;
+animation: pulse-green 2s infinite;
 }
 
 @keyframes pulse-green {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
-  50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
 }
 
 .currency-divider {
-  height: 1px;
-  background: rgba(215, 226, 234, 0.07);
-  margin: 0.3rem 0;
+height: 1px;
+background: rgba(215, 226, 234, 0.07);
+margin: 0.3rem 0;
 }
 
 .currency-option {
-  padding: 0.62rem 0.8rem;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-family: 'Kanit', sans-serif;
-  color: rgba(215, 226, 234, 0.6);
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
+padding: 0.62rem 0.8rem;
+border-radius: 10px;
+cursor: pointer;
+font-size: 0.8rem;
+font-family: ‘Kanit’, sans-serif;
+color: rgba(215, 226, 234, 0.6);
+transition: all 0.15s;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 0.5rem;
 }
 
 .currency-option:hover {
-  background: rgba(182, 0, 168, 0.1);
-  color: #D7E2EA;
+background: rgba(182, 0, 168, 0.1);
+color: #D7E2EA;
 }
 
 .currency-option.active {
-  color: #CF66CA;
-  background: rgba(182, 0, 168, 0.12);
+color: #CF66CA;
+background: rgba(182, 0, 168, 0.12);
 }
 
 .currency-option .cur-left {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+display: flex;
+align-items: center;
+gap: 0.6rem;
 }
 
 .currency-flag {
-  font-size: 1rem;
-  line-height: 1;
+font-size: 1rem;
+line-height: 1;
 }
 
 .cur-name {
-  font-weight: 500;
-  letter-spacing: 0.04em;
+font-weight: 500;
+letter-spacing: 0.04em;
 }
 
 .cur-full {
-  font-size: 0.68rem;
-  font-weight: 300;
-  color: rgba(215, 226, 234, 0.35);
-  letter-spacing: 0.03em;
+font-size: 0.68rem;
+font-weight: 300;
+color: rgba(215, 226, 234, 0.35);
+letter-spacing: 0.03em;
 }
 
 .currency-option.active .cur-full {
-  color: rgba(207, 102, 202, 0.6);
+color: rgba(207, 102, 202, 0.6);
 }
 
 .check-icon {
-  color: #B600A8;
-  opacity: 0;
-  transition: opacity 0.15s;
-  flex-shrink: 0;
+color: #B600A8;
+opacity: 0;
+transition: opacity 0.15s;
+flex-shrink: 0;
 }
 
 .currency-option.active .check-icon {
-  opacity: 1;
+opacity: 1;
 }
 
 /* Loading shimmer for prices */
 @keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+0%   { background-position: -200% 0; }
+100% { background-position:  200% 0; }
 }
 
 .srv-price.loading {
-  background: linear-gradient(90deg, rgba(118,33,176,0.06) 25%, rgba(118,33,176,0.14) 50%, rgba(118,33,176,0.06) 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.2s infinite;
-  color: transparent;
-  border-color: rgba(118,33,176,0.1);
+background: linear-gradient(90deg, rgba(118,33,176,0.06) 25%, rgba(118,33,176,0.14) 50%, rgba(118,33,176,0.06) 75%);
+background-size: 200% 100%;
+animation: shimmer 1.2s infinite;
+color: transparent;
+border-color: rgba(118,33,176,0.1);
 }
 
 /* ============================================================
-   CONTACT BUTTON
-   ============================================================ */
+CONTACT BUTTON
+============================================================ */
 .contact-btn {
-  background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
-  color: white;
-  padding: 0.7rem 1.8rem;
-  border-radius: 100px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.25s, box-shadow 0.25s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  outline: none;
-  box-shadow: inset 4px 4px 12px #7721B1;
-  white-space: nowrap;
+background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
+color: white;
+padding: 0.7rem 1.8rem;
+border-radius: 100px;
+font-family: ‘Kanit’, sans-serif;
+font-size: 0.78rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+text-decoration: none;
+border: 2px solid rgba(255, 255, 255, 0.2);
+transition: transform 0.25s, box-shadow 0.25s;
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+cursor: pointer;
+outline: none;
+box-shadow: inset 4px 4px 12px #7721B1;
+white-space: nowrap;
 }
 
 .contact-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(182, 0, 168, 0.45), inset 4px 4px 12px #7721B1;
+transform: translateY(-2px);
+box-shadow: 0 10px 36px rgba(182, 0, 168, 0.45), inset 4px 4px 12px #7721B1;
 }
 
 /* ============================================================
-   HERO SECTION
-   ============================================================ */
+HERO SECTION
+============================================================ */
 .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 5%;
-  position: relative;
-  overflow: hidden;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+padding: 0 5%;
+position: relative;
+overflow: hidden;
 }
 
 .hero-top {
-  padding-top: 7rem;
+padding-top: 7rem;
 }
 
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(215, 226, 234, 0.05);
-  border: 1px solid rgba(215, 226, 234, 0.14);
-  border-radius: 100px;
-  padding: 0.42rem 1.1rem;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 1.4rem;
-  color: #D7E2EA;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+background: rgba(215, 226, 234, 0.05);
+border: 1px solid rgba(215, 226, 234, 0.14);
+border-radius: 100px;
+padding: 0.42rem 1.1rem;
+font-size: 0.72rem;
+font-weight: 500;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+margin-bottom: 1.4rem;
+color: #D7E2EA;
 }
 
 .pulse-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #B600A8;
-  flex-shrink: 0;
-  animation: pulse 2s infinite;
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: #B600A8;
+flex-shrink: 0;
+animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(182, 0, 168, 0.6); }
-  50%       { box-shadow: 0 0 0 6px rgba(182, 0, 168, 0); }
+0%, 100% { box-shadow: 0 0 0 0 rgba(182, 0, 168, 0.6); }
+50%       { box-shadow: 0 0 0 6px rgba(182, 0, 168, 0); }
 }
 
 .hero-h1 {
-  font-size: clamp(3.2rem, 16vw, 14rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  width: 100%;
+font-size: clamp(3.2rem, 16vw, 14rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.88;
+letter-spacing: -0.02em;
+white-space: nowrap;
+width: 100%;
 }
 
 .hero-sub-line {
-  font-family: 'Kanit', sans-serif;
-  font-size: clamp(1.1rem, 3vw, 2.5rem);
-  font-weight: 300;
-  font-style: italic;
-  color: rgba(215, 226, 234, 0.5);
-  letter-spacing: 0.04em;
-  margin-top: 0.6rem;
-  text-transform: uppercase;
+font-family: ‘Kanit’, sans-serif;
+font-size: clamp(1.1rem, 3vw, 2.5rem);
+font-weight: 300;
+font-style: italic;
+color: rgba(215, 226, 234, 0.5);
+letter-spacing: 0.04em;
+margin-top: 0.6rem;
+text-transform: uppercase;
 }
 
 .hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 2.8rem;
-  margin-top: auto;
-  padding-top: 2rem;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+padding-bottom: 2.8rem;
+margin-top: auto;
+padding-top: 2rem;
 }
 
 .hero-desc {
-  font-size: clamp(0.72rem, 1.2vw, 1rem);
-  color: #D7E2EA;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.65;
-  max-width: 230px;
-  opacity: 0.7;
+font-size: clamp(0.72rem, 1.2vw, 1rem);
+color: #D7E2EA;
+font-weight: 300;
+text-transform: uppercase;
+letter-spacing: 0.08em;
+line-height: 1.65;
+max-width: 230px;
+opacity: 0.7;
 }
 
 .hero-portrait {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  width: clamp(200px, 30vw, 460px);
-  z-index: 10;
-  pointer-events: none;
-  transition: transform 0.3s ease-out;
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+bottom: 0;
+width: clamp(200px, 30vw, 460px);
+z-index: 10;
+pointer-events: none;
+transition: transform 0.3s ease-out;
 }
 
 .hero-portrait img {
-  width: 100%;
-  display: block;
-  filter: drop-shadow(0 0 60px rgba(182, 0, 168, 0.2));
+width: 100%;
+display: block;
+filter: drop-shadow(0 0 60px rgba(182, 0, 168, 0.2));
 }
 
 .hero-mini-cards {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-top: 2.5rem;
+display: flex;
+gap: 0.8rem;
+flex-wrap: wrap;
+margin-top: 2.5rem;
 }
 
 .mini-card {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(215, 226, 234, 0.04);
-  border: 1px solid rgba(215, 226, 234, 0.1);
-  border-radius: 14px;
-  padding: 0.7rem 1.1rem;
+display: flex;
+align-items: center;
+gap: 0.6rem;
+background: rgba(215, 226, 234, 0.04);
+border: 1px solid rgba(215, 226, 234, 0.1);
+border-radius: 14px;
+padding: 0.7rem 1.1rem;
 }
 
 .mini-card-icon {
-  color: #B600A8;
-  display: flex;
+color: #B600A8;
+display: flex;
 }
 
 .mini-card-title {
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #D7E2EA;
+font-size: 0.78rem;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.06em;
+color: #D7E2EA;
 }
 
 .mini-card-sub {
-  font-size: 0.68rem;
-  font-weight: 300;
-  color: rgba(215, 226, 234, 0.45);
-  letter-spacing: 0.04em;
+font-size: 0.68rem;
+font-weight: 300;
+color: rgba(215, 226, 234, 0.45);
+letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   MARQUEE SECTION
-   ============================================================ */
+MARQUEE SECTION
+============================================================ */
 .marquee-section {
-  background: #0C0C0C;
-  padding: 5rem 0 3rem;
-  overflow: hidden;
+background: #0C0C0C;
+padding: 5rem 0 3rem;
+overflow: hidden;
 }
 
 .marquee-row {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  will-change: transform;
+display: flex;
+gap: 0.75rem;
+margin-bottom: 0.75rem;
+will-change: transform;
 }
 
 .marquee-tile {
-  flex-shrink: 0;
-  width: clamp(220px, 28vw, 420px);
-  height: clamp(140px, 18vw, 270px);
-  border-radius: 18px;
-  overflow: hidden;
+flex-shrink: 0;
+width: clamp(220px, 28vw, 420px);
+height: clamp(140px, 18vw, 270px);
+border-radius: 18px;
+overflow: hidden;
 }
 
 .marquee-tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
 }
 
 /* ============================================================
-   ABOUT SECTION
-   ============================================================ */
+ABOUT SECTION
+============================================================ */
 .about-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 7rem 5%;
-  position: relative;
-  text-align: center;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 7rem 5%;
+position: relative;
+text-align: center;
 }
 
 .about-dec {
-  position: absolute;
-  pointer-events: none;
+position: absolute;
+pointer-events: none;
 }
 
 .about-dec img {
-  width: 100%;
-  display: block;
+width: 100%;
+display: block;
 }
 
 .about-h2 {
-  font-size: clamp(3.5rem, 12vw, 11rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  margin-bottom: 2.5rem;
+font-size: clamp(3.5rem, 12vw, 11rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.9;
+letter-spacing: -0.02em;
+margin-bottom: 2.5rem;
 }
 
 .about-text {
-  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
-  color: #D7E2EA;
-  font-weight: 300;
-  line-height: 1.9;
-  max-width: 580px;
-  opacity: 0.8;
-  margin-bottom: 3rem;
+font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+color: #D7E2EA;
+font-weight: 300;
+line-height: 1.9;
+max-width: 580px;
+opacity: 0.8;
+margin-bottom: 3rem;
 }
 
 .stats-row {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+display: flex;
+gap: 3rem;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 2.5rem;
 }
 
 .stat-item {
-  text-align: center;
+text-align: center;
 }
 
 .stat-num {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1;
-  display: block;
+font-size: clamp(2.5rem, 5vw, 4.5rem);
+font-weight: 900;
+line-height: 1;
+display: block;
 }
 
 .stat-label {
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.45;
-  margin-top: 0.3rem;
-  display: block;
+font-size: 0.72rem;
+font-weight: 400;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+opacity: 0.45;
+margin-top: 0.3rem;
+display: block;
 }
 
 .skills-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  max-width: 620px;
-  margin-bottom: 3rem;
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+justify-content: center;
+max-width: 620px;
+margin-bottom: 3rem;
 }
 
 .skill-tag {
-  background: rgba(215, 226, 234, 0.05);
-  border: 1px solid rgba(215, 226, 234, 0.1);
-  border-radius: 100px;
-  padding: 0.4rem 1.1rem;
-  font-size: 0.78rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: #D7E2EA;
-  opacity: 0.75;
-  transition: all 0.2s;
-  cursor: default;
+background: rgba(215, 226, 234, 0.05);
+border: 1px solid rgba(215, 226, 234, 0.1);
+border-radius: 100px;
+padding: 0.4rem 1.1rem;
+font-size: 0.78rem;
+font-weight: 400;
+letter-spacing: 0.06em;
+color: #D7E2EA;
+opacity: 0.75;
+transition: all 0.2s;
+cursor: default;
 }
 
 .skill-tag:hover {
-  background: rgba(182, 0, 168, 0.12);
-  border-color: rgba(182, 0, 168, 0.35);
-  opacity: 1;
+background: rgba(182, 0, 168, 0.12);
+border-color: rgba(182, 0, 168, 0.35);
+opacity: 1;
 }
 
 /* ============================================================
-   SERVICES SECTION
-   ============================================================ */
+SERVICES SECTION
+============================================================ */
 .services-section {
-  background: #FFFFFF;
-  border-radius: 50px 50px 0 0;
-  padding: 6rem 5% 7rem;
-  margin-top: -2rem;
-  position: relative;
-  z-index: 5;
+background: #FFFFFF;
+border-radius: 50px 50px 0 0;
+padding: 6rem 5% 7rem;
+margin-top: -2rem;
+position: relative;
+z-index: 5;
 }
 
 .services-h2 {
-  font-size: clamp(3.5rem, 12vw, 11rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  color: #0C0C0C;
-  text-align: center;
-  margin-bottom: 4rem;
+font-size: clamp(3.5rem, 12vw, 11rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.9;
+letter-spacing: -0.02em;
+color: #0C0C0C;
+text-align: center;
+margin-bottom: 4rem;
 }
 
 /* Currency note banner in services */
 .currency-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  background: rgba(118, 33, 176, 0.06);
-  border: 1px solid rgba(118, 33, 176, 0.15);
-  border-radius: 12px;
-  padding: 0.7rem 1.4rem;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: rgba(12, 12, 12, 0.5);
-  letter-spacing: 0.04em;
-  max-width: 480px;
-  margin: -2rem auto 3rem;
-  text-align: center;
-  line-height: 1.5;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.6rem;
+background: rgba(118, 33, 176, 0.06);
+border: 1px solid rgba(118, 33, 176, 0.15);
+border-radius: 12px;
+padding: 0.7rem 1.4rem;
+font-size: 0.75rem;
+font-weight: 400;
+color: rgba(12, 12, 12, 0.5);
+letter-spacing: 0.04em;
+max-width: 480px;
+margin: -2rem auto 3rem;
+text-align: center;
+line-height: 1.5;
 }
 
 .currency-note strong {
-  color: #7621B0;
-  font-weight: 600;
+color: #7621B0;
+font-weight: 600;
 }
 
 .currency-note svg {
-  flex-shrink: 0;
-  color: #7621B0;
+flex-shrink: 0;
+color: #7621B0;
 }
 
 .srv-list {
-  max-width: 920px;
-  margin: 0 auto;
+max-width: 920px;
+margin: 0 auto;
 }
 
 .srv-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(12, 12, 12, 0.12);
+display: flex;
+align-items: flex-start;
+gap: 2rem;
+padding: 2.5rem 0;
+border-top: 1px solid rgba(12, 12, 12, 0.12);
 }
 
 .srv-item:last-child {
-  border-bottom: 1px solid rgba(12, 12, 12, 0.12);
+border-bottom: 1px solid rgba(12, 12, 12, 0.12);
 }
 
 .srv-num {
-  font-size: clamp(3.5rem, 9vw, 8rem);
-  font-weight: 900;
-  color: #0C0C0C;
-  line-height: 1;
-  flex-shrink: 0;
-  opacity: 0.88;
-  min-width: clamp(80px, 12vw, 160px);
+font-size: clamp(3.5rem, 9vw, 8rem);
+font-weight: 900;
+color: #0C0C0C;
+line-height: 1;
+flex-shrink: 0;
+opacity: 0.88;
+min-width: clamp(80px, 12vw, 160px);
 }
 
 .srv-content {
-  flex: 1;
-  padding-top: 1rem;
+flex: 1;
+padding-top: 1rem;
 }
 
 .srv-name {
-  font-size: clamp(1.1rem, 2.2vw, 2rem);
-  font-weight: 600;
-  color: #0C0C0C;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.6rem;
+font-size: clamp(1.1rem, 2.2vw, 2rem);
+font-weight: 600;
+color: #0C0C0C;
+text-transform: uppercase;
+letter-spacing: 0.04em;
+margin-bottom: 0.6rem;
 }
 
 .srv-desc {
-  font-size: clamp(0.85rem, 1.4vw, 1.1rem);
-  color: rgba(12, 12, 12, 0.55);
-  font-weight: 300;
-  line-height: 1.8;
-  max-width: 560px;
-  margin-bottom: 0.8rem;
+font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+color: rgba(12, 12, 12, 0.55);
+font-weight: 300;
+line-height: 1.8;
+max-width: 560px;
+margin-bottom: 0.8rem;
 }
 
 .srv-price {
-  display: inline-block;
-  background: rgba(118, 33, 176, 0.08);
-  border: 1px solid rgba(118, 33, 176, 0.2);
-  border-radius: 100px;
-  padding: 0.35rem 1rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #7621B0;
-  letter-spacing: 0.04em;
-  transition: background 0.25s, color 0.25s;
-  min-width: 100px;
-  text-align: center;
+display: inline-block;
+background: rgba(118, 33, 176, 0.08);
+border: 1px solid rgba(118, 33, 176, 0.2);
+border-radius: 100px;
+padding: 0.35rem 1rem;
+font-size: 0.78rem;
+font-weight: 600;
+color: #7621B0;
+letter-spacing: 0.04em;
+transition: background 0.25s, color 0.25s;
+min-width: 100px;
+text-align: center;
 }
 
 /* ============================================================
-   WORK / PROJECTS SECTION
-   ============================================================ */
+WORK / PROJECTS SECTION
+============================================================ */
 .work-section {
-  background: #0C0C0C;
-  border-radius: 50px 50px 0 0;
-  margin-top: -2rem;
-  padding: 6rem 5% 7rem;
-  position: relative;
-  z-index: 10;
+background: #0C0C0C;
+border-radius: 50px 50px 0 0;
+margin-top: -2rem;
+padding: 6rem 5% 7rem;
+position: relative;
+z-index: 10;
 }
 
 .work-h2 {
-  font-size: clamp(3.5rem, 12vw, 11rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin-bottom: 4rem;
+font-size: clamp(3.5rem, 12vw, 11rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.9;
+letter-spacing: -0.02em;
+text-align: center;
+margin-bottom: 4rem;
 }
 
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem;
+max-width: 1100px;
+margin: 0 auto;
 }
 
 .work-card {
-  background: #111111;
-  border: 1px solid rgba(215, 226, 234, 0.08);
-  border-radius: 32px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #D7E2EA;
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s;
-  display: block;
+background: #111111;
+border: 1px solid rgba(215, 226, 234, 0.08);
+border-radius: 32px;
+overflow: hidden;
+text-decoration: none;
+color: #D7E2EA;
+transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s;
+display: block;
 }
 
 .work-card:hover {
-  transform: translateY(-12px);
-  border-color: rgba(215, 226, 234, 0.22);
+transform: translateY(-12px);
+border-color: rgba(215, 226, 234, 0.22);
 }
 
 .work-card-img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-  border: none;
+width: 100%;
+aspect-ratio: 16 / 9;
+object-fit: cover;
+display: block;
+border: none;
 }
 
 .work-card-iframe-container {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  position: relative;
-  overflow: hidden;
-  background: #000;
+width: 100%;
+aspect-ratio: 16 / 9;
+position: relative;
+overflow: hidden;
+background: #000;
 }
 
 .work-card-iframe {
-  width: 1280px;
-  height: 720px;
-  border: none;
-  transform: scale(calc(100 / 1280 * 100 / 100)); /* Initial scale placeholder */
-  transform-origin: 0 0;
-  pointer-events: none; /* Keep card clickable */
+width: 1280px;
+height: 720px;
+border: none;
+transform: scale(calc(100 / 1280 * 100 / 100));
+transform-origin: 0 0;
+pointer-events: none;
 }
 
-/* Responsive scaling for iframes */
 @media (min-width: 1px) {
-  .work-card-iframe {
-    width: 1280px;
-    height: 720px;
-    transform: scale(0.25); /* Default small scale */
-  }
+.work-card-iframe {
+width: 1280px;
+height: 720px;
+transform: scale(0.25);
+}
 }
 
-/* Adjusting the iframe to fit the container width */
 .work-card-iframe-container iframe {
-  width: 400%; /* 100% / 0.25 scale */
-  height: 400%;
-  transform: scale(0.25);
-  transform-origin: 0 0;
+width: 400%;
+height: 400%;
+transform: scale(0.25);
+transform-origin: 0 0;
 }
 
 .work-card-body {
-  padding: 1.8rem 2rem;
+padding: 1.8rem 2rem;
 }
 
 .work-card-meta {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  opacity: 0.4;
-  margin-bottom: 0.5rem;
+font-size: 0.68rem;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+opacity: 0.4;
+margin-bottom: 0.5rem;
 }
 
 .work-card-name {
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
+font-size: clamp(1.2rem, 2vw, 1.6rem);
+font-weight: 800;
+letter-spacing: -0.01em;
+margin-bottom: 0.5rem;
+text-transform: uppercase;
 }
 
 .work-card-desc {
-  font-size: 0.88rem;
-  color: rgba(215, 226, 234, 0.5);
-  font-weight: 300;
-  line-height: 1.75;
-  margin-bottom: 1.2rem;
+font-size: 0.88rem;
+color: rgba(215, 226, 234, 0.5);
+font-weight: 300;
+line-height: 1.75;
+margin-bottom: 1.2rem;
 }
 
 .work-live-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(215, 226, 234, 0.03);
-  border: 1px solid rgba(215, 226, 234, 0.12);
-  border-radius: 100px;
-  padding: 0.6rem 1.4rem;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #D7E2EA;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+display: inline-flex;
+align-items: center;
+gap: 0.6rem;
+background: rgba(215, 226, 234, 0.03);
+border: 1px solid rgba(215, 226, 234, 0.12);
+border-radius: 100px;
+padding: 0.6rem 1.4rem;
+font-family: ‘Kanit’, sans-serif;
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #D7E2EA;
+text-decoration: none;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+overflow: hidden;
 }
 
 .work-live-btn svg {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s ease;
+width: 14px;
+height: 14px;
+transition: transform 0.3s ease;
 }
 
 .work-live-btn:hover {
-  background: #D7E2EA;
-  color: #0C0C0C;
-  border-color: #D7E2EA;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(215, 226, 234, 0.1);
+background: #D7E2EA;
+color: #0C0C0C;
+border-color: #D7E2EA;
+transform: translateY(-2px);
+box-shadow: 0 10px 20px rgba(215, 226, 234, 0.1);
 }
 
 .work-live-btn:hover svg {
-  transform: translate(2px, -2px);
-  color: #0C0C0C;
+transform: translate(2px, -2px);
+color: #0C0C0C;
 }
 
 /* ============================================================
-   TESTIMONIALS SECTION
-   ============================================================ */
+TESTIMONIALS SECTION
+============================================================ */
 .testi-section {
-  background: #0C0C0C;
-  padding: 5rem 5% 6rem;
-  border-top: 1px solid rgba(215, 226, 234, 0.05);
+background: #0C0C0C;
+padding: 5rem 5% 6rem;
+border-top: 1px solid rgba(215, 226, 234, 0.05);
 }
 
 .testi-h2 {
-  font-size: clamp(3rem, 10vw, 9rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  text-align: center;
-  margin-bottom: 3.5rem;
+font-size: clamp(3rem, 10vw, 9rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.9;
+letter-spacing: -0.02em;
+text-align: center;
+margin-bottom: 3.5rem;
 }
 
 .testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1.5rem;
+max-width: 1100px;
+margin: 0 auto;
 }
 
 .testi-card {
-  background: #111111;
-  border: 1px solid rgba(215, 226, 234, 0.08);
-  border-radius: 28px;
-  padding: 2rem;
+background: #111111;
+border: 1px solid rgba(215, 226, 234, 0.08);
+border-radius: 28px;
+padding: 2rem;
 }
 
 .testi-stars {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  letter-spacing: 0.1em;
-  color: #F4C875;
+font-size: 1rem;
+margin-bottom: 1rem;
+letter-spacing: 0.1em;
+color: #F4C875;
 }
 
 .testi-text {
-  font-size: 0.92rem;
-  color: rgba(215, 226, 234, 0.65);
-  font-weight: 300;
-  line-height: 1.85;
-  margin-bottom: 1.5rem;
-  font-style: italic;
+font-size: 0.92rem;
+color: rgba(215, 226, 234, 0.65);
+font-weight: 300;
+line-height: 1.85;
+margin-bottom: 1.5rem;
+font-style: italic;
 }
 
 .testi-author {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
+display: flex;
+align-items: center;
+gap: 0.9rem;
 }
 
 .testi-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #B600A8, #7621B0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: white;
-  flex-shrink: 0;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+background: linear-gradient(135deg, #B600A8, #7621B0);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.78rem;
+font-weight: 700;
+color: white;
+flex-shrink: 0;
 }
 
 .testi-name {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #D7E2EA;
-  letter-spacing: 0.04em;
+font-size: 0.88rem;
+font-weight: 600;
+color: #D7E2EA;
+letter-spacing: 0.04em;
 }
 
 .testi-role {
-  font-size: 0.72rem;
-  color: rgba(215, 226, 234, 0.4);
-  font-weight: 300;
-  letter-spacing: 0.04em;
+font-size: 0.72rem;
+color: rgba(215, 226, 234, 0.4);
+font-weight: 300;
+letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   CONTACT SECTION
-   ============================================================ */
+CONTACT SECTION
+============================================================ */
 .contact-section {
-  background: #0C0C0C;
-  padding: 5rem 5% 7rem;
-  text-align: center;
+background: #0C0C0C;
+padding: 5rem 5% 7rem;
+text-align: center;
 }
 
 .contact-h2 {
-  font-size: clamp(3.5rem, 12vw, 11rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
+font-size: clamp(3.5rem, 12vw, 11rem);
+font-weight: 900;
+text-transform: uppercase;
+line-height: 0.9;
+letter-spacing: -0.02em;
+margin-bottom: 1.5rem;
 }
 
 .contact-sub {
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-  color: rgba(215, 226, 234, 0.55);
-  font-weight: 300;
-  max-width: 440px;
-  margin: 0 auto 3rem;
-  line-height: 1.8;
+font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+color: rgba(215, 226, 234, 0.55);
+font-weight: 300;
+max-width: 440px;
+margin: 0 auto 3rem;
+line-height: 1.8;
 }
 
 .contact-btns {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 4rem;
 }
 
 .btn-wa {
-  background: #25D366;
-  color: white;
-  padding: 0.9rem 2.2rem;
-  border-radius: 100px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.25s;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
+background: #25D366;
+color: white;
+padding: 0.9rem 2.2rem;
+border-radius: 100px;
+font-family: ‘Kanit’, sans-serif;
+font-size: 0.82rem;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+transition: all 0.25s;
+box-shadow: 0 8px 24px rgba(37, 211, 102, 0.25);
 }
 
 .btn-wa:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
+transform: translateY(-3px);
+box-shadow: 0 16px 40px rgba(37, 211, 102, 0.4);
 }
 
 .btn-email {
-  background: transparent;
-  color: #D7E2EA;
-  border: 1.5px solid rgba(215, 226, 234, 0.22);
-  padding: 0.9rem 2.2rem;
-  border-radius: 100px;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.25s;
+background: transparent;
+color: #D7E2EA;
+border: 1.5px solid rgba(215, 226, 234, 0.22);
+padding: 0.9rem 2.2rem;
+border-radius: 100px;
+font-family: ‘Kanit’, sans-serif;
+font-size: 0.82rem;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+transition: all 0.25s;
 }
 
 .btn-email:hover {
-  border-color: #D7E2EA;
-  transform: translateY(-3px);
+border-color: #D7E2EA;
+transform: translateY(-3px);
 }
 
 .contact-info-row {
-  display: flex;
-  gap: 3rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
+display: flex;
+gap: 3rem;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 2rem;
 }
 
 .contact-info-item {
-  text-align: center;
+text-align: center;
 }
 
 .contact-info-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.35;
-  margin-bottom: 0.3rem;
+font-size: 0.65rem;
+font-weight: 600;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+opacity: 0.35;
+margin-bottom: 0.3rem;
 }
 
 .contact-info-val {
-  font-size: 0.88rem;
-  font-weight: 400;
-  color: rgba(215, 226, 234, 0.7);
+font-size: 0.88rem;
+font-weight: 400;
+color: rgba(215, 226, 234, 0.7);
 }
 
 /* ============================================================
-   FOOTER
-   ============================================================ */
+FOOTER
+============================================================ */
 footer {
-  background: #080808;
-  border-top: 1px solid rgba(215, 226, 234, 0.06);
-  padding: 2rem 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+background: #080808;
+border-top: 1px solid rgba(215, 226, 234, 0.06);
+padding: 2rem 5%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 1rem;
 }
 
 .footer-logo {
-  font-size: 1rem;
-  font-weight: 900;
-  color: #D7E2EA;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+font-size: 1rem;
+font-weight: 900;
+color: #D7E2EA;
+letter-spacing: 0.08em;
+text-transform: uppercase;
 }
 
 .footer-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
+display: flex;
+gap: 2rem;
+list-style: none;
 }
 
 .footer-links a {
-  font-size: 0.72rem;
-  color: rgba(215, 226, 234, 0.3);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: color 0.2s;
+font-size: 0.72rem;
+color: rgba(215, 226, 234, 0.3);
+text-decoration: none;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+transition: color 0.2s;
 }
 
 .footer-links a:hover {
-  color: #D7E2EA;
+color: #D7E2EA;
 }
 
 .footer-copy {
-  font-size: 0.7rem;
-  color: rgba(215, 226, 234, 0.2);
-  letter-spacing: 0.04em;
+font-size: 0.7rem;
+color: rgba(215, 226, 234, 0.2);
+letter-spacing: 0.04em;
 }
 
 /* ============================================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================================ */
+SCROLL REVEAL ANIMATIONS
+============================================================ */
 .fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-left {
-  opacity: 0;
-  transform: translateX(-70px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+opacity: 0;
+transform: translateX(-70px);
+transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 .fade-right {
-  opacity: 0;
-  transform: translateX(70px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
+opacity: 0;
+transform: translateX(70px);
+transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 .fade-up.visible,
 .fade-left.visible,
 .fade-right.visible {
-  opacity: 1;
-  transform: translate(0);
+opacity: 1;
+transform: translate(0);
 }
 
 .d0  { transition-delay: 0s; }
@@ -1160,50 +1159,53 @@ footer {
 .d5  { transition-delay: 0.5s; }
 
 /* ============================================================
-   RESPONSIVE
-   ============================================================ */
+RESPONSIVE
+============================================================ */
 @media (max-width: 1024px) {
-  .testi-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-h1 { font-size: clamp(3rem, 14vw, 9rem); }
+.testi-grid { grid-template-columns: repeat(2, 1fr); }
+.hero-h1 { font-size: clamp(3rem, 14vw, 9rem); }
 }
 
 @media (max-width: 768px) {
-  nav { padding: 1rem 5%; }
-  .nav-links { display: none; }
-  .hero-h1 { font-size: clamp(2.8rem, 18vw, 7rem); white-space: normal; }
-  .hero-portrait { width: 65vw; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .about-dec { display: none; }
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card { grid-column: span 1 !important; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .services-section { border-radius: 32px 32px 0 0; }
-  .work-section { border-radius: 32px 32px 0 0; }
-  .stats-row { gap: 1.5rem; }
-  footer { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
-  .cursor, .cursor-ring { display: none; }
-  .hero-mini-cards { display: none; }
-  .rate-badge { display: none; }
+nav { padding: 1rem 5%; }
+.nav-links { display: none; }
+.hero-h1 { font-size: clamp(2.8rem, 18vw, 7rem); white-space: normal; }
+.hero-portrait { width: 65vw; }
+.hero-bottom { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+.about-dec { display: none; }
+.work-grid { grid-template-columns: 1fr; }
+.work-card { grid-column: span 1 !important; }
+.testi-grid { grid-template-columns: 1fr; }
+.services-section { border-radius: 32px 32px 0 0; }
+.work-section { border-radius: 32px 32px 0 0; }
+.stats-row { gap: 1.5rem; }
+footer { flex-direction: column; text-align: center; }
+.footer-links { justify-content: center; }
+.cursor, .cursor-ring { display: none; }
+.hero-mini-cards { display: none; }
+.rate-badge { display: none; }
 }
 
 @media (max-width: 480px) {
-  .hero-h1 { font-size: clamp(2.4rem, 20vw, 5rem); }
-  .contact-btns { flex-direction: column; align-items: center; }
-  .btn-wa, .btn-email { width: 100%; max-width: 280px; justify-content: center; }
-  .services-section { padding: 4rem 5% 5rem; }
+.hero-h1 { font-size: clamp(2.4rem, 20vw, 5rem); }
+.contact-btns { flex-direction: column; align-items: center; }
+.btn-wa, .btn-email { width: 100%; max-width: 280px; justify-content: center; }
+.services-section { padding: 4rem 5% 5rem; }
 }
 </style>
+
 </head>
 <body>
 
 <!-- CUSTOM CURSOR -->
+
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cring"></div>
 
 <!-- ============================================================
      NAVBAR
      ============================================================ -->
+
 <nav>
   <a class="nav-logo" href="#home">HB</a>
   <ul class="nav-links">
@@ -1222,72 +1224,46 @@ footer {
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
 
-      <div class="currency-dropdown" id="currencyDropdown" role="listbox">
-        <div class="currency-dropdown-header">
-          Select Currency
-          <span><span class="live-dot"></span></span>
-        </div>
-        <div class="currency-divider"></div>
-
-        <div class="currency-option" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
-          <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option active" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
-          <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="EUR" data-symbol="€" data-fmt="de-DE">
-          <div class="cur-left"><span class="currency-flag">🇪🇺</span><div><div class="cur-name">EUR</div><div class="cur-full">Euro</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="GBP" data-symbol="£" data-fmt="en-GB">
-          <div class="cur-left"><span class="currency-flag">🇬🇧</span><div><div class="cur-name">GBP</div><div class="cur-full">British Pound</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="AED" data-symbol="AED " data-fmt="ar-AE">
-          <div class="cur-left"><span class="currency-flag">🇦🇪</span><div><div class="cur-name">AED</div><div class="cur-full">UAE Dirham</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="SGD" data-symbol="S$" data-fmt="en-SG">
-          <div class="cur-left"><span class="currency-flag">🇸🇬</span><div><div class="cur-name">SGD</div><div class="cur-full">Singapore Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="AUD" data-symbol="A$" data-fmt="en-AU">
-          <div class="cur-left"><span class="currency-flag">🇦🇺</span><div><div class="cur-name">AUD</div><div class="cur-full">Australian Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="CAD" data-symbol="C$" data-fmt="en-CA">
-          <div class="cur-left"><span class="currency-flag">🇨🇦</span><div><div class="cur-name">CAD</div><div class="cur-full">Canadian Dollar</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-        <div class="currency-option" role="option" data-code="JPY" data-symbol="¥" data-fmt="ja-JP">
-          <div class="cur-left"><span class="currency-flag">🇯🇵</span><div><div class="cur-name">JPY</div><div class="cur-full">Japanese Yen</div></div></div>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-
-      </div>
+```
+  <div class="currency-dropdown" id="currencyDropdown" role="listbox">
+    <div class="currency-dropdown-header">
+      Select Currency
+      <span><span class="live-dot"></span></span>
     </div>
-    <!-- ══ END CURRENCY SELECTOR ══ -->
+    <div class="currency-divider"></div>
 
-    <a href="https://wa.me/23058451482" class="contact-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Hire Me
-    </a>
+    <div class="currency-option active" role="option" data-code="USD" data-symbol="$" data-fmt="en-US">
+      <div class="cur-left"><span class="currency-flag">🇺🇸</span><div><div class="cur-name">USD</div><div class="cur-full">US Dollar</div></div></div>
+      <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <div class="currency-option" role="option" data-code="CAD" data-symbol="C$" data-fmt="en-CA">
+      <div class="cur-left"><span class="currency-flag">🇨🇦</span><div><div class="cur-name">CAD</div><div class="cur-full">Canadian Dollar</div></div></div>
+      <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <div class="currency-option" role="option" data-code="INR" data-symbol="₹" data-fmt="en-IN">
+      <div class="cur-left"><span class="currency-flag">🇮🇳</span><div><div class="cur-name">INR</div><div class="cur-full">Indian Rupee</div></div></div>
+      <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+  </div>
+</div>
+<!-- ══ END CURRENCY SELECTOR ══ -->
+
+<a href="https://wa.me/23058451482" class="contact-btn">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Hire Me
+</a>
+```
+
   </div>
 </nav>
 
 <!-- ============================================================
      HERO SECTION
      ============================================================ -->
+
 <section class="hero" id="home">
   <div class="hero-top">
     <div class="hero-badge fade-up d0"><span class="pulse-dot"></span> Available for new projects</div>
@@ -1349,6 +1325,7 @@ footer {
 <!-- ============================================================
      MARQUEE SECTION
      ============================================================ -->
+
 <div class="marquee-section" id="marquee-section">
   <div class="marquee-row" id="row1"></div>
   <div class="marquee-row" id="row2"></div>
@@ -1357,6 +1334,7 @@ footer {
 <!-- ============================================================
      ABOUT SECTION
      ============================================================ -->
+
 <section class="about-section" id="about">
   <div class="about-dec" style="top:5%;left:2%;width:clamp(90px,12vw,190px);">
     <img class="fade-left d1" src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" alt=""/>
@@ -1408,16 +1386,19 @@ footer {
     <span class="skill-tag">Wix / Squarespace</span>
   </div>
 
-  <a href="#contact" class="contact-btn fade-up d4">Contact Me</a>
+<a href="#contact" class="contact-btn fade-up d4">Contact Me</a>
+
 </section>
 
 <!-- ============================================================
      SERVICES SECTION
      ============================================================ -->
+
 <section class="services-section" id="services">
   <h2 class="services-h2 fade-up">Services</h2>
 
   <!-- Currency hint banner -->
+
   <div class="currency-note fade-up">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
     Prices shown in <strong id="noteLabel">USD</strong>. Use the <strong>currency switcher</strong> in the top-right to view in your local currency.
@@ -1425,50 +1406,52 @@ footer {
 
   <div class="srv-list">
 
-    <div class="srv-item fade-up d0">
-      <div class="srv-num">01</div>
-      <div class="srv-content">
-        <div class="srv-name">Business Websites</div>
-        <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
-        <span class="srv-price" data-usd="800">From $800</span>
-      </div>
-    </div>
+```
+<div class="srv-item fade-up d0">
+  <div class="srv-num">01</div>
+  <div class="srv-content">
+    <div class="srv-name">Business Websites</div>
+    <div class="srv-desc">Multi-page professional sites for shops, agencies, consultants and service businesses that convert visitors into customers with intent-driven design.</div>
+    <span class="srv-price" data-usd="800">From $800</span>
+  </div>
+</div>
 
-    <div class="srv-item fade-up d1">
-      <div class="srv-num">02</div>
-      <div class="srv-content">
-        <div class="srv-name">E-Commerce Stores</div>
-        <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
-        <span class="srv-price" data-usd="850">From $850</span>
-      </div>
-    </div>
+<div class="srv-item fade-up d1">
+  <div class="srv-num">02</div>
+  <div class="srv-content">
+    <div class="srv-name">E-Commerce Stores</div>
+    <div class="srv-desc">Beautiful online stores with product listings, cart, payments, and everything your customers need to confidently buy from you — on Shopify, WooCommerce, or custom.</div>
+    <span class="srv-price" data-usd="850">From $850</span>
+  </div>
+</div>
 
-    <div class="srv-item fade-up d2">
-      <div class="srv-num">03</div>
-      <div class="srv-content">
-        <div class="srv-name">Landing Pages</div>
-        <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
-        <span class="srv-price" data-usd="400">From $400</span>
-      </div>
-    </div>
+<div class="srv-item fade-up d2">
+  <div class="srv-num">03</div>
+  <div class="srv-content">
+    <div class="srv-name">Landing Pages</div>
+    <div class="srv-desc">High-converting single pages built for product launches, promotions, ad campaigns, and lead generation that drive real action.</div>
+    <span class="srv-price" data-usd="400">From $400</span>
+  </div>
+</div>
 
-    <div class="srv-item fade-up d3">
-      <div class="srv-num">04</div>
-      <div class="srv-content">
-        <div class="srv-name">UI/UX Design</div>
-        <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
-        <span class="srv-price" data-usd="72">From $72</span>
-      </div>
-    </div>
+<div class="srv-item fade-up d3">
+  <div class="srv-num">04</div>
+  <div class="srv-content">
+    <div class="srv-name">UI/UX Design</div>
+    <div class="srv-desc">Designing clean, modern, conversion-focused interfaces with deep attention to layout, typography, hierarchy, and the full user experience journey in Figma.</div>
+    <span class="srv-price" data-usd="72">From $72</span>
+  </div>
+</div>
 
-    <div class="srv-item fade-up d4">
-      <div class="srv-num">05</div>
-      <div class="srv-content">
-        <div class="srv-name">Branding &amp; Identity</div>
-        <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
-        <span class="srv-price" data-usd="60">From $60</span>
-      </div>
-    </div>
+<div class="srv-item fade-up d4">
+  <div class="srv-num">05</div>
+  <div class="srv-content">
+    <div class="srv-name">Branding &amp; Identity</div>
+    <div class="srv-desc">Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear, memorable, and impactful presence for your business.</div>
+    <span class="srv-price" data-usd="60">From $60</span>
+  </div>
+</div>
+```
 
   </div>
 </section>
@@ -1476,54 +1459,57 @@ footer {
 <!-- ============================================================
      PROJECTS / WORK SECTION
      ============================================================ -->
+
 <section class="work-section" id="work">
   <h2 class="work-h2 hero-heading fade-up">Projects</h2>
   <div class="work-grid">
 
-    <a href="https://hitu-code23.github.io/Velorien/" target="_blank" rel="noopener" class="work-card fade-up d0" style="grid-column: span 2;">
-      <div class="work-card-iframe-container">
-        <iframe src="https://hitu-code23.github.io/Velorien/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 01 &mdash; Creative Studio</div>
-        <div class="work-card-name">Velorien</div>
-        <div class="work-card-desc">A premium digital experience for a creative studio where ideas take form through precision and intention. Immersive, bold, and unforgettable.</div>
-        <span class="work-live-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          Live Project
-        </span>
-      </div>
-    </a>
+```
+<a href="https://hitu-code23.github.io/Velorien/" target="_blank" rel="noopener" class="work-card fade-up d0" style="grid-column: span 2;">
+  <div class="work-card-iframe-container">
+    <iframe src="https://hitu-code23.github.io/Velorien/" class="work-card-iframe" scrolling="no"></iframe>
+  </div>
+  <div class="work-card-body">
+    <div class="work-card-meta">Project 01 &mdash; Creative Studio</div>
+    <div class="work-card-name">Velorien</div>
+    <div class="work-card-desc">A premium digital experience for a creative studio where ideas take form through precision and intention. Immersive, bold, and unforgettable.</div>
+    <span class="work-live-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      Live Project
+    </span>
+  </div>
+</a>
 
-    <a href="https://hitu-code23.github.io/GearMyCycle/" target="_blank" rel="noopener" class="work-card fade-up d1">
-      <div class="work-card-iframe-container">
-        <iframe src="https://hitu-code23.github.io/GearMyCycle/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 02 &mdash; E-Commerce</div>
-        <div class="work-card-name">GearMyCycle</div>
-        <div class="work-card-desc">A bold and modern e-commerce platform for premium cycling culture. Ride beyond ordinary.</div>
-        <span class="work-live-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          Live Project
-        </span>
-      </div>
-    </a>
+<a href="https://hitu-code23.github.io/GearMyCycle/" target="_blank" rel="noopener" class="work-card fade-up d1">
+  <div class="work-card-iframe-container">
+    <iframe src="https://hitu-code23.github.io/GearMyCycle/" class="work-card-iframe" scrolling="no"></iframe>
+  </div>
+  <div class="work-card-body">
+    <div class="work-card-meta">Project 02 &mdash; E-Commerce</div>
+    <div class="work-card-name">GearMyCycle</div>
+    <div class="work-card-desc">A bold and modern e-commerce platform for premium cycling culture. Ride beyond ordinary.</div>
+    <span class="work-live-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      Live Project
+    </span>
+  </div>
+</a>
 
-    <a href="https://hitu-code23.github.io/hb-visualss/" target="_blank" rel="noopener" class="work-card fade-up d2">
-      <div class="work-card-iframe-container">
-        <iframe src="https://hitu-code23.github.io/hb-visualss/" class="work-card-iframe" scrolling="no"></iframe>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-meta">Project 03 &mdash; Creative Agency</div>
-        <div class="work-card-name">HB Visuals</div>
-        <div class="work-card-desc">A cinematic digital experience for a Punjab-based creative agency. Where visuals meet storytelling.</div>
-        <span class="work-live-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          Live Project
-        </span>
-      </div>
-    </a>
+<a href="https://hitu-code23.github.io/hb-visualss/" target="_blank" rel="noopener" class="work-card fade-up d2">
+  <div class="work-card-iframe-container">
+    <iframe src="https://hitu-code23.github.io/hb-visualss/" class="work-card-iframe" scrolling="no"></iframe>
+  </div>
+  <div class="work-card-body">
+    <div class="work-card-meta">Project 03 &mdash; Creative Agency</div>
+    <div class="work-card-name">HB Visuals</div>
+    <div class="work-card-desc">A cinematic digital experience for a Punjab-based creative agency. Where visuals meet storytelling.</div>
+    <span class="work-live-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+      Live Project
+    </span>
+  </div>
+</a>
+```
 
   </div>
 </section>
@@ -1531,45 +1517,48 @@ footer {
 <!-- ============================================================
      TESTIMONIALS
      ============================================================ -->
+
 <section class="testi-section" id="testimonials">
   <h2 class="testi-h2 hero-heading fade-up">Kind Words</h2>
   <div class="testi-grid">
 
-    <div class="testi-card fade-up d0">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Hitin delivered an absolutely stunning website for our agency in under a week. The attention to detail and quality of design exceeded our expectations completely."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">AK</div>
-        <div>
-          <div class="testi-name">Arjun Kapoor</div>
-          <div class="testi-role">Founder, KapoorCreatives</div>
-        </div>
-      </div>
+```
+<div class="testi-card fade-up d0">
+  <div class="testi-stars">★★★★★</div>
+  <p class="testi-text">"Hitin delivered an absolutely stunning website for our agency in under a week. The attention to detail and quality of design exceeded our expectations completely."</p>
+  <div class="testi-author">
+    <div class="testi-avatar">AK</div>
+    <div>
+      <div class="testi-name">Arjun Kapoor</div>
+      <div class="testi-role">Founder, KapoorCreatives</div>
     </div>
+  </div>
+</div>
 
-    <div class="testi-card fade-up d1">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Our Shopify store conversion rate jumped significantly after the redesign. Hitu truly understands how to blend aesthetics with performance and business goals."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">PS</div>
-        <div>
-          <div class="testi-name">Priya Sharma</div>
-          <div class="testi-role">CEO, StyleHub India</div>
-        </div>
-      </div>
+<div class="testi-card fade-up d1">
+  <div class="testi-stars">★★★★★</div>
+  <p class="testi-text">"Our Shopify store conversion rate jumped significantly after the redesign. Hitu truly understands how to blend aesthetics with performance and business goals."</p>
+  <div class="testi-author">
+    <div class="testi-avatar">PS</div>
+    <div>
+      <div class="testi-name">Priya Sharma</div>
+      <div class="testi-role">CEO, StyleHub India</div>
     </div>
+  </div>
+</div>
 
-    <div class="testi-card fade-up d2">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Working with Hitin was seamless from start to finish. He got our brand vision immediately and delivered a landing page that converts like crazy. Highly recommended."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">RV</div>
-        <div>
-          <div class="testi-name">Rohit Verma</div>
-          <div class="testi-role">Marketing Head, NexaCorp</div>
-        </div>
-      </div>
+<div class="testi-card fade-up d2">
+  <div class="testi-stars">★★★★★</div>
+  <p class="testi-text">"Working with Hitin was seamless from start to finish. He got our brand vision immediately and delivered a landing page that converts like crazy. Highly recommended."</p>
+  <div class="testi-author">
+    <div class="testi-avatar">RV</div>
+    <div>
+      <div class="testi-name">Rohit Verma</div>
+      <div class="testi-role">Marketing Head, NexaCorp</div>
     </div>
+  </div>
+</div>
+```
 
   </div>
 </section>
@@ -1577,6 +1566,7 @@ footer {
 <!-- ============================================================
      CONTACT SECTION
      ============================================================ -->
+
 <section class="contact-section" id="contact">
   <h2 class="contact-h2 hero-heading fade-up">Let's Talk</h2>
   <p class="contact-sub fade-up d1">Ready to take your business to the next level? Reach out and let's build something incredible together.</p>
@@ -1611,6 +1601,7 @@ footer {
 <!-- ============================================================
      FOOTER
      ============================================================ -->
+
 <footer>
   <div class="footer-logo">Hitin Banga</div>
   <ul class="footer-links">
@@ -1626,6 +1617,7 @@ footer {
 <!-- ============================================================
      JAVASCRIPT
      ============================================================ -->
+
 <script>
 /* ─── Custom Cursor ─────────────────────────────────────────── */
 const cursor = document.getElementById('cursor');
@@ -1713,9 +1705,8 @@ function scaleIframes() {
   containers.forEach(container => {
     const iframe = container.querySelector('iframe');
     const containerWidth = container.offsetWidth;
-    const baseWidth = 1280; // The width we designed the iframe for
+    const baseWidth = 1280;
     const scale = containerWidth / baseWidth;
-    
     iframe.style.width = baseWidth + 'px';
     iframe.style.height = (container.offsetHeight / scale) + 'px';
     iframe.style.transform = `scale(${scale})`;
@@ -1724,7 +1715,6 @@ function scaleIframes() {
 
 window.addEventListener('resize', scaleIframes);
 window.addEventListener('load', scaleIframes);
-// Run once immediately
 setTimeout(scaleIframes, 100);
 
 /* ─── Hero Portrait Magnetic ─────────────────────────────────── */
@@ -1781,32 +1771,27 @@ const navObserver = new IntersectionObserver((entries) => {
 sections.forEach(s => navObserver.observe(s));
 
 /* ════════════════════════════════════════════════════════════
-   CURRENCY SWITCHER  (USD base)
+   CURRENCY SWITCHER  (USD base — only USD, CAD, INR)
    ════════════════════════════════════════════════════════════ */
 
-// Fallback rates from 1 USD — used if live API call fails
 const FALLBACK = {
   USD: 1,
-  INR: 83.50,
-  EUR: 0.917,
-  GBP: 0.786,
-  AED: 3.673,
-  SGD: 1.342,
-  AUD: 1.541,
   CAD: 1.380,
-  JPY: 155.80,
+  INR: 83.50,
 };
 
 let rates = { ...FALLBACK };
 
-// Attempt live rate fetch from USD base (free, no key required)
 fetch('https://open.er-api.com/v6/latest/USD')
   .then(r => r.json())
   .then(data => {
     if (data && data.result === 'success' && data.rates) {
-      rates = { USD: 1, ...data.rates };
+      rates = {
+        USD: 1,
+        CAD: data.rates.CAD,
+        INR: data.rates.INR,
+      };
       document.getElementById('rateBadge').textContent = 'Live';
-      // Refresh displayed prices with live rates
       applyPrices(activeCurrency.code, activeCurrency.symbol);
     }
   })
@@ -1814,19 +1799,15 @@ fetch('https://open.er-api.com/v6/latest/USD')
     document.getElementById('rateBadge').textContent = 'Est.';
   });
 
-// Default: show USD
 let activeCurrency = { code: 'USD', symbol: '$' };
 
-// Format a converted price neatly
 function formatConverted(usdAmount, code, symbol) {
   const raw = usdAmount * rates[code];
 
-  if (code === 'JPY' || code === 'INR') {
-    const locale = code === 'JPY' ? 'ja-JP' : 'en-IN';
-    return `From ${symbol}${Math.round(raw).toLocaleString(locale)}`;
+  if (code === 'INR') {
+    return `From ${symbol}${Math.round(raw).toLocaleString('en-IN')}`;
   }
 
-  // 2 decimal places for amounts under $10, otherwise round
   const rounded = raw >= 100
     ? Math.round(raw)
     : raw >= 10
@@ -1836,7 +1817,6 @@ function formatConverted(usdAmount, code, symbol) {
   return `From ${symbol}${rounded.toLocaleString('en-US')}`;
 }
 
-// Update all .srv-price elements
 function applyPrices(code, symbol) {
   document.querySelectorAll('.srv-price').forEach(el => {
     el.classList.add('loading');
@@ -1850,13 +1830,11 @@ function applyPrices(code, symbol) {
   if (noteEl) noteEl.textContent = code;
 }
 
-// Set USD as the initially active option in the dropdown
 document.querySelectorAll('.currency-option').forEach(o => {
   o.classList.toggle('active', o.dataset.code === 'USD');
 });
 document.getElementById('currencyLabel').textContent = '$ USD';
 
-// Dropdown toggle
 const currencySel      = document.getElementById('currencySel');
 const currencyBtn      = document.getElementById('currencyBtn');
 const currencyLabel    = document.getElementById('currencyLabel');
@@ -1875,7 +1853,6 @@ document.addEventListener('click', () => {
 
 currencyDropdown.addEventListener('click', e => e.stopPropagation());
 
-// Option selection
 document.querySelectorAll('.currency-option').forEach(opt => {
   opt.addEventListener('click', () => {
     const code   = opt.dataset.code;
@@ -1893,5 +1870,6 @@ document.querySelectorAll('.currency-option').forEach(opt => {
   });
 });
 </script>
+
 </body>
 </html>
