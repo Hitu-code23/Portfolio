@@ -528,7 +528,7 @@ nav {
 }
 
 /* ============================================================
-   MARQUEE SECTION (Restored to original design)
+   MARQUEE SECTION
    ============================================================ */
 .marquee-section {
   background: #0C0C0C;
@@ -558,7 +558,7 @@ nav {
 }
 
 /* ============================================================
-   TOOLS LOGO STRIP (Fixed & Highlighted)
+   TOOLS LOGO STRIP
    ============================================================ */
 .tools-strip {
   padding: 4rem 5%;
@@ -1377,22 +1377,24 @@ nav {
 }
 
 /* ============================================================
-   STICKY CTA BANNER
+   STICKY CTA BANNER (FIXED POSITIONING)
    ============================================================ */
 #sticky-cta {
   position: fixed;
-  bottom: -150px;
+  bottom: -150px; /* Initially hidden */
   left: 0;
   width: 100%;
-  background: rgba(12, 12, 12, 0.9);
+  background: rgba(12, 12, 12, 0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(215, 226, 234, 0.1);
   padding: 1.2rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 400;
+  z-index: 9999; /* Highest z-index to stay on top */
   transition: bottom 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  pointer-events: all;
 }
 #sticky-cta.visible {
   bottom: 0;
@@ -1422,7 +1424,7 @@ nav {
 footer {
   background: #080808;
   border-top: 1px solid rgba(215, 226, 234, 0.06);
-  padding: 2rem 5%;
+  padding: 2rem 5% 8rem; /* Extra bottom padding for sticky cta */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1520,7 +1522,7 @@ footer {
   .services-section { border-radius: 32px 32px 0 0; }
   .work-section { border-radius: 32px 32px 0 0; }
   .stats-row { gap: 1.5rem; }
-  footer { flex-direction: column; text-align: center; }
+  footer { flex-direction: column; text-align: center; padding-bottom: 12rem; }
   .footer-links { justify-content: center; }
   .cursor, .cursor-ring { display: none; }
   .hero-mini-cards { display: none; }
@@ -1557,18 +1559,6 @@ footer {
 <!-- CUSTOM CURSOR -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cring"></div>
-
-<!-- STICKY CTA -->
-<div id="sticky-cta">
-  <div class="cta-text">Ready to transform your brand?</div>
-  <div style="display: flex; align-items: center; gap: 1.5rem;">
-    <div class="visitor-badge">
-      <span class="live-dot" style="width: 5px; height: 5px; animation-duration: 1s;"></span>
-      <span id="visitor-count">21</span> people viewed this week
-    </div>
-    <a href="#contact" class="contact-btn" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Let's Work Together</a>
-  </div>
-</div>
 
 <!-- ============================================================
      NAVBAR
@@ -1688,7 +1678,7 @@ footer {
 </section>
 
 <!-- ============================================================
-     MARQUEE SECTION (Restored to original design)
+     MARQUEE SECTION
      ============================================================ -->
 
 <div class="marquee-section" id="marquee-section">
@@ -1697,7 +1687,7 @@ footer {
 </div>
 
 <!-- ============================================================
-     TOOLS LOGO STRIP (Highlighted & Fixed)
+     TOOLS LOGO STRIP
      ============================================================ -->
 <div class="tools-strip fade-up">
   <h3 class="tools-h3">Crafting with industry leading tools</h3>
@@ -2116,6 +2106,18 @@ footer {
   </ul>
   <p class="footer-copy">&copy; 2026 Hitin Banga. All rights reserved.</p>
 </footer>
+
+<!-- STICKY CTA (MOVED TO END OF BODY) -->
+<div id="sticky-cta">
+  <div class="cta-text">Ready to transform your brand?</div>
+  <div style="display: flex; align-items: center; gap: 1.5rem;">
+    <div class="visitor-badge">
+      <span class="live-dot" style="width: 5px; height: 5px; animation-duration: 1s; background: #22c55e;"></span>
+      <span id="visitor-count">21</span> people viewed this week
+    </div>
+    <a href="#contact" class="contact-btn" style="padding: 0.6rem 1.4rem; font-size: 0.8rem;">Let's Work Together</a>
+  </div>
+</div>
 
 <!-- ============================================================
      JAVASCRIPT
