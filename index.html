@@ -3,986 +3,659 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Homy — Find Your Perfect Home Easily</title>
-<meta name="description" content="Find, explore, and choose your perfect home with Homy. Browse modern properties, get expert guidance, and make confident real estate decisions with ease."/>
+<title>Homy - Find Your Perfect Home Easily</title>
+<meta name="description" content="Find, explore, and choose your perfect home with Homy."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-/* ════════════════════════════
-   TOKENS
-════════════════════════════ */
-:root {
-  /* Light palette */
-  --cream:        #f5f1ea;
-  --cream-deep:   #ede8df;
-  --cream-mid:    #e8e2d8;
-  --text:         #111110;
-  --text-mid:     #3a3a36;
-  --text-soft:    #6f6f65;
-  --text-muted:   #a0a094;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#0E0E0C;color:#F0ECE4;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:#0E0E0C}
+::-webkit-scrollbar-thumb{background:#C8A055;border-radius:2px}
 
-  /* Dark palette */
-  --dark:         #0f0f0e;
-  --dark-2:       #161614;
-  --dark-3:       #1e1e1b;
-  --dark-border:  rgba(255,255,255,0.08);
-  --dark-text:    #f0ece4;
-  --dark-soft:    #8a8a80;
-
-  /* Accent */
-  --gold:         #c8a055;
-  --gold-light:   #dab96e;
-  --gold-pale:    rgba(200,160,85,0.12);
-
-  /* Shared */
-  --radius-xl:    24px;
-  --radius-lg:    18px;
-  --radius-md:    12px;
-  --radius-sm:    8px;
-  --ease-out:     cubic-bezier(.16,1,.3,1);
-  --ease-in-out:  cubic-bezier(.45,0,.55,1);
+/* ── TOKENS ── */
+:root{
+  --bg:       #0E0E0C;
+  --bg2:      #141412;
+  --bg3:      #1A1A17;
+  --bg4:      #202020;
+  --border:   rgba(255,255,255,0.08);
+  --text:     #F0ECE4;
+  --muted:    #888880;
+  --soft:     #B0ADA6;
+  --gold:     #C8A055;
+  --gold2:    #D4AD63;
+  --goldbg:   rgba(200,160,85,0.10);
+  --r:        16px;
+  --ease:     cubic-bezier(.16,1,.3,1);
 }
 
-/* ════════════════════════════
-   RESET & BASE
-════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-a { text-decoration: none; color: inherit; }
-img { display: block; max-width: 100%; }
-button { font-family: inherit; }
+/* ── LAYOUT ── */
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.wrap{padding:0 20px}}
 
-/* ════════════════════════════
-   SCROLLBAR
-════════════════════════════ */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+/* ── TYPOGRAPHY ── */
+.serif{font-family:'Cormorant Garamond',serif}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--gold)}
+.tag::before{content:'';width:22px;height:1px;background:var(--gold)}
 
-/* ════════════════════════════
-   CUSTOM CURSOR
-════════════════════════════ */
-#cur-dot {
-  position: fixed; width: 8px; height: 8px;
-  background: var(--gold); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  transition: width .25s var(--ease-out), height .25s var(--ease-out), background .25s;
-}
-#cur-ring {
-  position: fixed; width: 32px; height: 32px;
-  border: 1.5px solid rgba(200,160,85,.45); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%,-50%);
-  transition: width .4s var(--ease-out), height .4s var(--ease-out);
-}
-body.on-dark #cur-dot { background: var(--gold-light); }
-body.cursor-hover #cur-dot { width: 14px; height: 14px; }
-body.cursor-hover #cur-ring { width: 52px; height: 52px; border-color: rgba(200,160,85,.7); }
-@media (max-width:768px){ #cur-dot,#cur-ring { display:none; } body { cursor:auto !important; } }
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;border:none;cursor:pointer;transition:all .3s var(--ease);white-space:nowrap}
+.btn svg{width:13px;height:13px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn:hover{transform:translateY(-2px)}
+.btn-light{background:var(--text);color:#0E0E0C}
+.btn-light:hover{background:#fff;box-shadow:0 12px 36px rgba(240,236,228,.2)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
+.btn-gold{background:var(--gold);color:#0E0E0C}
+.btn-gold:hover{background:var(--gold2);box-shadow:0 12px 36px rgba(200,160,85,.3)}
 
-/* ════════════════════════════
-   PAGE LOADER
-════════════════════════════ */
-#loader {
-  position: fixed; inset: 0; z-index: 10000;
-  background: var(--dark);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
-  transition: opacity .7s var(--ease-out), visibility .7s;
+/* ════════════════
+   NAVBAR
+════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:22px 0;
+  transition:padding .4s,background .4s,border-color .4s;
+  border-bottom:1px solid transparent;
 }
-#loader.out { opacity: 0; visibility: hidden; }
-.loader-wordmark {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 52px; font-weight: 500; letter-spacing: .04em;
-  color: var(--dark-text); overflow: hidden;
+#nav.stuck{
+  padding:14px 0;
+  background:rgba(14,14,12,.9);
+  backdrop-filter:blur(20px);
+  border-bottom-color:var(--border);
 }
-.loader-wordmark span { color: var(--gold); }
-.loader-bar-bg { width: 160px; height: 1px; background: rgba(255,255,255,.1); }
-.loader-bar-fg { height: 100%; width: 0; background: var(--gold); transition: width 1.9s var(--ease-out); }
-.loader-pct { font-size: 11px; letter-spacing: .15em; color: var(--dark-soft); }
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);letter-spacing:.03em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:color .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{width:100%}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:20px;height:1.5px;background:var(--text);border-radius:2px;transition:all .3s}
+.mob-overlay{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:.4s}
+.mob-overlay.open{opacity:1;visibility:visible}
+.mob-overlay a{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:rgba(240,236,228,.45);transition:color .3s}
+.mob-overlay a:hover{color:var(--text)}
+.mob-x{position:absolute;top:22px;right:32px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;transition:color .3s}
+.mob-x:hover{color:var(--text)}
 
-/* ════════════════════════════
-   UTILITY
-════════════════════════════ */
-.container { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
-@media(max-width:768px){ .container { padding: 0 20px; } }
+/* ════════════════
+   HERO
+════════════════ */
+#hero{
+  min-height:100vh;
+  background:var(--bg);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;padding:120px 0 80px;
+}
+/* Scrolling Europe map background */
+.hero-mapbg{
+  position:absolute;inset:0;z-index:0;
+  display:flex;align-items:center;justify-content:flex-end;
+  opacity:.07;overflow:hidden;
+}
+.hero-mapbg img{width:70%;max-width:900px;object-fit:contain;filter:invert(1)}
+/* Subtle grid */
+.hero-grid-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 70% 70% at 30% 50%,black,transparent);
+}
+.hero-in{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:64px;align-items:center;width:100%;
+}
 
-.label-tag {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
-  font-weight: 500; color: var(--gold);
+/* Left */
+.hero-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);
+  border-radius:50px;padding:5px 16px 5px 5px;
+  font-size:12px;color:var(--muted);margin-bottom:26px;
 }
-.label-tag::before { content:''; width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
-.label-tag.light { color: var(--gold-light); }
-.label-tag.light::before { background: var(--gold-light); }
-
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 26px; border-radius: 50px;
-  font-size: 12.5px; font-weight: 500; letter-spacing: .05em;
-  border: none; cursor: pointer;
-  transition: transform .3s var(--ease-out), box-shadow .3s, background .25s, color .25s;
-  white-space: nowrap;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn svg { width: 13px; height: 13px; flex-shrink: 0; transition: transform .3s var(--ease-out); }
-.btn:hover svg { transform: translateX(3px); }
-
-.btn-dark { background: var(--text); color: var(--cream); }
-.btn-dark:hover { background: var(--text-mid); box-shadow: 0 10px 36px rgba(0,0,0,.25); }
-
-.btn-gold { background: var(--gold); color: #fff; }
-.btn-gold:hover { background: var(--gold-light); box-shadow: 0 10px 36px rgba(200,160,85,.35); }
-
-.btn-outline-dark { background: transparent; color: var(--text); border: 1.5px solid rgba(17,17,16,.2); }
-.btn-outline-dark:hover { border-color: var(--text); background: rgba(17,17,16,.04); }
-
-.btn-outline-light { background: transparent; color: var(--dark-text); border: 1.5px solid rgba(240,236,228,.2); }
-.btn-outline-light:hover { border-color: rgba(240,236,228,.6); background: rgba(255,255,255,.06); }
-
-/* ════════════════════════════
-   SCROLL REVEALS
-════════════════════════════ */
-[data-r] { transition-property: opacity, transform; transition-timing-function: var(--ease-out); transition-duration: .85s; }
-[data-r="up"]    { opacity:0; transform: translateY(44px); }
-[data-r="left"]  { opacity:0; transform: translateX(-48px); }
-[data-r="right"] { opacity:0; transform: translateX(48px); }
-[data-r="scale"] { opacity:0; transform: scale(.93); }
-[data-r="fade"]  { opacity:0; }
-[data-r].in { opacity:1; transform: none; }
-[data-d="1"]{ transition-delay:.08s; }
-[data-d="2"]{ transition-delay:.16s; }
-[data-d="3"]{ transition-delay:.24s; }
-[data-d="4"]{ transition-delay:.34s; }
-[data-d="5"]{ transition-delay:.44s; }
-
-/* ════════════════════════════
-   NAV
-════════════════════════════ */
-#nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  padding: 24px 0;
-  transition: padding .4s, background .4s, border-color .4s, box-shadow .4s;
-  border-bottom: 1px solid transparent;
-}
-#nav.scrolled {
-  padding: 14px 0;
-  background: rgba(245,241,234,.88);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  border-bottom-color: var(--cream-mid);
-  box-shadow: 0 4px 32px rgba(0,0,0,.06);
-}
-#nav.dark-nav {
-  background: rgba(15,15,14,.9);
-  backdrop-filter: blur(18px);
-  border-bottom-color: var(--dark-border);
-}
-.nav-wrap { display: flex; align-items: center; justify-content: space-between; }
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px; font-weight: 600; letter-spacing: .03em;
-  color: var(--text); transition: color .3s;
-}
-.nav-logo sup { color: var(--gold); font-size: 20px; }
-#nav.dark-nav .nav-logo { color: var(--dark-text); }
-.nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
-.nav-links a {
-  font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
-  color: var(--text-soft); position: relative;
-  transition: color .25s;
-}
-.nav-links a::after {
-  content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px;
-  background:var(--gold); transition:width .3s var(--ease-out);
-}
-.nav-links a:hover { color: var(--text); }
-.nav-links a:hover::after { width:100%; }
-#nav.dark-nav .nav-links a { color: var(--dark-soft); }
-#nav.dark-nav .nav-links a:hover { color: var(--dark-text); }
-.nav-right { display: flex; align-items: center; gap: 14px; }
-.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
-.nav-burger span { display:block; width:22px; height:1.5px; background:var(--text); border-radius:2px; transition: all .3s; }
-#nav.dark-nav .nav-burger span { background:var(--dark-text); }
-
-/* Mobile menu */
-.mob-menu {
-  position: fixed; inset: 0; z-index: 950;
-  background: var(--dark); display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 28px;
-  opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s;
-}
-.mob-menu.open { opacity: 1; visibility: visible; }
-.mob-menu a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 40px; font-weight: 500; color: rgba(240,236,228,.5);
-  transition: color .3s;
-}
-.mob-menu a:hover { color: var(--dark-text); }
-.mob-close {
-  position:absolute; top:24px; right:32px;
-  color: var(--dark-soft); font-size: 26px; cursor:pointer;
-  background:none; border:none; transition:color .3s;
-}
-.mob-close:hover { color: var(--dark-text); }
-
-/* ════════════════════════════
-   HERO  (LIGHT)
-════════════════════════════ */
-#hero {
-  background: var(--cream);
-  min-height: 100vh; padding: 120px 0 80px;
-  display: flex; align-items: center;
-  position: relative; overflow: hidden;
-}
-.hero-noise {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  background-size: 200px;
-}
-.hero-grid {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image: linear-gradient(rgba(17,17,16,.04) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(17,17,16,.04) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
-}
-.hero-inner {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 72px; align-items: center; width: 100%;
-}
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(17,17,16,.06); border: 1px solid rgba(17,17,16,.1);
-  border-radius: 50px; padding: 5px 14px 5px 5px;
-  font-size: 11.5px; color: var(--text-soft); margin-bottom: 28px;
-}
-.hero-pill-avs { display:flex; }
-.hero-pill-avs img {
-  width: 24px; height: 24px; border-radius: 50%; object-fit: cover;
-  border: 2px solid var(--cream); margin-left: -7px;
-}
-.hero-pill-avs img:first-child { margin-left: 0; }
-.hero-pill strong { color: var(--text); font-weight: 500; }
-
-.hero-h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(56px, 6.5vw, 96px);
-  font-weight: 500; line-height: 1.02;
-  letter-spacing: -.01em; color: var(--text);
-  margin-bottom: 22px;
-}
-.hero-h1 em { font-style: italic; color: var(--gold); }
-
-.hero-p {
-  font-size: 15px; line-height: 1.8; color: var(--text-soft);
-  max-width: 400px; margin-bottom: 38px; font-weight: 300;
-}
-.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* Hero right column */
-.hero-right { position: relative; }
-.hero-img-frame {
-  border-radius: var(--radius-xl); overflow: hidden;
-  aspect-ratio: 4/5; position: relative;
-  box-shadow: 0 32px 80px rgba(17,17,16,.18), 0 4px 16px rgba(17,17,16,.08);
-}
-.hero-img-frame img {
-  width: 100%; height: 100%; object-fit: cover;
-  transform: scale(1.04);
-  transition: transform 8s linear;
-}
-.hero-img-frame:hover img { transform: scale(1); }
-
-/* Floating stat card */
-.hero-fcard {
-  position: absolute; bottom: 32px; left: -36px;
-  background: rgba(245,241,234,.92);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--cream-mid);
-  border-radius: var(--radius-lg); padding: 18px 22px;
-  box-shadow: 0 16px 48px rgba(17,17,16,.12);
-  animation: float 5s ease-in-out infinite;
-  min-width: 188px;
-}
-.hero-fcard .fc-label { font-size: 10px; letter-spacing:.14em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
-.hero-fcard .fc-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 34px; font-weight: 600; color: var(--text); line-height: 1;
-}
-.hero-fcard .fc-val span { color: var(--gold); }
-.hero-fcard .fc-sub { font-size: 11.5px; color: var(--text-soft); margin-top: 4px; }
-
-/* Europe map chip */
-.hero-map-chip {
-  position: absolute; top: 28px; right: -20px;
-  background: var(--dark); border-radius: var(--radius-md);
-  padding: 12px 14px; display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 8px 28px rgba(0,0,0,.28);
-  animation: float 5s ease-in-out infinite .8s;
-}
-.hero-map-chip img { width: 56px; height: 30px; object-fit: contain; opacity: .7; }
-.hero-map-chip span { font-size: 11px; color: var(--dark-soft); white-space:nowrap; }
-
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-/* Scroll hint */
-.scroll-cue {
-  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  z-index: 2;
-}
-.scroll-cue-line {
-  width: 1px; height: 44px;
-  background: linear-gradient(var(--gold), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-.scroll-cue-text {
-  font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--text-muted);
-}
-@keyframes scrollPulse { 0%,100%{opacity:.35;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
-
-/* ════════════════════════════
-   MARQUEE  (DARK STRIP)
-════════════════════════════ */
-.marquee-strip {
-  background: var(--dark); padding: 20px 0;
-  overflow: hidden;
-  border-top: 1px solid var(--dark-border);
-  border-bottom: 1px solid var(--dark-border);
-}
-.marquee-inner { display:flex; width:max-content; animation: marqueeRun 28s linear infinite; }
-.marquee-inner:hover { animation-play-state:paused; }
-.marquee-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 0 32px; white-space: nowrap;
-  font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--dark-soft); font-weight: 400;
-}
-.marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink:0; }
-.marquee-item strong { color: var(--gold); font-weight: 500; }
-@keyframes marqueeRun { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-/* ════════════════════════════
-   IMPACT / STATS  (LIGHT)
-════════════════════════════ */
-#impact { background: var(--cream); padding: 130px 0; }
-.impact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 100px; align-items: start;
-}
-.impact-text .label-tag { margin-bottom: 26px; }
-.impact-text h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 58px); font-weight: 500;
-  line-height: 1.08; margin-bottom: 24px; color: var(--text);
-}
-.impact-text p {
-  font-size: 15px; line-height: 1.85; color: var(--text-soft);
-  font-weight: 300; max-width: 460px;
-}
-.stats-row {
-  display: grid; grid-template-columns: repeat(3,1fr);
-  border-top: 1px solid var(--cream-mid); margin-top: 56px;
-  padding-top: 40px; gap: 0;
-}
-.stat-cell { padding-right: 28px; }
-.stat-cell:not(:last-child) { border-right: 1px solid var(--cream-mid); margin-right: 28px; }
-.stat-n {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 50px; font-weight: 600; color: var(--text); line-height: 1;
-  margin-bottom: 6px;
-}
-.stat-n em { font-style:normal; color: var(--gold); font-size: 32px; }
-.stat-lbl { font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); }
-
-/* Impact image collage */
-.impact-imgs { position: relative; height: 540px; }
-.impact-img-a {
-  position: absolute; top: 0; left: 0; width: 58%;
-  border-radius: var(--radius-xl); overflow: hidden;
-  box-shadow: 0 20px 60px rgba(17,17,16,.14);
-}
-.impact-img-b {
-  position: absolute; bottom: 0; right: 0; width: 52%;
-  border-radius: var(--radius-xl); overflow: hidden;
-  box-shadow: 0 20px 60px rgba(17,17,16,.14);
-}
-.impact-img-a img { width:100%; height:300px; object-fit:cover; }
-.impact-img-b img { width:100%; height:280px; object-fit:cover; }
-
-/* ════════════════════════════
-   TOP PROPERTIES  (DARK)
-════════════════════════════ */
-#top-props {
-  background: var(--dark-2); padding: 130px 0;
-}
-.section-head {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 60px;
-}
-.section-head h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 3.8vw, 54px); font-weight: 500;
-  line-height: 1.1; color: var(--dark-text);
-}
-.section-head p { font-size: 13.5px; color: var(--dark-soft); max-width: 260px; text-align:right; line-height: 1.75; }
-
-.props-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
-.prop-card {
-  border-radius: var(--radius-xl); overflow: hidden;
-  background: var(--dark-3); border: 1px solid var(--dark-border);
-  cursor: pointer;
-  transition: transform .5s var(--ease-out), box-shadow .5s;
-}
-.prop-card:hover { transform: translateY(-10px); box-shadow: 0 32px 72px rgba(0,0,0,.45); }
-.pc-img { position:relative; overflow:hidden; aspect-ratio: 3/4; }
-.pc-img img { width:100%; height:100%; object-fit:cover; transition: transform .7s var(--ease-out); }
-.prop-card:hover .pc-img img { transform: scale(1.07); }
-.pc-badge {
-  position:absolute; top:14px; left:14px;
-  background: rgba(15,15,14,.75); backdrop-filter:blur(8px);
-  border: 1px solid var(--dark-border); border-radius:50px;
-  padding: 4px 12px; font-size: 10.5px; color: var(--dark-soft); letter-spacing:.06em;
-}
-.pc-body { padding: 22px; }
-.pc-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 30px; font-weight: 600; color: var(--gold);
-  line-height: 1; margin-bottom: 6px;
-}
-.pc-price span { font-family:'DM Sans',sans-serif; font-size:13px; color:var(--dark-soft); font-weight:300; }
-.pc-name { font-size: 17px; color: var(--dark-text); font-weight: 500; margin-bottom: 6px; }
-.pc-loc { font-size: 12px; color: var(--dark-soft); display:flex; align-items:center; gap:5px; margin-bottom:20px; }
-.pc-loc svg { width:11px; height:11px; color:var(--gold); }
-.pc-link {
-  font-size: 11.5px; letter-spacing:.1em; text-transform:uppercase;
-  color: var(--gold); display:inline-flex; align-items:center; gap:8px;
-  font-weight: 500; transition: gap .3s var(--ease-out);
-}
-.prop-card:hover .pc-link { gap: 14px; }
-.pc-link svg { width:13px; height:13px; }
-
-/* ════════════════════════════
-   SERVICES  (LIGHT)
-════════════════════════════ */
-#services { background: var(--cream); padding: 130px 0; }
-.srv-h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(34px, 3.8vw, 54px); font-weight: 500;
-  color: var(--text); line-height: 1.1; max-width: 500px;
-  margin-bottom: 60px;
-}
-.srv-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-.srv-tabs { display:flex; flex-direction:column; }
-.srv-tab {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 26px 0; border-bottom: 1px solid var(--cream-mid);
-  cursor: pointer; position:relative; overflow:hidden;
-  transition: padding-left .35s var(--ease-out);
-}
-.srv-tab::before {
-  content:''; position:absolute; left:0; top:0; width:3px; height:100%;
-  background:var(--gold); transform:scaleY(0); transform-origin:bottom;
-  transition:transform .35s var(--ease-out);
-}
-.srv-tab.active::before, .srv-tab:hover::before { transform:scaleY(1); }
-.srv-tab.active, .srv-tab:hover { padding-left: 16px; }
-.srv-tab-l { display:flex; align-items:center; gap:18px; }
-.srv-num { font-size:10.5px; letter-spacing:.1em; color:var(--text-muted); }
-.srv-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px; font-weight: 500; color: var(--text-soft);
-  transition: color .3s;
-}
-.srv-tab.active .srv-title, .srv-tab:hover .srv-title { color: var(--text); }
-.srv-arrow {
-  width: 36px; height: 36px; border-radius:50%;
-  border: 1px solid var(--cream-mid); display:flex; align-items:center; justify-content:center;
-  flex-shrink:0; transition: all .3s;
-}
-.srv-arrow svg { width:13px; height:13px; color:var(--text-muted); transition:all .3s; }
-.srv-tab.active .srv-arrow { background: var(--text); border-color: var(--text); }
-.srv-tab.active .srv-arrow svg { color: #fff; transform:rotate(45deg); }
-
-/* Service image panel */
-.srv-panel { position:sticky; top:100px; }
-.srv-img-box {
-  border-radius: var(--radius-xl); overflow:hidden; aspect-ratio:1;
-  position:relative; background:var(--cream-deep);
-}
-.srv-slide { position:absolute; inset:0; opacity:0; transition:opacity .6s var(--ease-out); }
-.srv-slide img { width:100%; height:100%; object-fit:cover; }
-.srv-slide.on { opacity:1; }
-
-/* ════════════════════════════
-   LISTINGS  (DARK)
-════════════════════════════ */
-#listings { background: var(--dark); padding: 130px 0; }
-.list-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
-.list-card {
-  display:flex; background:var(--dark-2);
-  border-radius: var(--radius-xl); overflow:hidden;
-  border: 1px solid var(--dark-border); cursor:pointer;
-  transition: transform .45s var(--ease-out), box-shadow .45s;
-}
-.list-card:hover { transform:translateY(-6px); box-shadow:0 28px 60px rgba(0,0,0,.42); }
-.lc-img { width:190px; flex-shrink:0; overflow:hidden; }
-.lc-img img { width:100%; height:100%; object-fit:cover; transition:transform .6s var(--ease-out); }
-.list-card:hover .lc-img img { transform:scale(1.07); }
-.lc-body { padding:24px; display:flex; flex-direction:column; justify-content:space-between; flex:1; }
-.lc-badge {
-  display:inline-block; padding:3px 11px; border-radius:50px;
-  font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600;
-  margin-bottom:13px; width:fit-content;
-}
-.b-rent { background:var(--gold-pale); color:var(--gold); }
-.b-buy  { background:rgba(255,255,255,.05); color:var(--dark-soft); }
-.lc-name {
+.pill-avs{display:flex}
+.pill-avs img{width:24px;height:24px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);margin-left:-7px}
+.pill-avs img:first-child{margin-left:0}
+.hero-h1{
   font-family:'Cormorant Garamond',serif;
-  font-size:22px; color:var(--dark-text); margin-bottom:4px;
+  font-size:clamp(60px,7vw,96px);font-weight:500;line-height:1.02;
+  color:var(--text);margin-bottom:22px;letter-spacing:-.01em;
 }
-.lc-price {
-  font-family:'Cormorant Garamond',serif;
-  font-size:26px; color:var(--gold); margin-bottom:16px; font-weight:600;
-}
-.lc-meta { display:flex; gap:14px; }
-.lc-meta span { font-size:11.5px; color:var(--dark-soft); display:flex; align-items:center; gap:4px; }
-.lc-meta svg { width:11px; height:11px; }
+.hero-h1 i{font-style:italic;color:var(--gold)}
+.hero-p{font-size:15px;line-height:1.8;color:var(--muted);max-width:400px;margin-bottom:36px;font-weight:300}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
 
-/* ════════════════════════════
-   HIGHLIGHT VIDEO  (DARK FULL)
-════════════════════════════ */
-#highlight { background: var(--dark); padding: 80px 0 130px; }
-.hl-frame {
-  border-radius: 28px; overflow:hidden; position:relative; height: 600px;
-  border: 1px solid var(--dark-border);
+/* Right */
+.hero-right{position:relative}
+.hero-img{
+  border-radius:22px;overflow:hidden;aspect-ratio:4/5;
+  box-shadow:0 40px 100px rgba(0,0,0,.6);position:relative;
 }
-.hl-frame video { width:100%; height:100%; object-fit:cover; opacity:.5; }
-.hl-overlay {
-  position:absolute; inset:0;
-  background: linear-gradient(160deg, rgba(15,15,14,.1) 30%, rgba(15,15,14,.75) 100%);
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding: 64px;
+.hero-img img{width:100%;height:100%;object-fit:cover;transition:transform 8s linear}
+.hero-img:hover img{transform:scale(1.04)}
+/* Floating card */
+.hero-fcard{
+  position:absolute;bottom:28px;left:-32px;
+  background:rgba(20,20,18,.92);backdrop-filter:blur(16px);
+  border:1px solid var(--border);border-radius:var(--r);
+  padding:18px 22px;min-width:180px;
+  animation:fcFloat 5s ease-in-out infinite;
+  box-shadow:0 16px 48px rgba(0,0,0,.4);
 }
-.hl-overlay .label-tag { margin-bottom:28px; }
-.hl-line-wrap { overflow:hidden; }
-.hl-line {
+.hero-fcard .fc-lbl{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.hero-fcard .fc-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--text);line-height:1}
+.hero-fcard .fc-val span{color:var(--gold)}
+.hero-fcard .fc-sub{font-size:11px;color:var(--muted);margin-top:4px}
+@keyframes fcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* Scroll cue */
+.scroll-cue{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
+}
+.sc-line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:scPulse 2s ease-in-out infinite}
+.sc-txt{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+@keyframes scPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.08)}}
+
+/* ════════════════
+   MARQUEE  (dark strip)
+════════════════ */
+.marquee-strip{
+  background:var(--bg2);overflow:hidden;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:18px 0;
+}
+.mq-track{display:flex;width:max-content;animation:mqRun 30s linear infinite}
+.mq-track:hover{animation-play-state:paused}
+.mq-item{
+  display:flex;align-items:center;gap:14px;padding:0 32px;
+  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;font-weight:400;
+}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.mq-item strong{color:var(--gold);font-weight:500}
+@keyframes mqRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ════════════════
+   IMPACT  (dark)
+════════════════ */
+#impact{padding:120px 0;background:var(--bg)}
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.impact-lbl{margin-bottom:22px}
+.impact-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,56px);font-weight:500;
+  color:var(--text);line-height:1.08;margin-bottom:20px;
+}
+.impact-p{font-size:14.5px;line-height:1.85;color:var(--muted);font-weight:300;max-width:460px}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);margin-top:52px;padding-top:36px;gap:0}
+.stat{padding-right:24px}
+.stat:not(:last-child){border-right:1px solid var(--border);margin-right:24px}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--text);line-height:1;margin-bottom:6px}
+.stat-n em{font-style:normal;color:var(--gold);font-size:28px}
+.stat-lbl{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* Images collage */
+.impact-imgs{position:relative;height:520px}
+.imp-a{position:absolute;top:0;left:0;width:58%;border-radius:var(--r);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.imp-b{position:absolute;bottom:0;right:0;width:52%;border-radius:var(--r);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.imp-a img,.imp-b img{width:100%;height:280px;object-fit:cover}
+
+/* Pattern overlay (used in original) */
+.pattern-row{padding:48px 0;overflow:hidden;background:var(--bg2);border-top:1px solid var(--border)}
+.ptt-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(20px,2.5vw,30px);font-weight:400;font-style:italic;
+  color:var(--muted);text-align:center;max-width:700px;margin:0 auto;line-height:1.6;
+}
+
+/* ════════════════
+   TOP PROPERTIES  (dark)
+════════════════ */
+#props{padding:120px 0;background:var(--bg2)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px}
+.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,50px);font-weight:500;color:var(--text);line-height:1.1}
+.sec-head p{font-size:13.5px;color:var(--muted);max-width:260px;text-align:right;line-height:1.7}
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pc{
+  background:var(--bg3);border-radius:20px;overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  transition:transform .5s var(--ease),box-shadow .5s;
+}
+.pc:hover{transform:translateY(-10px);box-shadow:0 32px 72px rgba(0,0,0,.5)}
+.pc-img{position:relative;overflow:hidden;aspect-ratio:3/4}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-bdg{
+  position:absolute;top:14px;left:14px;
+  background:rgba(14,14,12,.8);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:50px;
+  padding:4px 12px;font-size:10px;letter-spacing:.06em;color:var(--muted);
+}
+.pc-body{padding:20px 22px 24px}
+.pc-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:5px}
+.pc-price span{font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);font-weight:300}
+.pc-name{font-size:16px;color:var(--text);font-weight:500;margin-bottom:5px;font-family:'Cormorant Garamond',serif}
+.pc-loc{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px;margin-bottom:18px}
+.pc-loc svg{width:11px;height:11px;color:var(--gold);flex-shrink:0}
+.pc-link{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:500;transition:gap .3s var(--ease)}
+.pc:hover .pc-link{gap:14px}
+.pc-link svg{width:12px;height:12px}
+
+/* ════════════════
+   SERVICES  (dark)
+════════════════ */
+#services{padding:120px 0;background:var(--bg)}
+.srv-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,50px);font-weight:500;color:var(--text);max-width:480px;line-height:1.1;margin-bottom:52px}
+.srv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.srv-tabs{display:flex;flex-direction:column}
+.srv-tab{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:26px 0;border-bottom:1px solid var(--border);cursor:pointer;
+  position:relative;transition:padding-left .3s var(--ease);
+}
+.srv-tab::before{content:'';position:absolute;left:0;top:0;width:2px;height:0;background:var(--gold);transition:height .35s var(--ease)}
+.srv-tab.on::before,.srv-tab:hover::before{height:100%}
+.srv-tab.on,.srv-tab:hover{padding-left:14px}
+.srv-tab-l{display:flex;align-items:center;gap:16px}
+.srv-num{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.srv-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--muted);transition:color .3s}
+.srv-tab.on .srv-title,.srv-tab:hover .srv-title{color:var(--text)}
+.srv-ico{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.srv-ico svg{width:13px;height:13px;color:var(--muted);transition:all .3s}
+.srv-tab.on .srv-ico{background:var(--gold);border-color:var(--gold)}
+.srv-tab.on .srv-ico svg{color:#0E0E0C;transform:rotate(45deg)}
+.srv-panel{position:sticky;top:100px}
+.srv-box{border-radius:20px;overflow:hidden;aspect-ratio:1;position:relative;background:var(--bg3)}
+.srv-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease)}
+.srv-slide img{width:100%;height:100%;object-fit:cover}
+.srv-slide.on{opacity:1}
+
+/* ════════════════
+   LISTINGS  (dark)
+════════════════ */
+#listings{padding:120px 0;background:var(--bg2)}
+.list-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.lc{
+  display:flex;background:var(--bg3);border-radius:18px;overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  transition:transform .45s var(--ease),box-shadow .45s;
+}
+.lc:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.lc-img{width:186px;flex-shrink:0;overflow:hidden}
+.lc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.lc:hover .lc-img img{transform:scale(1.07)}
+.lc-body{padding:22px;display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.lc-bdg{display:inline-block;padding:3px 11px;border-radius:50px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px;width:fit-content}
+.b-rent{background:var(--goldbg);color:var(--gold)}
+.b-buy{background:rgba(255,255,255,.05);color:var(--muted)}
+.lc-name{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--text);margin-bottom:4px}
+.lc-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);margin-bottom:14px}
+.lc-meta{display:flex;gap:14px}
+.lc-meta span{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.lc-meta svg{width:11px;height:11px}
+
+/* ════════════════
+   VIDEO HIGHLIGHT  (dark)
+════════════════ */
+#highlight{padding:80px 0 120px;background:var(--bg)}
+.hl-box{
+  border-radius:24px;overflow:hidden;position:relative;
+  height:580px;border:1px solid var(--border);
+}
+.hl-box video{width:100%;height:100%;object-fit:cover;opacity:.45}
+.hl-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(150deg,rgba(14,14,12,.15) 0%,rgba(14,14,12,.75) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:60px;
+}
+.hl-ov .tag{margin-bottom:24px}
+.hl-lines{}
+.hl-lw{overflow:hidden}
+.hl-line{
   display:block;
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(44px, 5.5vw, 76px); font-weight:500;
-  color: var(--dark-text); line-height:1.06;
-  transform:translateY(105%); transition:transform .95s var(--ease-out);
+  font-size:clamp(42px,5.5vw,72px);font-weight:500;
+  color:var(--text);line-height:1.08;
+  transform:translateY(110%);transition:transform .9s var(--ease);
 }
-.hl-line em { font-style:italic; color:var(--gold); }
-.hl-line.in { transform:translateY(0); }
-.hl-line:nth-child(2){ transition-delay:.14s; }
-.hl-line:nth-child(3){ transition-delay:.28s; }
+.hl-line i{font-style:italic;color:var(--gold)}
+.hl-line.in{transform:translateY(0)}
+.hl-line:nth-child(2){transition-delay:.13s}
+.hl-line:nth-child(3){transition-delay:.26s}
 
-/* ════════════════════════════
-   REVIEWS  (LIGHT)
-════════════════════════════ */
-#reviews { background: var(--cream); padding: 130px 0; overflow:hidden; }
-.rev-head { margin-bottom:60px; }
-.rev-head h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(32px,3.8vw,52px); font-weight:500;
-  color:var(--text); max-width:460px; line-height:1.1;
+/* ════════════════
+   REVIEWS  (dark)
+════════════════ */
+#reviews{padding:120px 0;background:var(--bg2);overflow:hidden}
+.rev-hd{margin-bottom:52px}
+.rev-hd h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.5vw,48px);font-weight:500;color:var(--text);max-width:440px;line-height:1.1}
+.rev-wrap{position:relative}
+.rev-wrap::before,.rev-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.rev-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
+.rev-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
+.rev-row{display:flex;gap:16px;width:max-content;animation:rvScroll 40s linear infinite;margin-bottom:16px}
+.rev-row:last-child{animation:rvScroll2 46s linear infinite}
+.rev-row:hover{animation-play-state:paused}
+@keyframes rvScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes rvScroll2{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.rv{
+  width:300px;flex-shrink:0;padding:24px;
+  background:var(--bg3);border-radius:16px;border:1px solid var(--border);
+  transition:border-color .3s;
 }
-.rev-tracks { display:flex; flex-direction:column; gap:18px; }
-.rev-track {
-  display:flex; gap:18px; width:max-content;
-  animation: revScroll 38s linear infinite;
-}
-.rev-track-2 { animation: revScroll2 44s linear infinite; }
-.rev-track:hover, .rev-track-2:hover { animation-play-state:paused; }
-.rev-wrap { overflow:hidden; position:relative; }
-.rev-wrap::before, .rev-wrap::after {
-  content:''; position:absolute; top:0; bottom:0; width:100px; z-index:2; pointer-events:none;
-}
-.rev-wrap::before { left:0; background:linear-gradient(90deg,var(--cream),transparent); }
-.rev-wrap::after  { right:0; background:linear-gradient(-90deg,var(--cream),transparent); }
-@keyframes revScroll  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@keyframes revScroll2 { from{transform:translateX(-50%)} to{transform:translateX(0)} }
-.rev-card {
-  width:320px; flex-shrink:0; padding:26px 26px 22px;
-  background: #fff; border-radius:var(--radius-lg);
-  border:1px solid var(--cream-mid);
-  box-shadow: 0 4px 24px rgba(17,17,16,.06);
-  transition:box-shadow .3s, border-color .3s;
-}
-.rev-card:hover { box-shadow:0 8px 40px rgba(17,17,16,.1); border-color:var(--cream-deep); }
-.rev-q { font-size:28px; color:var(--gold); margin-bottom:12px; line-height:1; font-family:'Cormorant Garamond',serif; }
-.rev-text { font-size:13.5px; line-height:1.78; color:var(--text-soft); font-weight:300; margin-bottom:22px; }
-.rev-author { display:flex; align-items:center; gap:11px; }
-.rev-av { width:40px; height:40px; border-radius:50%; object-fit:cover; border:2px solid var(--cream-mid); flex-shrink:0; }
-.rev-name { font-size:13.5px; font-weight:500; color:var(--text); }
-.rev-role { font-size:11px; color:var(--text-muted); margin-top:1px; }
+.rv:hover{border-color:rgba(200,160,85,.3)}
+.rv-q{font-size:28px;color:var(--gold);line-height:1;margin-bottom:12px;font-family:'Cormorant Garamond',serif}
+.rv-txt{font-size:13.5px;line-height:1.77;color:var(--muted);font-weight:300;margin-bottom:20px}
+.rv-au{display:flex;align-items:center;gap:10px}
+.rv-av{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0}
+.rv-name{font-size:13px;font-weight:500;color:var(--text)}
+.rv-role{font-size:10.5px;color:var(--muted);margin-top:1px}
 
-/* ════════════════════════════
-   FAQ  (LIGHT / DARK SPLIT)
-════════════════════════════ */
-#faq { background: var(--cream-deep); padding:130px 0; }
-.faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
-.faq-left .label-tag { margin-bottom:24px; }
-.faq-left h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,3.8vw,54px); font-weight:500;
-  color:var(--text); line-height:1.08; margin-bottom:20px;
+/* ════════════════
+   FAQ  (dark)
+════════════════ */
+#faq{padding:120px 0;background:var(--bg)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.faq-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-weight:500;color:var(--text);line-height:1.1;margin-bottom:16px}
+.faq-l p{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
+.faq-list{display:flex;flex-direction:column}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;cursor:pointer;gap:16px;
+  font-size:14px;font-weight:500;color:var(--soft);
+  transition:color .25s;user-select:none;
 }
-.faq-left p { font-size:14.5px; color:var(--text-soft); line-height:1.8; font-weight:300; }
-.faq-list { display:flex; flex-direction:column; }
-.faq-item { border-bottom:1px solid var(--cream-mid); }
-.faq-q {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:20px 0; cursor:pointer; gap:20px;
-  font-size:14.5px; font-weight:500; color:var(--text);
-  transition:color .25s; user-select:none;
-}
-.faq-q:hover { color:var(--gold); }
-.faq-icon {
-  width:30px; height:30px; border-radius:50%; flex-shrink:0;
-  border:1px solid var(--cream-mid); display:flex; align-items:center; justify-content:center;
+.faq-q:hover{color:var(--text)}
+.faq-ico{
+  width:28px;height:28px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
   transition:all .3s;
 }
-.faq-icon svg { width:11px; height:11px; color:var(--text-muted); transition:transform .35s var(--ease-out), color .3s; }
-.faq-item.open .faq-icon { background:var(--text); border-color:var(--text); }
-.faq-item.open .faq-icon svg { color:#fff; transform:rotate(45deg); }
-.faq-a {
-  max-height:0; overflow:hidden;
-  font-size:13.5px; color:var(--text-soft); line-height:1.82; font-weight:300;
-  transition:max-height .45s var(--ease-out), padding .3s;
+.faq-ico svg{width:11px;height:11px;color:var(--muted);transition:transform .35s var(--ease),color .3s}
+.faq-item.op .faq-ico{background:var(--gold);border-color:var(--gold)}
+.faq-item.op .faq-ico svg{color:#0E0E0C;transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  font-size:13.5px;color:var(--muted);line-height:1.82;font-weight:300;
+  transition:max-height .4s var(--ease),padding .3s;
 }
-.faq-item.open .faq-a { max-height:200px; padding-bottom:20px; }
+.faq-item.op .faq-a{max-height:180px;padding-bottom:18px}
 
-/* ════════════════════════════
-   CTA BANNER  (DARK)
-════════════════════════════ */
-#cta { background: var(--dark); padding: 80px 0 130px; }
-.cta-box {
-  position:relative; border-radius:28px; overflow:hidden;
-  background:var(--dark-3); border:1px solid var(--dark-border);
-  display:grid; grid-template-columns:1fr 1fr;
-  align-items:center; padding:80px;
+/* ════════════════
+   CTA BANNER  (dark)
+════════════════ */
+#cta{padding:80px 0 120px;background:var(--bg2)}
+.cta-box{
+  position:relative;border-radius:24px;overflow:hidden;
+  background:var(--bg3);border:1px solid var(--border);
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px;
 }
-.cta-box::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse 65% 80% at 85% 50%, rgba(200,160,85,.1) 0%, transparent 65%);
-  pointer-events:none;
+.cta-box::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(200,160,85,.08),transparent 65%);
 }
-.cta-box::after {
-  content:''; position:absolute; inset:0;
-  background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-                    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:48px 48px; pointer-events:none;
-}
-.cta-l { position:relative; z-index:1; }
-.cta-l .label-tag { margin-bottom:20px; }
-.cta-l h2 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(34px,3.5vw,52px); font-weight:500;
-  color:var(--dark-text); line-height:1.1; margin-bottom:16px;
-}
-.cta-l p { font-size:14.5px; color:var(--dark-soft); line-height:1.8; font-weight:300; max-width:360px; margin-bottom:36px; }
-.cta-r { position:relative; z-index:1; display:flex; justify-content:flex-end; align-items:center; }
-.cta-imgs { position:relative; width:320px; height:260px; }
-.cta-imgs img {
-  position:absolute; border-radius:var(--radius-lg);
-  object-fit:cover; box-shadow:0 20px 48px rgba(0,0,0,.4);
-}
-.cta-imgs img:nth-child(1) { width:210px; height:210px; top:0; right:0; }
-.cta-imgs img:nth-child(2) { width:160px; height:160px; bottom:0; left:0; }
+.cta-l{position:relative;z-index:1}
+.cta-l .tag{margin-bottom:18px}
+.cta-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.2vw,48px);font-weight:500;color:var(--text);line-height:1.1;margin-bottom:14px}
+.cta-l p{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;max-width:360px;margin-bottom:32px}
+.cta-r{position:relative;z-index:1;display:flex;justify-content:flex-end;align-items:center}
+.cta-imgs{position:relative;width:300px;height:240px}
+.cta-imgs img{position:absolute;border-radius:var(--r);object-fit:cover;box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.cta-imgs img:first-child{width:200px;height:190px;top:0;right:0}
+.cta-imgs img:last-child{width:150px;height:150px;bottom:0;left:0}
 
-/* ════════════════════════════
-   FOOTER  (DARK)
-════════════════════════════ */
-#footer { background:var(--dark-2); border-top:1px solid var(--dark-border); padding:76px 0 32px; }
-.footer-top { display:grid; grid-template-columns:2fr 1fr 1.2fr; gap:64px; margin-bottom:64px; }
-.ft-brand .nav-logo { font-size:26px; display:block; color:var(--dark-text); margin-bottom:16px; }
-.ft-brand p { font-size:13.5px; color:var(--dark-soft); line-height:1.85; max-width:280px; font-weight:300; margin-bottom:24px; }
-.ft-socials { display:flex; gap:9px; }
-.ft-soc {
-  width:36px; height:36px; border-radius:50%;
-  border:1px solid var(--dark-border); display:flex; align-items:center; justify-content:center;
-  transition:all .3s;
-}
-.ft-soc:hover { background:var(--gold); border-color:var(--gold); }
-.ft-soc:hover svg { color:var(--dark); }
-.ft-soc svg { width:14px; height:14px; color:var(--dark-soft); transition:color .3s; }
-.ft-col h5 {
-  font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--dark-text); margin-bottom:20px; font-weight:600;
-}
-.ft-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
-.ft-links a { font-size:13.5px; color:var(--dark-soft); transition:color .25s; }
-.ft-links a:hover { color:var(--gold); }
-.ft-contact-row { display:flex; align-items:center; gap:11px; margin-bottom:13px; }
-.ft-c-icon {
-  width:32px; height:32px; border-radius:var(--radius-sm);
-  background:var(--gold-pale); display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
-.ft-c-icon svg { width:13px; height:13px; color:var(--gold); }
-.ft-contact-row span { font-size:13.5px; color:var(--dark-soft); }
-.footer-bottom {
-  display:flex; justify-content:space-between; align-items:center;
-  border-top:1px solid var(--dark-border); padding-top:28px;
-  font-size:11.5px; color:var(--dark-soft);
-}
-.footer-bottom a { color:var(--dark-soft); transition:color .25s; }
-.footer-bottom a:hover { color:var(--gold); }
+/* ════════════════
+   FOOTER  (dark)
+════════════════ */
+#footer{background:var(--bg3);border-top:1px solid var(--border);padding:72px 0 32px}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1.2fr;gap:60px;margin-bottom:60px}
+.ft-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);display:block;margin-bottom:14px}
+.ft-logo span{color:var(--gold)}
+.ft-desc{font-size:13.5px;color:var(--muted);line-height:1.85;max-width:280px;font-weight:300;margin-bottom:22px}
+.ft-socs{display:flex;gap:8px}
+.ft-soc{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.ft-soc:hover{background:var(--gold);border-color:var(--gold)}
+.ft-soc:hover svg{color:#0E0E0C}
+.ft-soc svg{width:13px;height:13px;color:var(--muted);transition:color .3s}
+.ft-col h5{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:18px}
+.ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-links a{font-size:13.5px;color:var(--muted);transition:color .25s}
+.ft-links a:hover{color:var(--gold)}
+.ft-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.ft-icon{width:30px;height:30px;border-radius:8px;background:var(--goldbg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ft-icon svg{width:13px;height:13px;color:var(--gold)}
+.ft-row span{font-size:13px;color:var(--muted)}
+.ft-btm{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:26px;font-size:11.5px;color:var(--muted)}
+.ft-btm a{color:var(--muted);transition:color .25s}
+.ft-btm a:hover{color:var(--gold)}
 
-/* ════════════════════════════
+/* ════════════════
+   REVEAL ANIMATIONS
+════════════════ */
+.r{opacity:1;transform:none;transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.r.hidden{opacity:0;transform:translateY(40px)}
+.r.from-left.hidden{transform:translateX(-44px)}
+.r.from-right.hidden{transform:translateX(44px)}
+.r.from-scale.hidden{transform:scale(.93);opacity:0}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.25s}.d4{transition-delay:.34s}
+
+/* ════════════════
    RESPONSIVE
-════════════════════════════ */
-@media(max-width:1080px){
-  .hero-inner { grid-template-columns:1fr; gap:48px; }
-  .hero-right { display:none; }
-  .impact-grid { grid-template-columns:1fr; gap:64px; }
-  .impact-imgs { height:320px; }
-  .srv-grid { grid-template-columns:1fr; }
-  .srv-panel { display:none; }
-  .faq-grid { grid-template-columns:1fr; gap:56px; }
-  .cta-box { grid-template-columns:1fr; padding:52px 48px; }
-  .cta-r { display:none; }
-  .footer-top { grid-template-columns:1fr 1fr; }
-  .props-grid { grid-template-columns:1fr 1fr; }
+════════════════ */
+@media(max-width:1060px){
+  .hero-in{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .impact-grid{grid-template-columns:1fr;gap:60px}
+  .impact-imgs{height:280px}
+  .srv-grid{grid-template-columns:1fr}
+  .srv-panel{display:none}
+  .faq-grid{grid-template-columns:1fr;gap:52px}
+  .cta-box{grid-template-columns:1fr;padding:48px}
+  .cta-r{display:none}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .props-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
-  .nav-links,.nav-right > .btn { display:none; }
-  .nav-burger { display:flex; }
-  .props-grid { grid-template-columns:1fr; }
-  .list-grid { grid-template-columns:1fr; }
-  .list-card { flex-direction:column; }
-  .lc-img { width:100%; height:220px; }
-  .section-head { flex-direction:column; align-items:flex-start; gap:16px; }
-  .section-head p { text-align:left; }
-  .stats-row { grid-template-columns:1fr; }
-  .stat-cell:not(:last-child) { border-right:none; border-bottom:1px solid var(--cream-mid); padding:0 0 28px; margin:0 0 28px; }
-  .impact-imgs { height:260px; }
-  .hl-frame { height:420px; }
-  .hl-overlay { padding:36px 28px; }
-  .cta-box { padding:36px 28px; }
-  .footer-top { grid-template-columns:1fr; gap:40px; }
-  .footer-bottom { flex-direction:column; gap:12px; text-align:center; }
-  .hero-fcard, .hero-map-chip { display:none; }
+  .nav-links,.nav-right>.btn{display:none}
+  .nav-burger{display:flex}
+  .props-grid{grid-template-columns:1fr}
+  .list-grid{grid-template-columns:1fr}
+  .lc{flex-direction:column}
+  .lc-img{width:100%;height:200px}
+  .sec-head{flex-direction:column;align-items:flex-start;gap:14px}
+  .sec-head p{text-align:left}
+  .stats{grid-template-columns:1fr;gap:0}
+  .stat:not(:last-child){border-right:none;border-bottom:1px solid var(--border);padding:0 0 24px;margin:0 0 24px}
+  .impact-imgs{height:240px}
+  .hl-box{height:400px}
+  .hl-ov{padding:32px 24px}
+  .cta-box{padding:36px 24px}
+  .ft-top{grid-template-columns:1fr;gap:36px}
+  .ft-btm{flex-direction:column;gap:10px;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-wordmark">Homy<span>.</span></div>
-  <div class="loader-bar-bg"><div class="loader-bar-fg" id="lbar"></div></div>
-  <span class="loader-pct" id="lpct">0%</span>
-</div>
-
 <!-- MOBILE MENU -->
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-close" id="mobClose" aria-label="Close">✕</button>
-  <a href="#hero"      onclick="closeMob()">Home</a>
-  <a href="#top-props" onclick="closeMob()">Properties</a>
-  <a href="#services"  onclick="closeMob()">Services</a>
-  <a href="#faq"       onclick="closeMob()">About</a>
-  <a href="#footer"    onclick="closeMob()">Contact</a>
+<div class="mob-overlay" id="mob">
+  <button class="mob-x" id="mobX">✕</button>
+  <a href="#hero"     onclick="closeMob()">Home</a>
+  <a href="#props"    onclick="closeMob()">Properties</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#faq"      onclick="closeMob()">About</a>
+  <a href="#footer"   onclick="closeMob()">Contact</a>
 </div>
 
-<!-- ═══════════ NAV ═══════════ -->
+<!-- ══ NAV ══ -->
 <nav id="nav">
-  <div class="container">
-    <div class="nav-wrap">
-      <a href="#hero" class="nav-logo">Homy<sup>.</sup></a>
+  <div class="wrap">
+    <div class="nav-in">
+      <a href="#hero" class="logo">Homy<span>.</span></a>
       <ul class="nav-links">
-        <li><a href="#top-props">Properties</a></li>
+        <li><a href="#props">Properties</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#reviews">About</a></li>
+        <li><a href="#faq">About</a></li>
         <li><a href="#footer">Contact us</a></li>
       </ul>
-      <div class="nav-right">
-        <a href="#footer" class="btn btn-dark" style="padding:11px 22px;font-size:12px;">Contact us</a>
-        <button class="nav-burger" id="navBurger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+      <div style="display:flex;align-items:center;gap:12px">
+        <a href="#footer" class="btn btn-light" style="padding:10px 20px;font-size:11.5px">Contact us</a>
+        <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- ═══════════ HERO ═══════════ -->
+<!-- ══ HERO ══ -->
 <section id="hero">
-  <div class="hero-noise"></div>
-  <div class="hero-grid"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <!-- Left -->
+  <div class="hero-mapbg"><img src="https://framerusercontent.com/images/NXdUSIBNIJTu11OIau01snTtI.png" alt=""/></div>
+  <div class="hero-grid-bg"></div>
+  <div class="wrap">
+    <div class="hero-in">
       <div>
-        <div class="hero-pill" data-r="up">
-          <div class="hero-pill-avs">
+        <div class="hero-pill r hidden">
+          <div class="pill-avs">
             <img src="https://framerusercontent.com/images/GxM7bKLSVnAGAmdHwGVLuMTXU.png" alt=""/>
             <img src="https://framerusercontent.com/images/xr937T4MDyNfNI6hQKE0vaUL0Rk.png" alt=""/>
             <img src="https://framerusercontent.com/images/9OKbutbMYdTLxQ8UP6D7nFyc7NM.png" alt=""/>
           </div>
-          <strong>3,500+</strong>&nbsp;Pro Users
+          3,500+ Pro Users
         </div>
-        <h1 class="hero-h1" data-r="up" data-d="1">
-          Find Your<br/><em>Dream</em><br/>Home
-        </h1>
-        <p class="hero-p" data-r="up" data-d="2">
-          Explore thoughtfully designed homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.
-        </p>
-        <div class="hero-btns" data-r="up" data-d="3">
-          <a href="#top-props" class="btn btn-dark">
-            Explore Homes
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#footer" class="btn btn-outline-dark">Book a Visit</a>
+        <h1 class="hero-h1 r hidden d1">Find Your<br/><i>Dream</i><br/>Home</h1>
+        <p class="hero-p r hidden d2">Explore thoughtfully designed homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.</p>
+        <div class="hero-btns r hidden d3">
+          <a href="#props" class="btn btn-light">Explore Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#footer" class="btn btn-ghost">Book a Visit</a>
         </div>
       </div>
-      <!-- Right -->
       <div class="hero-right">
-        <div class="hero-map-chip" data-r="right" data-d="1">
-          <img src="https://framerusercontent.com/images/NXdUSIBNIJTu11OIau01snTtI.png" alt="Europe map"/>
-          <span>Homes Worldwide</span>
+        <div class="hero-img r from-right hidden">
+          <img src="https://framerusercontent.com/images/JmEO3k1QnS2hTbLE5miZu6iHho.png" alt="Modern luxury home at dusk"/>
         </div>
-        <div class="hero-img-frame" data-r="right">
-          <img src="https://framerusercontent.com/images/JmEO3k1QnS2hTbLE5miZu6iHho.png" alt="Modern luxury home"/>
-        </div>
-        <div class="hero-fcard" data-r="up" data-d="4">
-          <div class="fc-label">Total Properties</div>
+        <div class="hero-fcard r hidden d4">
+          <div class="fc-lbl">Total Properties</div>
           <div class="fc-val">1,240<span>+</span></div>
           <div class="fc-sub">Premium locations worldwide</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="scroll-cue">
-    <div class="scroll-cue-line"></div>
-    <span class="scroll-cue-text">Scroll</span>
-  </div>
+  <div class="scroll-cue"><div class="sc-line"></div><span class="sc-txt">Scroll</span></div>
 </section>
 
-<!-- ═══════════ MARQUEE ═══════════ -->
+<!-- ══ MARQUEE ══ -->
 <div class="marquee-strip">
-  <div class="marquee-inner">
-    <div class="marquee-item"><div class="marquee-dot"></div>Find Your Perfect Home</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Premium Locations <strong>Worldwide</strong></div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Expert Guidance</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>3,500+ <strong>Happy Clients</strong></div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Modern Living Redefined</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Transparent Pricing</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Smart Property Discovery</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Find Your Perfect Home</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Premium Locations <strong>Worldwide</strong></div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Expert Guidance</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>3,500+ <strong>Happy Clients</strong></div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Modern Living Redefined</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Transparent Pricing</div>
-    <div class="marquee-item"><div class="marquee-dot"></div>Smart Property Discovery</div>
+  <div class="mq-track">
+    <div class="mq-item"><div class="mq-dot"></div>Find Your Perfect Home</div>
+    <div class="mq-item"><div class="mq-dot"></div>Premium Locations <strong>Worldwide</strong></div>
+    <div class="mq-item"><div class="mq-dot"></div>Expert Guidance</div>
+    <div class="mq-item"><div class="mq-dot"></div>3,500+ <strong>Happy Clients</strong></div>
+    <div class="mq-item"><div class="mq-dot"></div>Modern Living Redefined</div>
+    <div class="mq-item"><div class="mq-dot"></div>Transparent Pricing</div>
+    <div class="mq-item"><div class="mq-dot"></div>Smart Property Discovery</div>
+    <div class="mq-item"><div class="mq-dot"></div>Find Your Perfect Home</div>
+    <div class="mq-item"><div class="mq-dot"></div>Premium Locations <strong>Worldwide</strong></div>
+    <div class="mq-item"><div class="mq-dot"></div>Expert Guidance</div>
+    <div class="mq-item"><div class="mq-dot"></div>3,500+ <strong>Happy Clients</strong></div>
+    <div class="mq-item"><div class="mq-dot"></div>Modern Living Redefined</div>
+    <div class="mq-item"><div class="mq-dot"></div>Transparent Pricing</div>
+    <div class="mq-item"><div class="mq-dot"></div>Smart Property Discovery</div>
   </div>
 </div>
 
-<!-- ═══════════ IMPACT ═══════════ -->
+<!-- ══ IMPACT ══ -->
 <section id="impact">
-  <div class="container">
+  <div class="wrap">
     <div class="impact-grid">
-      <div class="impact-text">
-        <div class="label-tag" data-r="up">Our Impact</div>
-        <h2 data-r="up" data-d="1">Real insights behind every property decision</h2>
-        <p data-r="up" data-d="2">Built to make modern home discovery simple, transparent, and more confident for every user. Focused on discovery, built for real choices — we design platforms that help buyers move forward with confidence.</p>
-        <div class="stats-row" data-r="up" data-d="3">
-          <div class="stat-cell">
-            <div class="stat-n"><span class="ctr" data-t="4.2" data-dp="1">0</span><em>M+</em></div>
+      <div>
+        <div class="tag impact-lbl r hidden">Our Impact</div>
+        <h2 class="impact-h2 r hidden d1">Real insights behind every property decision</h2>
+        <p class="impact-p r hidden d2">Focused on discovery, built for real choices. We design platforms that help buyers explore homes, understand value, and move forward with confidence.</p>
+        <div class="stats r hidden d3">
+          <div class="stat">
+            <div class="stat-n"><span class="ctr" data-t="4.2" data-d="1">0</span><em>M+</em></div>
             <div class="stat-lbl">Total Value</div>
           </div>
-          <div class="stat-cell">
-            <div class="stat-n"><span class="ctr" data-t="1240" data-dp="0">0</span><em>+</em></div>
+          <div class="stat">
+            <div class="stat-n"><span class="ctr" data-t="1240" data-d="0">0</span><em>+</em></div>
             <div class="stat-lbl">Active Homes</div>
           </div>
-          <div class="stat-cell">
-            <div class="stat-n"><span class="ctr" data-t="98" data-dp="0">0</span><em>%</em></div>
+          <div class="stat">
+            <div class="stat-n"><span class="ctr" data-t="98" data-d="0">0</span><em>%</em></div>
             <div class="stat-lbl">Happy Clients</div>
           </div>
         </div>
       </div>
       <div class="impact-imgs">
-        <div class="impact-img-a" data-r="left">
-          <img src="https://framerusercontent.com/images/7kuxPVTjMLe1PbETJGXV0BIBB6s.png" alt="Modern home"/>
-        </div>
-        <div class="impact-img-b" data-r="right" data-d="2">
-          <img src="https://framerusercontent.com/images/RakXiRCu0eigdFvdHDqHa9us9PQ.png" alt="Glass house"/>
-        </div>
+        <div class="imp-a r from-left hidden"><img src="https://framerusercontent.com/images/7kuxPVTjMLe1PbETJGXV0BIBB6s.png" alt="Modern home"/></div>
+        <div class="imp-b r from-right hidden d2"><img src="https://framerusercontent.com/images/RakXiRCu0eigdFvdHDqHa9us9PQ.png" alt="Glass house"/></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ TOP PROPERTIES ═══════════ -->
-<section id="top-props">
-  <div class="container">
-    <div class="section-head" data-r="up">
+<!-- ══ PATTERN ══ -->
+<div class="pattern-row">
+  <p class="ptt-text">Focused on discovery, built for real choices. We design platforms that help buyers explore homes, understand value, and move forward with confidence.</p>
+</div>
+
+<!-- ══ TOP PROPERTIES ══ -->
+<section id="props">
+  <div class="wrap">
+    <div class="sec-head r hidden">
       <div>
-        <div class="label-tag light" style="margin-bottom:18px;">Top Properties</div>
+        <div class="tag" style="margin-bottom:16px">Top Properties</div>
         <h2>Explore our selected homes<br/>for modern living</h2>
       </div>
-      <p>Carefully chosen properties that combine design, comfort, and location.</p>
+      <p>Carefully chosen properties that combine design, comfort, and location to match real lifestyle needs.</p>
     </div>
     <div class="props-grid">
-      <div class="prop-card" data-r="up" data-d="1">
+      <div class="pc r hidden d1">
         <div class="pc-img">
           <img src="https://framerusercontent.com/images/4B05oCYBsBA8ZhBFWOzFLgleWM.png" alt="Sky High Condo"/>
-          <div class="pc-badge">For Rent</div>
+          <div class="pc-bdg">For Rent</div>
         </div>
         <div class="pc-body">
           <div class="pc-price">$7,800 <span>/ month</span></div>
           <div class="pc-name">Sky High Condo</div>
-          <div class="pc-loc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Fifth Avenue, Midtown East
-          </div>
+          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Fifth Avenue, Midtown East</div>
           <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
-      <div class="prop-card" data-r="up" data-d="2">
+      <div class="pc r hidden d2">
         <div class="pc-img">
           <img src="https://framerusercontent.com/images/SCmPl4wPCIenDO4rrG5EsNrpsJg.png" alt="Downtown Loft"/>
-          <div class="pc-badge">For Rent</div>
+          <div class="pc-bdg">For Rent</div>
         </div>
         <div class="pc-body">
           <div class="pc-price">$3,200 <span>/ month</span></div>
           <div class="pc-name">Downtown Loft</div>
-          <div class="pc-loc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            West Loop Street, Fulton Market
-          </div>
+          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>West Loop Street, Fulton Market</div>
           <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
-      <div class="prop-card" data-r="up" data-d="3">
+      <div class="pc r hidden d3">
         <div class="pc-img">
           <img src="https://framerusercontent.com/images/2LXhTbxMglkXHEUCXW8SBkvPGQ.png" alt="Emerald Bay Villa"/>
-          <div class="pc-badge">For Buy</div>
+          <div class="pc-bdg">For Buy</div>
         </div>
         <div class="pc-body">
           <div class="pc-price">$22,000 <span>/ month</span></div>
           <div class="pc-name">Emerald Bay Villa</div>
-          <div class="pc-loc">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            Biscayne Bay Drive, Edgewater
-          </div>
+          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Biscayne Bay Drive, Edgewater</div>
           <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
@@ -990,105 +663,85 @@ body.cursor-hover #cur-ring { width: 52px; height: 52px; border-color: rgba(200,
   </div>
 </section>
 
-<!-- ═══════════ SERVICES ═══════════ -->
+<!-- ══ SERVICES ══ -->
 <section id="services">
-  <div class="container">
-    <div class="label-tag" data-r="up" style="margin-bottom:20px;">Our Services</div>
-    <h2 class="srv-h2" data-r="up" data-d="1">Everything you need<br/>for your home</h2>
+  <div class="wrap">
+    <div class="tag r hidden" style="margin-bottom:18px">Our Services</div>
+    <h2 class="srv-h2 r hidden d1">Everything you need<br/>for your home</h2>
     <div class="srv-grid">
       <div class="srv-tabs">
-        <div class="srv-tab active" data-r="up" data-d="1" data-si="0">
+        <div class="srv-tab on r hidden d1" data-i="0">
           <div class="srv-tab-l"><span class="srv-num">.01</span><span class="srv-title">Buy a Home</span></div>
-          <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
-        <div class="srv-tab" data-r="up" data-d="2" data-si="1">
+        <div class="srv-tab r hidden d2" data-i="1">
           <div class="srv-tab-l"><span class="srv-num">.02</span><span class="srv-title">Rent a Home</span></div>
-          <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
-        <div class="srv-tab" data-r="up" data-d="3" data-si="2">
+        <div class="srv-tab r hidden d3" data-i="2">
           <div class="srv-tab-l"><span class="srv-num">.03</span><span class="srv-title">Explore Listings</span></div>
-          <div class="srv-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
         </div>
       </div>
       <div class="srv-panel">
-        <div class="srv-img-box" data-r="right">
-          <div class="srv-slide on" data-si="0"><img src="https://framerusercontent.com/images/Pt48YpvwQR3aV3F0PcwV1ZfGs.png" alt="Buy"/></div>
-          <div class="srv-slide" data-si="1"><img src="https://framerusercontent.com/images/fTvLhDbO86UBiJORkMBXabiLfM.png" alt="Rent"/></div>
-          <div class="srv-slide" data-si="2"><img src="https://framerusercontent.com/images/Cn8DCdolOsfC5Loc5Z2UAI1fY.png" alt="Explore"/></div>
+        <div class="srv-box r from-right hidden">
+          <div class="srv-slide on" data-i="0"><img src="https://framerusercontent.com/images/Pt48YpvwQR3aV3F0PcwV1ZfGs.png" alt="Buy"/></div>
+          <div class="srv-slide" data-i="1"><img src="https://framerusercontent.com/images/fTvLhDbO86UBiJORkMBXabiLfM.png" alt="Rent"/></div>
+          <div class="srv-slide" data-i="2"><img src="https://framerusercontent.com/images/Cn8DCdolOsfC5Loc5Z2UAI1fY.png" alt="Listings"/></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ LISTINGS ═══════════ -->
+<!-- ══ LISTINGS ══ -->
 <section id="listings">
-  <div class="container">
-    <div class="section-head" style="margin-bottom:56px;" data-r="up">
+  <div class="wrap">
+    <div class="sec-head r hidden" style="margin-bottom:48px">
       <div>
-        <div class="label-tag light" style="margin-bottom:16px;">Property Listings</div>
+        <div class="tag" style="margin-bottom:14px">Property Listings</div>
         <h2>Discover homes that<br/>fit your lifestyle</h2>
       </div>
-      <a href="#" class="btn btn-outline-light">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#" class="btn btn-ghost">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
     <div class="list-grid">
-      <a class="list-card" data-r="up" data-d="1">
+      <a class="lc r hidden d1">
         <div class="lc-img"><img src="https://framerusercontent.com/images/C2ebO7rPg1aRgfSeP2BBMcx45A.png" alt="Hillside View House"/></div>
         <div class="lc-body">
-          <div>
-            <span class="lc-badge b-rent">For Rent</span>
-            <div class="lc-name">Hillside View House</div>
-            <div class="lc-price">$9,200</div>
-          </div>
+          <div><span class="lc-bdg b-rent">For Rent</span><div class="lc-name">Hillside View House</div><div class="lc-price">$9,200</div></div>
           <div class="lc-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>4+ Beds</span>
-            <span>3 Baths</span>
-            <span>2,400 sq ft</span>
+            <span>3 Baths</span><span>2,400 sq ft</span>
           </div>
         </div>
       </a>
-      <a class="list-card" data-r="up" data-d="2">
+      <a class="lc r hidden d2">
         <div class="lc-img"><img src="https://framerusercontent.com/images/JmEO3k1QnS2hTbLE5miZu6iHho.png" alt="Modern Hillside Home"/></div>
         <div class="lc-body">
-          <div>
-            <span class="lc-badge b-buy">For Buy</span>
-            <div class="lc-name">Modern Hillside Home</div>
-            <div class="lc-price">$58,000</div>
-          </div>
+          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Modern Hillside Home</div><div class="lc-price">$58,000</div></div>
           <div class="lc-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>3 Beds</span>
-            <span>2 Baths</span>
-            <span>3,100 sq ft</span>
+            <span>2 Baths</span><span>3,100 sq ft</span>
           </div>
         </div>
       </a>
-      <a class="list-card" data-r="up" data-d="3">
+      <a class="lc r hidden d3">
         <div class="lc-img"><img src="https://framerusercontent.com/images/RakXiRCu0eigdFvdHDqHa9us9PQ.png" alt="Dallas Townhouse"/></div>
         <div class="lc-body">
-          <div>
-            <span class="lc-badge b-buy">For Buy</span>
-            <div class="lc-name">Dallas Townhouse</div>
-            <div class="lc-price">$9,800</div>
-          </div>
+          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Dallas Townhouse</div><div class="lc-price">$9,800</div></div>
           <div class="lc-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>3 Beds</span>
-            <span>2 Baths</span>
-            <span>980 sq ft</span>
+            <span>2 Baths</span><span>980 sq ft</span>
           </div>
         </div>
       </a>
-      <a class="list-card" data-r="up" data-d="4">
+      <a class="lc r hidden d4">
         <div class="lc-img"><img src="https://framerusercontent.com/images/7kuxPVTjMLe1PbETJGXV0BIBB6s.png" alt="Urban Modern House"/></div>
         <div class="lc-body">
-          <div>
-            <span class="lc-badge b-buy">For Buy</span>
-            <div class="lc-name">Urban Modern House</div>
-            <div class="lc-price">$34,000</div>
-          </div>
+          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Urban Modern House</div><div class="lc-price">$34,000</div></div>
           <div class="lc-meta">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>4+ Beds</span>
-            <span>3 Baths</span>
-            <span>4,200 sq ft</span>
+            <span>3 Baths</span><span>4,200 sq ft</span>
           </div>
         </div>
       </a>
@@ -1096,160 +749,172 @@ body.cursor-hover #cur-ring { width: 52px; height: 52px; border-color: rgba(200,
   </div>
 </section>
 
-<!-- ═══════════ HIGHLIGHT VIDEO ═══════════ -->
+<!-- ══ HIGHLIGHT VIDEO ══ -->
 <section id="highlight">
-  <div class="container">
-    <div class="hl-frame" data-r="scale">
+  <div class="wrap">
+    <div class="hl-box r from-scale hidden">
       <video autoplay muted loop playsinline>
         <source src="https://framerusercontent.com/assets/zEQ2uqOoz4IUC6n5QUkeURSWg.mp4" type="video/mp4"/>
       </video>
-      <div class="hl-overlay">
-        <div class="label-tag light" style="margin-bottom:24px;">Highlighted Home</div>
-        <div class="hl-line-wrap"><span class="hl-line">Explore Homes.</span></div>
-        <div class="hl-line-wrap"><span class="hl-line"><em>Live Better.</em></span></div>
-        <div class="hl-line-wrap"><span class="hl-line">Modern Spaces.</span></div>
+      <div class="hl-ov">
+        <div class="tag" style="margin-bottom:22px">Highlighted Home</div>
+        <div class="hl-lines">
+          <div class="hl-lw"><span class="hl-line">Explore Homes.</span></div>
+          <div class="hl-lw"><span class="hl-line"><i>Live Better.</i></span></div>
+          <div class="hl-lw"><span class="hl-line">Modern Spaces.</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ REVIEWS ═══════════ -->
+<!-- ══ REVIEWS ══ -->
 <section id="reviews">
-  <div class="container">
-    <div class="rev-head" data-r="up">
-      <div class="label-tag" style="margin-bottom:18px;">Client Reviews</div>
+  <div class="wrap">
+    <div class="rev-hd r hidden">
+      <div class="tag" style="margin-bottom:16px">Client Reviews</div>
       <h2>What people say about<br/>their home search</h2>
     </div>
   </div>
   <div class="rev-wrap">
-    <div class="rev-tracks">
-      <div class="rev-track">
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rev-name">Olivia Bennett</div><div class="rev-role">Interior Designer</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rev-name">Liam Carter</div><div class="rev-role">Real Estate Investor</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rev-name">Sophia Turner</div><div class="rev-role">Marketing Manager</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rev-name">Noah Mitchell</div><div class="rev-role">Software Engineer</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rev-name">Emma Collins</div><div class="rev-role">Business Analyst</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rev-name">Lucas Anderson</div><div class="rev-role">Architect</div></div></div></div>
-        <!-- duplicate for loop -->
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rev-name">Olivia Bennett</div><div class="rev-role">Interior Designer</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rev-name">Liam Carter</div><div class="rev-role">Real Estate Investor</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rev-name">Sophia Turner</div><div class="rev-role">Marketing Manager</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rev-name">Noah Mitchell</div><div class="rev-role">Software Engineer</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rev-name">Emma Collins</div><div class="rev-role">Business Analyst</div></div></div></div>
-        <div class="rev-card"><div class="rev-q">"</div><p class="rev-text">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rev-author"><img class="rev-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rev-name">Lucas Anderson</div><div class="rev-role">Architect</div></div></div></div>
-      </div>
+    <div class="rev-row">
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rv-name">Lucas Anderson</div><div class="rv-role">Architect</div></div></div></div>
+      <!-- duplicates for loop -->
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rv-name">Lucas Anderson</div><div class="rv-role">Architect</div></div></div></div>
+    </div>
+    <div class="rev-row" style="margin-top:16px">
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The platform made exploring premium properties incredibly easy. I found exactly what I was looking for within days.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/24676iJ3kvc31oG1WX19Yc7fCV0.png" alt=""/><div><div class="rv-name">Ethan Walker</div><div class="rv-role">Property Consultant</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
+      <!-- dup -->
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The platform made exploring premium properties incredibly easy. I found exactly what I was looking for within days.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/24676iJ3kvc31oG1WX19Yc7fCV0.png" alt=""/><div><div class="rv-name">Ethan Walker</div><div class="rv-role">Property Consultant</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
+      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FAQ ═══════════ -->
+<!-- ══ FAQ ══ -->
 <section id="faq">
-  <div class="container">
+  <div class="wrap">
     <div class="faq-grid">
-      <div data-r="up">
-        <div class="label-tag" style="margin-bottom:22px;">FAQ</div>
-        <h2 class="faq-left" style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,3.8vw,54px);font-weight:500;color:var(--text);line-height:1.08;margin-bottom:20px;">Things You<br/>Should Know</h2>
-        <p style="font-size:14.5px;color:var(--text-soft);line-height:1.8;font-weight:300;max-width:340px;">We've answered the most common questions to help you get started with clarity and confidence.</p>
+      <div class="r hidden">
+        <div class="tag" style="margin-bottom:20px">FAQ</div>
+        <h2 class="faq-l">Things You<br/>Should Know</h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;margin-top:16px;max-width:320px">We've answered the most common questions to help you get started with clarity.</p>
       </div>
-      <div class="faq-list" data-r="up" data-d="2">
+      <div class="faq-list r hidden d2">
         <div class="faq-item">
-          <div class="faq-q">How do I start searching for a home?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-q">How do I start searching for a home?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
           <div class="faq-a">You can browse available properties, apply filters, and explore listings based on your needs and location.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Can I filter homes by budget &amp; location?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-q">Can I filter homes by budget &amp; location?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
           <div class="faq-a">Yes, you can easily filter properties by price range, location, and other preferences to find exactly what you're looking for.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Are the property details accurate?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-q">Are the property details accurate?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
           <div class="faq-a">We provide updated and verified details to help you make informed decisions. All listings are reviewed before publishing.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">How do I contact an owner or agent?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-q">How do I contact a owner or agent?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
           <div class="faq-a">Each listing includes contact options so you can directly connect with the owner or agent for more information.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Can I explore rental and buying options?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-q">Can I explore rental and buying options<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
           <div class="faq-a">Yes, you can browse both rental and purchase options in one place using the filter toggles.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Do I need an account to use the platform?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">You can browse freely, but an account helps you save and manage your preferences and listings.</div>
+          <div class="faq-q">Do I need an account to use platform<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-a">You can browse freely, but creating an account helps you save and manage your preferences and listings.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">How do I know if a property is available?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Availability is updated regularly, but we recommend contacting the listing directly for confirmation.</div>
+          <div class="faq-q">How do I know if a property is available?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
+          <div class="faq-a">Availability is updated regularly, but we recommend contacting the listing directly for real-time confirmation.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ CTA ═══════════ -->
+<!-- ══ CTA ══ -->
 <section id="cta">
-  <div class="container">
-    <div class="cta-box" data-r="scale">
+  <div class="wrap">
+    <div class="cta-box r from-scale hidden">
       <div class="cta-l">
-        <div class="label-tag light" style="margin-bottom:20px;">Find your next home</div>
+        <div class="tag" style="margin-bottom:18px">Find your next home</div>
         <h2>Discover homes designed<br/>for your lifestyle</h2>
         <p>Explore properties, compare options, and move forward with confidence — everything you need in one place.</p>
-        <a href="#footer" class="btn btn-gold">
-          Get in Touch
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <a href="#footer" class="btn btn-gold">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
       <div class="cta-r">
         <div class="cta-imgs">
-          <img src="https://framerusercontent.com/images/nuTtmfD0U8YTAyaN05gJQw2XU.png" alt="Modern glass house"/>
-          <img src="https://framerusercontent.com/images/lQ2c1tUqYlj0bLtzWgULCmgN7Q.png" alt="Sky"/>
+          <img src="https://framerusercontent.com/images/nuTtmfD0U8YTAyaN05gJQw2XU.png" alt="Modern glass house at night"/>
+          <img src="https://framerusercontent.com/images/lQ2c1tUqYlj0bLtzWgULCmgN7Q.png" alt="Cloudy sky"/>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ FOOTER ═══════════ -->
+<!-- ══ FOOTER ══ -->
 <footer id="footer">
-  <div class="container">
-    <div class="footer-top">
-      <div class="ft-brand">
-        <a href="#hero" class="nav-logo" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;">Homy<span style="color:var(--gold)">.</span></a>
-        <p>Find, explore, and choose your next home with a simple and modern experience built for every buyer and renter.</p>
-        <div class="ft-socials">
-          <a href="https://instagram.com" target="_blank" class="ft-soc" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="https://facebook.com" target="_blank" class="ft-soc" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="https://x.com" target="_blank" class="ft-soc" aria-label="X"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20L20 4"/></svg></a>
-          <a href="https://youtube.com" target="_blank" class="ft-soc" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <a href="#hero" class="ft-logo">Homy<span>.</span></a>
+        <p class="ft-desc">Find, explore, and choose your next home with a simple and modern experience built for every buyer and renter.</p>
+        <div class="ft-socs">
+          <a href="https://instagram.com" target="_blank" class="ft-soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="ft-soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://x.com" target="_blank" class="ft-soc" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" class="ft-soc" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
         </div>
       </div>
-      <div class="ft-col">
-        <h5>Explore</h5>
-        <ul class="ft-links">
-          <li><a href="#top-props">Properties</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#faq">About Us</a></li>
-          <li><a href="#footer">Contact Us</a></li>
-          <li><a href="#listings">All Listings</a></li>
-        </ul>
+      <div>
+        <div class="ft-col"><h5>Explore</h5>
+          <ul class="ft-links">
+            <li><a href="#props">Properties</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#faq">About</a></li>
+            <li><a href="#footer">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="ft-col">
-        <h5>Contact</h5>
-        <div class="ft-contact-row">
-          <div class="ft-c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <span>homy@yopmail.com</span>
-        </div>
-        <div class="ft-contact-row">
-          <div class="ft-c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.29 6.29l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-          <span>+123 456 000</span>
-        </div>
-        <div class="ft-contact-row">
-          <div class="ft-c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-          <span>New York, USA</span>
+      <div>
+        <div class="ft-col"><h5>Contact</h5>
+          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>homy@yopmail.com</span></div>
+          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.29 6.29l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><span>+123 456 000</span></div>
+          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><a href="https://maps.google.com" target="_blank"><span>New York, USA</span></a></div>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>Copyright © 2026 Homy. All rights reserved.</span>
+    <div class="ft-btm">
+      <span>Copyright@2026</span>
       <a href="#">Privacy Policy</a>
     </div>
   </div>
@@ -1257,125 +922,70 @@ body.cursor-hover #cur-ring { width: 52px; height: 52px; border-color: rgba(200,
 
 <script>
 (function(){
-  /* ── CURSOR ── */
-  const dot = document.getElementById('cur-dot');
-  const ring = document.getElementById('cur-ring');
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-  ;(function tick(){
-    dot.style.left=mx+'px'; dot.style.top=my+'px';
-    rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(tick);
-  })();
-  document.querySelectorAll('a,button,.prop-card,.list-card,.srv-tab,.faq-q').forEach(el=>{
-    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
-  });
+  /* NAV scroll */
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
 
-  /* ── DARK SECTION DETECTION for cursor & nav ── */
-  const darkSections = ['top-props','listings','highlight','cta','footer'];
-  const navEl = document.getElementById('nav');
-  function checkSection(){
-    const sy = window.scrollY + window.innerHeight/2;
-    let inDark = false;
-    darkSections.forEach(id=>{
-      const s = document.getElementById(id);
-      if(!s)return;
-      if(sy>=s.offsetTop && sy<=s.offsetTop+s.offsetHeight) inDark=true;
-    });
-    document.body.classList.toggle('on-dark',inDark);
-    navEl.classList.toggle('dark-nav', window.scrollY>60 && inDark);
-  }
-  window.addEventListener('scroll',checkSection,{passive:true});
-  checkSection();
+  /* Mobile menu */
+  document.getElementById('burger').onclick=()=>document.getElementById('mob').classList.add('open');
+  document.getElementById('mobX').onclick=closeMob;
+  window.closeMob=()=>document.getElementById('mob').classList.remove('open');
 
-  /* ── LOADER ── */
-  const lbar = document.getElementById('lbar');
-  const lpct = document.getElementById('lpct');
-  const loader = document.getElementById('loader');
-  document.body.style.overflow='hidden';
-  let p=0;
-  const ti = setInterval(()=>{
-    p = Math.min(p + Math.random()*18, 98);
-    lbar.style.width=p+'%';
-    lpct.textContent=Math.floor(p)+'%';
-  },120);
-  window.addEventListener('load',()=>{
-    clearInterval(ti);
-    lbar.style.width='100%'; lpct.textContent='100%';
-    setTimeout(()=>{ loader.classList.add('out'); document.body.style.overflow=''; },400);
-  });
-  setTimeout(()=>{ loader.classList.add('out'); document.body.style.overflow=''; },2800);
-
-  /* ── NAV SCROLL CLASS ── */
-  window.addEventListener('scroll',()=>{
-    navEl.classList.toggle('scrolled',window.scrollY>60);
-  },{passive:true});
-
-  /* ── MOBILE MENU ── */
-  document.getElementById('navBurger').addEventListener('click',()=>document.getElementById('mobMenu').classList.add('open'));
-  document.getElementById('mobClose').addEventListener('click',closeMob);
-  window.closeMob=()=>document.getElementById('mobMenu').classList.remove('open');
-
-  /* ── SCROLL REVEAL ── */
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
-  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
-  document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
-
-  /* ── COUNTERS ── */
-  function runCounter(el){
-    const target=parseFloat(el.dataset.t);
-    const dp=parseInt(el.dataset.dp||'0');
-    const dur=2000; const start=performance.now();
-    ;(function step(now){
-      const prog=Math.min((now-start)/dur,1);
-      const ease=1-Math.pow(1-prog,3);
-      const v=target*ease;
-      el.textContent=dp>0?v.toFixed(dp):Math.floor(v).toLocaleString();
-      if(prog<1) requestAnimationFrame(step);
-    })(performance.now());
-  }
-  const cobs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){runCounter(e.target);cobs.unobserve(e.target);}});
-  },{threshold:.5});
-  document.querySelectorAll('.ctr').forEach(el=>cobs.observe(el));
-
-  /* ── VIDEO HIGHLIGHT TEXT ── */
-  const hlLines=document.querySelectorAll('.hl-line');
-  const hlObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ hlLines.forEach(l=>l.classList.add('in')); hlObs.disconnect(); } });
-  },{threshold:.35});
-  const hlSec=document.getElementById('highlight');
-  if(hlSec) hlObs.observe(hlSec);
-
-  /* ── SERVICES TABS ── */
-  document.querySelectorAll('.srv-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      const i=tab.dataset.si;
-      document.querySelectorAll('.srv-tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.srv-slide').forEach(s=>s.classList.remove('on'));
-      tab.classList.add('active');
-      document.querySelector(`.srv-slide[data-si="${i}"]`)?.classList.add('on');
-    });
-  });
-
-  /* ── FAQ ── */
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      const item=q.parentElement;
-      const wasOpen=item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-      if(!wasOpen) item.classList.add('open');
-    });
-  });
-
-  /* ── SMOOTH SCROLL ── */
+  /* Smooth scroll */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
       const t=document.querySelector(a.getAttribute('href'));
-      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+
+  /* REVEAL — elements start visible, JS hides then reveals on scroll */
+  const els=document.querySelectorAll('.r');
+  // Immediately mark all as hidden (JS is running)
+  els.forEach(el=>el.classList.add('hidden'));
+
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.remove('hidden')});
+  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(el=>obs.observe(el));
+
+  /* Counter animation */
+  function runCtr(el){
+    const t=parseFloat(el.dataset.t),dp=parseInt(el.dataset.d||0),dur=2000,s=performance.now();
+    (function step(now){
+      const p=Math.min((now-s)/dur,1),ease=1-Math.pow(1-p,3),v=t*ease;
+      el.textContent=dp>0?v.toFixed(dp):Math.floor(v).toLocaleString();
+      if(p<1)requestAnimationFrame(step);
+    })(s);
+  }
+  const cobs=new IntersectionObserver(e=>{
+    e.forEach(x=>{if(x.isIntersecting){runCtr(x.target);cobs.unobserve(x.target)}});
+  },{threshold:.5});
+  document.querySelectorAll('.ctr').forEach(el=>cobs.observe(el));
+
+  /* Video text reveal */
+  const hlLines=document.querySelectorAll('.hl-line');
+  new IntersectionObserver(e=>{
+    if(e[0].isIntersecting)hlLines.forEach(l=>l.classList.add('in'));
+  },{threshold:.3}).observe(document.getElementById('highlight'));
+
+  /* Services tabs */
+  document.querySelectorAll('.srv-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const i=tab.dataset.i;
+      document.querySelectorAll('.srv-tab').forEach(t=>t.classList.remove('on'));
+      document.querySelectorAll('.srv-slide').forEach(s=>s.classList.remove('on'));
+      tab.classList.add('on');
+      document.querySelector(`.srv-slide[data-i="${i}"]`)?.classList.add('on');
+    });
+  });
+
+  /* FAQ */
+  document.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click',()=>{
+      const item=q.parentElement,was=item.classList.contains('op');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('op'));
+      if(!was)item.classList.add('op');
     });
   });
 })();
