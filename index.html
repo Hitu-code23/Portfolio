@@ -1,994 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Homy - Find Your Perfect Home Easily</title>
-<meta name="description" content="Find, explore, and choose your perfect home with Homy."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#0E0E0C;color:#F0ECE4;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:#0E0E0C}
-::-webkit-scrollbar-thumb{background:#C8A055;border-radius:2px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skeuomorphic Notes App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ── TOKENS ── */
-:root{
-  --bg:       #0E0E0C;
-  --bg2:      #141412;
-  --bg3:      #1A1A17;
-  --bg4:      #202020;
-  --border:   rgba(255,255,255,0.08);
-  --text:     #F0ECE4;
-  --muted:    #888880;
-  --soft:     #B0ADA6;
-  --gold:     #C8A055;
-  --gold2:    #D4AD63;
-  --goldbg:   rgba(200,160,85,0.10);
-  --r:        16px;
-  --ease:     cubic-bezier(.16,1,.3,1);
-}
+        body {
+            background: linear-gradient(135deg, #8B7355 0%, #A0826D 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+        }
 
-/* ── LAYOUT ── */
-.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
-@media(max-width:768px){.wrap{padding:0 20px}}
+        .notebook {
+            width: 500px;
+            height: 600px;
+            background: linear-gradient(to right, #D4AF87 0%, #E8D4B8 50%, #D4AF87 100%);
+            border-radius: 10px;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -2px 5px rgba(0,0,0,0.2);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* ── TYPOGRAPHY ── */
-.serif{font-family:'Cormorant Garamond',serif}
-.tag{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--gold)}
-.tag::before{content:'';width:22px;height:1px;background:var(--gold)}
+        .notebook::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 28px,
+                    #C89968 28px,
+                    #C89968 29px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.05) 2px,
+                    rgba(0,0,0,0.05) 4px
+                );
+            pointer-events: none;
+        }
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:.06em;border:none;cursor:pointer;transition:all .3s var(--ease);white-space:nowrap}
-.btn svg{width:13px;height:13px;transition:transform .3s var(--ease)}
-.btn:hover svg{transform:translateX(4px)}
-.btn:hover{transform:translateY(-2px)}
-.btn-light{background:var(--text);color:#0E0E0C}
-.btn-light:hover{background:#fff;box-shadow:0 12px 36px rgba(240,236,228,.2)}
-.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
-.btn-gold{background:var(--gold);color:#0E0E0C}
-.btn-gold:hover{background:var(--gold2);box-shadow:0 12px 36px rgba(200,160,85,.3)}
+        .content {
+            position: relative;
+            z-index: 1;
+        }
 
-/* ════════════════
-   NAVBAR
-════════════════ */
-#nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:22px 0;
-  transition:padding .4s,background .4s,border-color .4s;
-  border-bottom:1px solid transparent;
-}
-#nav.stuck{
-  padding:14px 0;
-  background:rgba(14,14,12,.9);
-  backdrop-filter:blur(20px);
-  border-bottom-color:var(--border);
-}
-.nav-in{display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);letter-spacing:.03em}
-.logo span{color:var(--gold)}
-.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
-.nav-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:color .25s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
-.nav-links a:hover{color:var(--text)}
-.nav-links a:hover::after{width:100%}
-.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.nav-burger span{display:block;width:20px;height:1.5px;background:var(--text);border-radius:2px;transition:all .3s}
-.mob-overlay{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:.4s}
-.mob-overlay.open{opacity:1;visibility:visible}
-.mob-overlay a{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;color:rgba(240,236,228,.45);transition:color .3s}
-.mob-overlay a:hover{color:var(--text)}
-.mob-x{position:absolute;top:22px;right:32px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;transition:color .3s}
-.mob-x:hover{color:var(--text)}
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #8B7355;
+            padding-bottom: 15px;
+        }
 
-/* ════════════════
-   HERO
-════════════════ */
-#hero{
-  min-height:100vh;
-  background:var(--bg);
-  position:relative;overflow:hidden;
-  display:flex;align-items:center;padding:120px 0 80px;
-}
-/* Scrolling Europe map background */
-.hero-mapbg{
-  position:absolute;inset:0;z-index:0;
-  display:flex;align-items:center;justify-content:flex-end;
-  opacity:.07;overflow:hidden;
-}
-.hero-mapbg img{width:70%;max-width:900px;object-fit:contain;filter:invert(1)}
-/* Subtle grid */
-.hero-grid-bg{
-  position:absolute;inset:0;z-index:0;
-  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 70% 70% at 30% 50%,black,transparent);
-}
-.hero-in{
-  position:relative;z-index:1;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:64px;align-items:center;width:100%;
-}
+        .header h1 {
+            color: #5C4033;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            margin-bottom: 5px;
+        }
 
-/* Left */
-.hero-pill{
-  display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.05);border:1px solid var(--border);
-  border-radius:50px;padding:5px 16px 5px 5px;
-  font-size:12px;color:var(--muted);margin-bottom:26px;
-}
-.pill-avs{display:flex}
-.pill-avs img{width:24px;height:24px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);margin-left:-7px}
-.pill-avs img:first-child{margin-left:0}
-.hero-h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(60px,7vw,96px);font-weight:500;line-height:1.02;
-  color:var(--text);margin-bottom:22px;letter-spacing:-.01em;
-}
-.hero-h1 i{font-style:italic;color:var(--gold)}
-.hero-p{font-size:15px;line-height:1.8;color:var(--muted);max-width:400px;margin-bottom:36px;font-weight:300}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+        .header p {
+            color: #8B7355;
+            font-size: 12px;
+            font-style: italic;
+        }
 
-/* Right */
-.hero-right{position:relative}
-.hero-img{
-  border-radius:22px;overflow:hidden;aspect-ratio:4/5;
-  box-shadow:0 40px 100px rgba(0,0,0,.6);position:relative;
-}
-.hero-img img{width:100%;height:100%;object-fit:cover;transition:transform 8s linear}
-.hero-img:hover img{transform:scale(1.04)}
-/* Floating card */
-.hero-fcard{
-  position:absolute;bottom:28px;left:-32px;
-  background:rgba(20,20,18,.92);backdrop-filter:blur(16px);
-  border:1px solid var(--border);border-radius:var(--r);
-  padding:18px 22px;min-width:180px;
-  animation:fcFloat 5s ease-in-out infinite;
-  box-shadow:0 16px 48px rgba(0,0,0,.4);
-}
-.hero-fcard .fc-lbl{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-.hero-fcard .fc-val{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--text);line-height:1}
-.hero-fcard .fc-val span{color:var(--gold)}
-.hero-fcard .fc-sub{font-size:11px;color:var(--muted);margin-top:4px}
-@keyframes fcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .notes-area {
+            height: 350px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
 
-/* Scroll cue */
-.scroll-cue{
-  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
-}
-.sc-line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);animation:scPulse 2s ease-in-out infinite}
-.sc-txt{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-@keyframes scPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.08)}}
+        .note {
+            background: linear-gradient(135deg, #FFFACD 0%, #FFFFE0 100%);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.2),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            border-left: 4px solid #FFD700;
+            transform: rotate(-0.5deg);
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-/* ════════════════
-   MARQUEE  (dark strip)
-════════════════ */
-.marquee-strip{
-  background:var(--bg2);overflow:hidden;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:18px 0;
-}
-.mq-track{display:flex;width:max-content;animation:mqRun 30s linear infinite}
-.mq-track:hover{animation-play-state:paused}
-.mq-item{
-  display:flex;align-items:center;gap:14px;padding:0 32px;
-  font-size:11px;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--muted);white-space:nowrap;font-weight:400;
-}
-.mq-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
-.mq-item strong{color:var(--gold);font-weight:500}
-@keyframes mqRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .note:hover {
+            transform: rotate(0deg) translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
 
-/* ════════════════
-   IMPACT  (dark)
-════════════════ */
-#impact{padding:120px 0;background:var(--bg)}
-.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.impact-lbl{margin-bottom:22px}
-.impact-h2{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(36px,4vw,56px);font-weight:500;
-  color:var(--text);line-height:1.08;margin-bottom:20px;
-}
-.impact-p{font-size:14.5px;line-height:1.85;color:var(--muted);font-weight:300;max-width:460px}
-/* Stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);margin-top:52px;padding-top:36px;gap:0}
-.stat{padding-right:24px}
-.stat:not(:last-child){border-right:1px solid var(--border);margin-right:24px}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;color:var(--text);line-height:1;margin-bottom:6px}
-.stat-n em{font-style:normal;color:var(--gold);font-size:28px}
-.stat-lbl{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-/* Images collage */
-.impact-imgs{position:relative;height:520px}
-.imp-a{position:absolute;top:0;left:0;width:58%;border-radius:var(--r);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.imp-b{position:absolute;bottom:0;right:0;width:52%;border-radius:var(--r);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.imp-a img,.imp-b img{width:100%;height:280px;object-fit:cover}
+        .note:nth-child(even) {
+            transform: rotate(0.5deg);
+        }
 
-/* Pattern overlay (used in original) */
-.pattern-row{padding:48px 0;overflow:hidden;background:var(--bg2);border-top:1px solid var(--border)}
-.ptt-text{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(20px,2.5vw,30px);font-weight:400;font-style:italic;
-  color:var(--muted);text-align:center;max-width:700px;margin:0 auto;line-height:1.6;
-}
+        .note-text {
+            color: #333;
+            font-size: 13px;
+            line-height: 1.6;
+            font-family: 'Comic Sans MS', cursive;
+        }
 
-/* ════════════════
-   TOP PROPERTIES  (dark)
-════════════════ */
-#props{padding:120px 0;background:var(--bg2)}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px}
-.sec-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,50px);font-weight:500;color:var(--text);line-height:1.1}
-.sec-head p{font-size:13.5px;color:var(--muted);max-width:260px;text-align:right;line-height:1.7}
-.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.pc{
-  background:var(--bg3);border-radius:20px;overflow:hidden;
-  border:1px solid var(--border);cursor:pointer;
-  transition:transform .5s var(--ease),box-shadow .5s;
-}
-.pc:hover{transform:translateY(-10px);box-shadow:0 32px 72px rgba(0,0,0,.5)}
-.pc-img{position:relative;overflow:hidden;aspect-ratio:3/4}
-.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-.pc:hover .pc-img img{transform:scale(1.06)}
-.pc-bdg{
-  position:absolute;top:14px;left:14px;
-  background:rgba(14,14,12,.8);backdrop-filter:blur(8px);
-  border:1px solid var(--border);border-radius:50px;
-  padding:4px 12px;font-size:10px;letter-spacing:.06em;color:var(--muted);
-}
-.pc-body{padding:20px 22px 24px}
-.pc-price{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--gold);line-height:1;margin-bottom:5px}
-.pc-price span{font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);font-weight:300}
-.pc-name{font-size:16px;color:var(--text);font-weight:500;margin-bottom:5px;font-family:'Cormorant Garamond',serif}
-.pc-loc{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:5px;margin-bottom:18px}
-.pc-loc svg{width:11px;height:11px;color:var(--gold);flex-shrink:0}
-.pc-link{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:500;transition:gap .3s var(--ease)}
-.pc:hover .pc-link{gap:14px}
-.pc-link svg{width:12px;height:12px}
+        .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
 
-/* ════════════════
-   SERVICES  (dark)
-════════════════ */
-#services{padding:120px 0;background:var(--bg)}
-.srv-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,50px);font-weight:500;color:var(--text);max-width:480px;line-height:1.1;margin-bottom:52px}
-.srv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.srv-tabs{display:flex;flex-direction:column}
-.srv-tab{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:26px 0;border-bottom:1px solid var(--border);cursor:pointer;
-  position:relative;transition:padding-left .3s var(--ease);
-}
-.srv-tab::before{content:'';position:absolute;left:0;top:0;width:2px;height:0;background:var(--gold);transition:height .35s var(--ease)}
-.srv-tab.on::before,.srv-tab:hover::before{height:100%}
-.srv-tab.on,.srv-tab:hover{padding-left:14px}
-.srv-tab-l{display:flex;align-items:center;gap:16px}
-.srv-num{font-size:10px;letter-spacing:.12em;color:var(--muted)}
-.srv-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--muted);transition:color .3s}
-.srv-tab.on .srv-title,.srv-tab:hover .srv-title{color:var(--text)}
-.srv-ico{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
-.srv-ico svg{width:13px;height:13px;color:var(--muted);transition:all .3s}
-.srv-tab.on .srv-ico{background:var(--gold);border-color:var(--gold)}
-.srv-tab.on .srv-ico svg{color:#0E0E0C;transform:rotate(45deg)}
-.srv-panel{position:sticky;top:100px}
-.srv-box{border-radius:20px;overflow:hidden;aspect-ratio:1;position:relative;background:var(--bg3)}
-.srv-slide{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--ease)}
-.srv-slide img{width:100%;height:100%;object-fit:cover}
-.srv-slide.on{opacity:1}
+        button {
+            background: linear-gradient(180deg, #D2B48C 0%, #A0826D 100%);
+            border: 2px solid #8B7355;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 
+                0 4px 8px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            transition: all 0.2s ease;
+        }
 
-/* ════════════════
-   LISTINGS  (dark)
-════════════════ */
-#listings{padding:120px 0;background:var(--bg2)}
-.list-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.lc{
-  display:flex;background:var(--bg3);border-radius:18px;overflow:hidden;
-  border:1px solid var(--border);cursor:pointer;
-  transition:transform .45s var(--ease),box-shadow .45s;
-}
-.lc:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4)}
-.lc-img{width:186px;flex-shrink:0;overflow:hidden}
-.lc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.lc:hover .lc-img img{transform:scale(1.07)}
-.lc-body{padding:22px;display:flex;flex-direction:column;justify-content:space-between;flex:1}
-.lc-bdg{display:inline-block;padding:3px 11px;border-radius:50px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:12px;width:fit-content}
-.b-rent{background:var(--goldbg);color:var(--gold)}
-.b-buy{background:rgba(255,255,255,.05);color:var(--muted)}
-.lc-name{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--text);margin-bottom:4px}
-.lc-price{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);margin-bottom:14px}
-.lc-meta{display:flex;gap:14px}
-.lc-meta span{font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:4px}
-.lc-meta svg{width:11px;height:11px}
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 12px rgba(0,0,0,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+        }
 
-/* ════════════════
-   VIDEO HIGHLIGHT  (dark)
-════════════════ */
-#highlight{padding:80px 0 120px;background:var(--bg)}
-.hl-box{
-  border-radius:24px;overflow:hidden;position:relative;
-  height:580px;border:1px solid var(--border);
-}
-.hl-box video{width:100%;height:100%;object-fit:cover;opacity:.45}
-.hl-ov{
-  position:absolute;inset:0;
-  background:linear-gradient(150deg,rgba(14,14,12,.15) 0%,rgba(14,14,12,.75) 100%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:60px;
-}
-.hl-ov .tag{margin-bottom:24px}
-.hl-lines{}
-.hl-lw{overflow:hidden}
-.hl-line{
-  display:block;
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(42px,5.5vw,72px);font-weight:500;
-  color:var(--text);line-height:1.08;
-  transform:translateY(110%);transition:transform .9s var(--ease);
-}
-.hl-line i{font-style:italic;color:var(--gold)}
-.hl-line.in{transform:translateY(0)}
-.hl-line:nth-child(2){transition-delay:.13s}
-.hl-line:nth-child(3){transition-delay:.26s}
+        button:active {
+            transform: translateY(0);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
 
-/* ════════════════
-   REVIEWS  (dark)
-════════════════ */
-#reviews{padding:120px 0;background:var(--bg2);overflow:hidden}
-.rev-hd{margin-bottom:52px}
-.rev-hd h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.5vw,48px);font-weight:500;color:var(--text);max-width:440px;line-height:1.1}
-.rev-wrap{position:relative}
-.rev-wrap::before,.rev-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
-.rev-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
-.rev-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
-.rev-row{display:flex;gap:16px;width:max-content;animation:rvScroll 40s linear infinite;margin-bottom:16px}
-.rev-row:last-child{animation:rvScroll2 46s linear infinite}
-.rev-row:hover{animation-play-state:paused}
-@keyframes rvScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes rvScroll2{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.rv{
-  width:300px;flex-shrink:0;padding:24px;
-  background:var(--bg3);border-radius:16px;border:1px solid var(--border);
-  transition:border-color .3s;
-}
-.rv:hover{border-color:rgba(200,160,85,.3)}
-.rv-q{font-size:28px;color:var(--gold);line-height:1;margin-bottom:12px;font-family:'Cormorant Garamond',serif}
-.rv-txt{font-size:13.5px;line-height:1.77;color:var(--muted);font-weight:300;margin-bottom:20px}
-.rv-au{display:flex;align-items:center;gap:10px}
-.rv-av{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--border);flex-shrink:0}
-.rv-name{font-size:13px;font-weight:500;color:var(--text)}
-.rv-role{font-size:10.5px;color:var(--muted);margin-top:1px}
+        .paperclip {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            transform: rotate(-25deg);
+            opacity: 0.7;
+        }
 
-/* ════════════════
-   FAQ  (dark)
-════════════════ */
-#faq{padding:120px 0;background:var(--bg)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.faq-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-weight:500;color:var(--text);line-height:1.1;margin-bottom:16px}
-.faq-l p{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300}
-.faq-list{display:flex;flex-direction:column}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 0;cursor:pointer;gap:16px;
-  font-size:14px;font-weight:500;color:var(--soft);
-  transition:color .25s;user-select:none;
-}
-.faq-q:hover{color:var(--text)}
-.faq-ico{
-  width:28px;height:28px;border-radius:50%;flex-shrink:0;
-  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-  transition:all .3s;
-}
-.faq-ico svg{width:11px;height:11px;color:var(--muted);transition:transform .35s var(--ease),color .3s}
-.faq-item.op .faq-ico{background:var(--gold);border-color:var(--gold)}
-.faq-item.op .faq-ico svg{color:#0E0E0C;transform:rotate(45deg)}
-.faq-a{
-  max-height:0;overflow:hidden;
-  font-size:13.5px;color:var(--muted);line-height:1.82;font-weight:300;
-  transition:max-height .4s var(--ease),padding .3s;
-}
-.faq-item.op .faq-a{max-height:180px;padding-bottom:18px}
+        .pin {
+            position: absolute;
+            top: 15px;
+            left: 40px;
+            font-size: 24px;
+            animation: sway 3s ease-in-out infinite;
+        }
 
-/* ════════════════
-   CTA BANNER  (dark)
-════════════════ */
-#cta{padding:80px 0 120px;background:var(--bg2)}
-.cta-box{
-  position:relative;border-radius:24px;overflow:hidden;
-  background:var(--bg3);border:1px solid var(--border);
-  display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px;
-}
-.cta-box::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 60% 80% at 85% 50%,rgba(200,160,85,.08),transparent 65%);
-}
-.cta-l{position:relative;z-index:1}
-.cta-l .tag{margin-bottom:18px}
-.cta-l h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.2vw,48px);font-weight:500;color:var(--text);line-height:1.1;margin-bottom:14px}
-.cta-l p{font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;max-width:360px;margin-bottom:32px}
-.cta-r{position:relative;z-index:1;display:flex;justify-content:flex-end;align-items:center}
-.cta-imgs{position:relative;width:300px;height:240px}
-.cta-imgs img{position:absolute;border-radius:var(--r);object-fit:cover;box-shadow:0 16px 44px rgba(0,0,0,.4)}
-.cta-imgs img:first-child{width:200px;height:190px;top:0;right:0}
-.cta-imgs img:last-child{width:150px;height:150px;bottom:0;left:0}
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+        }
 
-/* ════════════════
-   FOOTER  (dark)
-════════════════ */
-#footer{background:var(--bg3);border-top:1px solid var(--border);padding:72px 0 32px}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1.2fr;gap:60px;margin-bottom:60px}
-.ft-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);display:block;margin-bottom:14px}
-.ft-logo span{color:var(--gold)}
-.ft-desc{font-size:13.5px;color:var(--muted);line-height:1.85;max-width:280px;font-weight:300;margin-bottom:22px}
-.ft-socs{display:flex;gap:8px}
-.ft-soc{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s}
-.ft-soc:hover{background:var(--gold);border-color:var(--gold)}
-.ft-soc:hover svg{color:#0E0E0C}
-.ft-soc svg{width:13px;height:13px;color:var(--muted);transition:color .3s}
-.ft-col h5{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:18px}
-.ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
-.ft-links a{font-size:13.5px;color:var(--muted);transition:color .25s}
-.ft-links a:hover{color:var(--gold)}
-.ft-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.ft-icon{width:30px;height:30px;border-radius:8px;background:var(--goldbg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ft-icon svg{width:13px;height:13px;color:var(--gold)}
-.ft-row span{font-size:13px;color:var(--muted)}
-.ft-btm{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:26px;font-size:11.5px;color:var(--muted)}
-.ft-btm a{color:var(--muted);transition:color .25s}
-.ft-btm a:hover{color:var(--gold)}
-
-/* ════════════════
-   REVEAL ANIMATIONS
-════════════════ */
-.r{opacity:1;transform:none;transition:opacity .85s var(--ease),transform .85s var(--ease)}
-.r.hidden{opacity:0;transform:translateY(40px)}
-.r.from-left.hidden{transform:translateX(-44px)}
-.r.from-right.hidden{transform:translateX(44px)}
-.r.from-scale.hidden{transform:scale(.93);opacity:0}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.25s}.d4{transition-delay:.34s}
-
-/* ════════════════
-   RESPONSIVE
-════════════════ */
-@media(max-width:1060px){
-  .hero-in{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .impact-grid{grid-template-columns:1fr;gap:60px}
-  .impact-imgs{height:280px}
-  .srv-grid{grid-template-columns:1fr}
-  .srv-panel{display:none}
-  .faq-grid{grid-template-columns:1fr;gap:52px}
-  .cta-box{grid-template-columns:1fr;padding:48px}
-  .cta-r{display:none}
-  .ft-top{grid-template-columns:1fr 1fr}
-  .props-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:768px){
-  .nav-links,.nav-right>.btn{display:none}
-  .nav-burger{display:flex}
-  .props-grid{grid-template-columns:1fr}
-  .list-grid{grid-template-columns:1fr}
-  .lc{flex-direction:column}
-  .lc-img{width:100%;height:200px}
-  .sec-head{flex-direction:column;align-items:flex-start;gap:14px}
-  .sec-head p{text-align:left}
-  .stats{grid-template-columns:1fr;gap:0}
-  .stat:not(:last-child){border-right:none;border-bottom:1px solid var(--border);padding:0 0 24px;margin:0 0 24px}
-  .impact-imgs{height:240px}
-  .hl-box{height:400px}
-  .hl-ov{padding:32px 24px}
-  .cta-box{padding:36px 24px}
-  .ft-top{grid-template-columns:1fr;gap:36px}
-  .ft-btm{flex-direction:column;gap:10px;text-align:center}
-}
-</style>
+    </style>
 </head>
 <body>
+    <div class="notebook">
+        <div class="paperclip">📎</div>
+        <div class="pin">📌</div>
+        
+        <div class="content">
+            <div class="header">
+                <h1>My Notes</h1>
+                <p>✍️ Jot down your thoughts</p>
+            </div>
 
-<!-- MOBILE MENU -->
-<div class="mob-overlay" id="mob">
-  <button class="mob-x" id="mobX">✕</button>
-  <a href="#hero"     onclick="closeMob()">Home</a>
-  <a href="#props"    onclick="closeMob()">Properties</a>
-  <a href="#services" onclick="closeMob()">Services</a>
-  <a href="#faq"      onclick="closeMob()">About</a>
-  <a href="#footer"   onclick="closeMob()">Contact</a>
-</div>
+            <div class="notes-area">
+                <div class="note">
+                    <div class="note-text">Remember to call mom today and ask about the recipe for her famous chocolate cake!</div>
+                </div>
+                <div class="note">
+                    <div class="note-text">Meeting at 3 PM - bring the quarterly report and presentation slides.</div>
+                </div>
+                <div class="note">
+                    <div class="note-text">Buy groceries: milk, bread, eggs, cheese, and don't forget the coffee!</div>
+                </div>
+                <div class="note">
+                    <div class="note-text">Learn skeuomorphic design - it's coming back in style! 🎨</div>
+                </div>
+            </div>
 
-<!-- ══ NAV ══ -->
-<nav id="nav">
-  <div class="wrap">
-    <div class="nav-in">
-      <a href="#hero" class="logo">Homy<span>.</span></a>
-      <ul class="nav-links">
-        <li><a href="#props">Properties</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#faq">About</a></li>
-        <li><a href="#footer">Contact us</a></li>
-      </ul>
-      <div style="display:flex;align-items:center;gap:12px">
-        <a href="#footer" class="btn btn-light" style="padding:10px 20px;font-size:11.5px">Contact us</a>
-        <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
-      </div>
+            <div class="buttons">
+                <button onclick="addNote()">➕ Add Note</button>
+                <button onclick="clearNotes()">🗑️ Clear</button>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
 
-<!-- ══ HERO ══ -->
-<section id="hero">
-  <div class="hero-mapbg"><img src="https://framerusercontent.com/images/NXdUSIBNIJTu11OIau01snTtI.png" alt=""/></div>
-  <div class="hero-grid-bg"></div>
-  <div class="wrap">
-    <div class="hero-in">
-      <div>
-        <div class="hero-pill r hidden">
-          <div class="pill-avs">
-            <img src="https://framerusercontent.com/images/GxM7bKLSVnAGAmdHwGVLuMTXU.png" alt=""/>
-            <img src="https://framerusercontent.com/images/xr937T4MDyNfNI6hQKE0vaUL0Rk.png" alt=""/>
-            <img src="https://framerusercontent.com/images/9OKbutbMYdTLxQ8UP6D7nFyc7NM.png" alt=""/>
-          </div>
-          3,500+ Pro Users
-        </div>
-        <h1 class="hero-h1 r hidden d1">Find Your<br/><i>Dream</i><br/>Home</h1>
-        <p class="hero-p r hidden d2">Explore thoughtfully designed homes in premium locations, crafted to match modern lifestyles with comfort, elegance, and long-term value.</p>
-        <div class="hero-btns r hidden d3">
-          <a href="#props" class="btn btn-light">Explore Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          <a href="#footer" class="btn btn-ghost">Book a Visit</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-img r from-right hidden">
-          <img src="https://framerusercontent.com/images/JmEO3k1QnS2hTbLE5miZu6iHho.png" alt="Modern luxury home at dusk"/>
-        </div>
-        <div class="hero-fcard r hidden d4">
-          <div class="fc-lbl">Total Properties</div>
-          <div class="fc-val">1,240<span>+</span></div>
-          <div class="fc-sub">Premium locations worldwide</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="scroll-cue"><div class="sc-line"></div><span class="sc-txt">Scroll</span></div>
-</section>
+    <script>
+        function addNote() {
+            const notesArea = document.querySelector('.notes-area');
+            const newNote = document.createElement('div');
+            newNote.className = 'note';
+            newNote.innerHTML = '<div class="note-text">✨ New note added! Click to edit...</div>';
+            notesArea.appendChild(newNote);
+        }
 
-<!-- ══ MARQUEE ══ -->
-<div class="marquee-strip">
-  <div class="mq-track">
-    <div class="mq-item"><div class="mq-dot"></div>Find Your Perfect Home</div>
-    <div class="mq-item"><div class="mq-dot"></div>Premium Locations <strong>Worldwide</strong></div>
-    <div class="mq-item"><div class="mq-dot"></div>Expert Guidance</div>
-    <div class="mq-item"><div class="mq-dot"></div>3,500+ <strong>Happy Clients</strong></div>
-    <div class="mq-item"><div class="mq-dot"></div>Modern Living Redefined</div>
-    <div class="mq-item"><div class="mq-dot"></div>Transparent Pricing</div>
-    <div class="mq-item"><div class="mq-dot"></div>Smart Property Discovery</div>
-    <div class="mq-item"><div class="mq-dot"></div>Find Your Perfect Home</div>
-    <div class="mq-item"><div class="mq-dot"></div>Premium Locations <strong>Worldwide</strong></div>
-    <div class="mq-item"><div class="mq-dot"></div>Expert Guidance</div>
-    <div class="mq-item"><div class="mq-dot"></div>3,500+ <strong>Happy Clients</strong></div>
-    <div class="mq-item"><div class="mq-dot"></div>Modern Living Redefined</div>
-    <div class="mq-item"><div class="mq-dot"></div>Transparent Pricing</div>
-    <div class="mq-item"><div class="mq-dot"></div>Smart Property Discovery</div>
-  </div>
-</div>
-
-<!-- ══ IMPACT ══ -->
-<section id="impact">
-  <div class="wrap">
-    <div class="impact-grid">
-      <div>
-        <div class="tag impact-lbl r hidden">Our Impact</div>
-        <h2 class="impact-h2 r hidden d1">Real insights behind every property decision</h2>
-        <p class="impact-p r hidden d2">Focused on discovery, built for real choices. We design platforms that help buyers explore homes, understand value, and move forward with confidence.</p>
-        <div class="stats r hidden d3">
-          <div class="stat">
-            <div class="stat-n"><span class="ctr" data-t="4.2" data-d="1">0</span><em>M+</em></div>
-            <div class="stat-lbl">Total Value</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n"><span class="ctr" data-t="1240" data-d="0">0</span><em>+</em></div>
-            <div class="stat-lbl">Active Homes</div>
-          </div>
-          <div class="stat">
-            <div class="stat-n"><span class="ctr" data-t="98" data-d="0">0</span><em>%</em></div>
-            <div class="stat-lbl">Happy Clients</div>
-          </div>
-        </div>
-      </div>
-      <div class="impact-imgs">
-        <div class="imp-a r from-left hidden"><img src="https://framerusercontent.com/images/7kuxPVTjMLe1PbETJGXV0BIBB6s.png" alt="Modern home"/></div>
-        <div class="imp-b r from-right hidden d2"><img src="https://framerusercontent.com/images/RakXiRCu0eigdFvdHDqHa9us9PQ.png" alt="Glass house"/></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PATTERN ══ -->
-<div class="pattern-row">
-  <p class="ptt-text">Focused on discovery, built for real choices. We design platforms that help buyers explore homes, understand value, and move forward with confidence.</p>
-</div>
-
-<!-- ══ TOP PROPERTIES ══ -->
-<section id="props">
-  <div class="wrap">
-    <div class="sec-head r hidden">
-      <div>
-        <div class="tag" style="margin-bottom:16px">Top Properties</div>
-        <h2>Explore our selected homes<br/>for modern living</h2>
-      </div>
-      <p>Carefully chosen properties that combine design, comfort, and location to match real lifestyle needs.</p>
-    </div>
-    <div class="props-grid">
-      <div class="pc r hidden d1">
-        <div class="pc-img">
-          <img src="https://framerusercontent.com/images/4B05oCYBsBA8ZhBFWOzFLgleWM.png" alt="Sky High Condo"/>
-          <div class="pc-bdg">For Rent</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-price">$7,800 <span>/ month</span></div>
-          <div class="pc-name">Sky High Condo</div>
-          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Fifth Avenue, Midtown East</div>
-          <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-      <div class="pc r hidden d2">
-        <div class="pc-img">
-          <img src="https://framerusercontent.com/images/SCmPl4wPCIenDO4rrG5EsNrpsJg.png" alt="Downtown Loft"/>
-          <div class="pc-bdg">For Rent</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-price">$3,200 <span>/ month</span></div>
-          <div class="pc-name">Downtown Loft</div>
-          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>West Loop Street, Fulton Market</div>
-          <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-      <div class="pc r hidden d3">
-        <div class="pc-img">
-          <img src="https://framerusercontent.com/images/2LXhTbxMglkXHEUCXW8SBkvPGQ.png" alt="Emerald Bay Villa"/>
-          <div class="pc-bdg">For Buy</div>
-        </div>
-        <div class="pc-body">
-          <div class="pc-price">$22,000 <span>/ month</span></div>
-          <div class="pc-name">Emerald Bay Villa</div>
-          <div class="pc-loc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Biscayne Bay Drive, Edgewater</div>
-          <a class="pc-link">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="wrap">
-    <div class="tag r hidden" style="margin-bottom:18px">Our Services</div>
-    <h2 class="srv-h2 r hidden d1">Everything you need<br/>for your home</h2>
-    <div class="srv-grid">
-      <div class="srv-tabs">
-        <div class="srv-tab on r hidden d1" data-i="0">
-          <div class="srv-tab-l"><span class="srv-num">.01</span><span class="srv-title">Buy a Home</span></div>
-          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-        <div class="srv-tab r hidden d2" data-i="1">
-          <div class="srv-tab-l"><span class="srv-num">.02</span><span class="srv-title">Rent a Home</span></div>
-          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-        <div class="srv-tab r hidden d3" data-i="2">
-          <div class="srv-tab-l"><span class="srv-num">.03</span><span class="srv-title">Explore Listings</span></div>
-          <div class="srv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-        </div>
-      </div>
-      <div class="srv-panel">
-        <div class="srv-box r from-right hidden">
-          <div class="srv-slide on" data-i="0"><img src="https://framerusercontent.com/images/Pt48YpvwQR3aV3F0PcwV1ZfGs.png" alt="Buy"/></div>
-          <div class="srv-slide" data-i="1"><img src="https://framerusercontent.com/images/fTvLhDbO86UBiJORkMBXabiLfM.png" alt="Rent"/></div>
-          <div class="srv-slide" data-i="2"><img src="https://framerusercontent.com/images/Cn8DCdolOsfC5Loc5Z2UAI1fY.png" alt="Listings"/></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ LISTINGS ══ -->
-<section id="listings">
-  <div class="wrap">
-    <div class="sec-head r hidden" style="margin-bottom:48px">
-      <div>
-        <div class="tag" style="margin-bottom:14px">Property Listings</div>
-        <h2>Discover homes that<br/>fit your lifestyle</h2>
-      </div>
-      <a href="#" class="btn btn-ghost">Explore All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
-    <div class="list-grid">
-      <a class="lc r hidden d1">
-        <div class="lc-img"><img src="https://framerusercontent.com/images/C2ebO7rPg1aRgfSeP2BBMcx45A.png" alt="Hillside View House"/></div>
-        <div class="lc-body">
-          <div><span class="lc-bdg b-rent">For Rent</span><div class="lc-name">Hillside View House</div><div class="lc-price">$9,200</div></div>
-          <div class="lc-meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>4+ Beds</span>
-            <span>3 Baths</span><span>2,400 sq ft</span>
-          </div>
-        </div>
-      </a>
-      <a class="lc r hidden d2">
-        <div class="lc-img"><img src="https://framerusercontent.com/images/JmEO3k1QnS2hTbLE5miZu6iHho.png" alt="Modern Hillside Home"/></div>
-        <div class="lc-body">
-          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Modern Hillside Home</div><div class="lc-price">$58,000</div></div>
-          <div class="lc-meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>3 Beds</span>
-            <span>2 Baths</span><span>3,100 sq ft</span>
-          </div>
-        </div>
-      </a>
-      <a class="lc r hidden d3">
-        <div class="lc-img"><img src="https://framerusercontent.com/images/RakXiRCu0eigdFvdHDqHa9us9PQ.png" alt="Dallas Townhouse"/></div>
-        <div class="lc-body">
-          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Dallas Townhouse</div><div class="lc-price">$9,800</div></div>
-          <div class="lc-meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>3 Beds</span>
-            <span>2 Baths</span><span>980 sq ft</span>
-          </div>
-        </div>
-      </a>
-      <a class="lc r hidden d4">
-        <div class="lc-img"><img src="https://framerusercontent.com/images/7kuxPVTjMLe1PbETJGXV0BIBB6s.png" alt="Urban Modern House"/></div>
-        <div class="lc-body">
-          <div><span class="lc-bdg b-buy">For Buy</span><div class="lc-name">Urban Modern House</div><div class="lc-price">$34,000</div></div>
-          <div class="lc-meta">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>4+ Beds</span>
-            <span>3 Baths</span><span>4,200 sq ft</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══ HIGHLIGHT VIDEO ══ -->
-<section id="highlight">
-  <div class="wrap">
-    <div class="hl-box r from-scale hidden">
-      <video autoplay muted loop playsinline>
-        <source src="https://framerusercontent.com/assets/zEQ2uqOoz4IUC6n5QUkeURSWg.mp4" type="video/mp4"/>
-      </video>
-      <div class="hl-ov">
-        <div class="tag" style="margin-bottom:22px">Highlighted Home</div>
-        <div class="hl-lines">
-          <div class="hl-lw"><span class="hl-line">Explore Homes.</span></div>
-          <div class="hl-lw"><span class="hl-line"><i>Live Better.</i></span></div>
-          <div class="hl-lw"><span class="hl-line">Modern Spaces.</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ REVIEWS ══ -->
-<section id="reviews">
-  <div class="wrap">
-    <div class="rev-hd r hidden">
-      <div class="tag" style="margin-bottom:16px">Client Reviews</div>
-      <h2>What people say about<br/>their home search</h2>
-    </div>
-  </div>
-  <div class="rev-wrap">
-    <div class="rev-row">
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rv-name">Lucas Anderson</div><div class="rv-role">Architect</div></div></div></div>
-      <!-- duplicates for loop -->
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The experience felt clean and thoughtfully designed. It helped me explore options clearly and choose a home with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/PxK4SiyP328sI5a8iZD9GzF1psw.png" alt=""/><div><div class="rv-name">Lucas Anderson</div><div class="rv-role">Architect</div></div></div></div>
-    </div>
-    <div class="rev-row" style="margin-top:16px">
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The platform made exploring premium properties incredibly easy. I found exactly what I was looking for within days.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/24676iJ3kvc31oG1WX19Yc7fCV0.png" alt=""/><div><div class="rv-name">Ethan Walker</div><div class="rv-role">Property Consultant</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
-      <!-- dup -->
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The platform made exploring premium properties incredibly easy. I found exactly what I was looking for within days.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/24676iJ3kvc31oG1WX19Yc7fCV0.png" alt=""/><div><div class="rv-name">Ethan Walker</div><div class="rv-role">Property Consultant</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">I was able to find a home that matched my needs perfectly. The overall experience was smooth and very easy to follow.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/acIeRY2yV2JQft8tHEVInJNRM.png" alt=""/><div><div class="rv-name">Olivia Bennett</div><div class="rv-role">Interior Designer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">Clean interface and useful details helped me make better decisions. It saved time and made the process much easier.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/7dVYJ55BZQIncK7SDGrshTKZcE0.png" alt=""/><div><div class="rv-name">Liam Carter</div><div class="rv-role">Real Estate Investor</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">From browsing to shortlisting properties, everything felt intuitive. It helped me move forward with confidence.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/OgBtefhmhr3VouU2xaj0nJf60.png" alt=""/><div><div class="rv-name">Sophia Turner</div><div class="rv-role">Marketing Manager</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">The way homes are presented makes it easy to understand value and compare options without feeling overwhelmed.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/HEZdbLUhbczLhoFloUmzapT33QQ.png" alt=""/><div><div class="rv-name">Noah Mitchell</div><div class="rv-role">Software Engineer</div></div></div></div>
-      <div class="rv"><div class="rv-q">"</div><p class="rv-txt">A very well-designed experience that made finding the right home simple. Everything was clear and easy to navigate.</p><div class="rv-au"><img class="rv-av" src="https://framerusercontent.com/images/TPme1TmgGcM5s0V2rbRpTFZhMI.png" alt=""/><div><div class="rv-name">Emma Collins</div><div class="rv-role">Business Analyst</div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FAQ ══ -->
-<section id="faq">
-  <div class="wrap">
-    <div class="faq-grid">
-      <div class="r hidden">
-        <div class="tag" style="margin-bottom:20px">FAQ</div>
-        <h2 class="faq-l">Things You<br/>Should Know</h2>
-        <p style="font-size:14px;color:var(--muted);line-height:1.8;font-weight:300;margin-top:16px;max-width:320px">We've answered the most common questions to help you get started with clarity.</p>
-      </div>
-      <div class="faq-list r hidden d2">
-        <div class="faq-item">
-          <div class="faq-q">How do I start searching for a home?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">You can browse available properties, apply filters, and explore listings based on your needs and location.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can I filter homes by budget &amp; location?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Yes, you can easily filter properties by price range, location, and other preferences to find exactly what you're looking for.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Are the property details accurate?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">We provide updated and verified details to help you make informed decisions. All listings are reviewed before publishing.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How do I contact a owner or agent?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Each listing includes contact options so you can directly connect with the owner or agent for more information.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Can I explore rental and buying options<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Yes, you can browse both rental and purchase options in one place using the filter toggles.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">Do I need an account to use platform<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">You can browse freely, but creating an account helps you save and manage your preferences and listings.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q">How do I know if a property is available?<div class="faq-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div>
-          <div class="faq-a">Availability is updated regularly, but we recommend contacting the listing directly for real-time confirmation.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CTA ══ -->
-<section id="cta">
-  <div class="wrap">
-    <div class="cta-box r from-scale hidden">
-      <div class="cta-l">
-        <div class="tag" style="margin-bottom:18px">Find your next home</div>
-        <h2>Discover homes designed<br/>for your lifestyle</h2>
-        <p>Explore properties, compare options, and move forward with confidence — everything you need in one place.</p>
-        <a href="#footer" class="btn btn-gold">Get in Touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="cta-r">
-        <div class="cta-imgs">
-          <img src="https://framerusercontent.com/images/nuTtmfD0U8YTAyaN05gJQw2XU.png" alt="Modern glass house at night"/>
-          <img src="https://framerusercontent.com/images/lQ2c1tUqYlj0bLtzWgULCmgN7Q.png" alt="Cloudy sky"/>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer id="footer">
-  <div class="wrap">
-    <div class="ft-top">
-      <div>
-        <a href="#hero" class="ft-logo">Homy<span>.</span></a>
-        <p class="ft-desc">Find, explore, and choose your next home with a simple and modern experience built for every buyer and renter.</p>
-        <div class="ft-socs">
-          <a href="https://instagram.com" target="_blank" class="ft-soc" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://facebook.com" target="_blank" class="ft-soc" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="https://x.com" target="_blank" class="ft-soc" aria-label="X">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20L20 4"/></svg>
-          </a>
-          <a href="https://youtube.com" target="_blank" class="ft-soc" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-          </a>
-        </div>
-      </div>
-      <div>
-        <div class="ft-col"><h5>Explore</h5>
-          <ul class="ft-links">
-            <li><a href="#props">Properties</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#faq">About</a></li>
-            <li><a href="#footer">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="ft-col"><h5>Contact</h5>
-          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><span>homy@yopmail.com</span></div>
-          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.16a16 16 0 006.29 6.29l1.52-1.52a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><span>+123 456 000</span></div>
-          <div class="ft-row"><div class="ft-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><a href="https://maps.google.com" target="_blank"><span>New York, USA</span></a></div>
-        </div>
-      </div>
-    </div>
-    <div class="ft-btm">
-      <span>Copyright@2026</span>
-      <a href="#">Privacy Policy</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-(function(){
-  /* NAV scroll */
-  const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
-
-  /* Mobile menu */
-  document.getElementById('burger').onclick=()=>document.getElementById('mob').classList.add('open');
-  document.getElementById('mobX').onclick=closeMob;
-  window.closeMob=()=>document.getElementById('mob').classList.remove('open');
-
-  /* Smooth scroll */
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const t=document.querySelector(a.getAttribute('href'));
-      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
-    });
-  });
-
-  /* REVEAL — elements start visible, JS hides then reveals on scroll */
-  const els=document.querySelectorAll('.r');
-  // Immediately mark all as hidden (JS is running)
-  els.forEach(el=>el.classList.add('hidden'));
-
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.remove('hidden')});
-  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
-  els.forEach(el=>obs.observe(el));
-
-  /* Counter animation */
-  function runCtr(el){
-    const t=parseFloat(el.dataset.t),dp=parseInt(el.dataset.d||0),dur=2000,s=performance.now();
-    (function step(now){
-      const p=Math.min((now-s)/dur,1),ease=1-Math.pow(1-p,3),v=t*ease;
-      el.textContent=dp>0?v.toFixed(dp):Math.floor(v).toLocaleString();
-      if(p<1)requestAnimationFrame(step);
-    })(s);
-  }
-  const cobs=new IntersectionObserver(e=>{
-    e.forEach(x=>{if(x.isIntersecting){runCtr(x.target);cobs.unobserve(x.target)}});
-  },{threshold:.5});
-  document.querySelectorAll('.ctr').forEach(el=>cobs.observe(el));
-
-  /* Video text reveal */
-  const hlLines=document.querySelectorAll('.hl-line');
-  new IntersectionObserver(e=>{
-    if(e[0].isIntersecting)hlLines.forEach(l=>l.classList.add('in'));
-  },{threshold:.3}).observe(document.getElementById('highlight'));
-
-  /* Services tabs */
-  document.querySelectorAll('.srv-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      const i=tab.dataset.i;
-      document.querySelectorAll('.srv-tab').forEach(t=>t.classList.remove('on'));
-      document.querySelectorAll('.srv-slide').forEach(s=>s.classList.remove('on'));
-      tab.classList.add('on');
-      document.querySelector(`.srv-slide[data-i="${i}"]`)?.classList.add('on');
-    });
-  });
-
-  /* FAQ */
-  document.querySelectorAll('.faq-q').forEach(q=>{
-    q.addEventListener('click',()=>{
-      const item=q.parentElement,was=item.classList.contains('op');
-      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('op'));
-      if(!was)item.classList.add('op');
-    });
-  });
-})();
-</script>
+        function clearNotes() {
+            if(confirm('Clear all notes?')) {
+                document.querySelector('.notes-area').innerHTML = '';
+            }
+        }
+    </script>
 </body>
 </html>
